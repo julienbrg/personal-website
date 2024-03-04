@@ -5,21 +5,21 @@ navbar_entries:
   - title: blog
     url: blog
 
-  - title: website
-    url: https://www.abhinav.co
+  - title: Full bio
+    url: bio
 
 project_entries:
-  - title: Project 1
-    url: overview-post
-    desc: This is an example project, configured in _data/home.yml
+  - title: Arthera
+    url: https://arthera.net
+    desc: An EVM-compatible Layer 1 riding on DAGs
 
-  - title: Project 2
-    url: overview-post
-    desc: Projects are shown in card layout
+  - title: W3HC
+    url: https://w3hc.org/
+    desc: The Web3 Hackers Collective is building integrations through mentoring and education.
 
-  - title: Project 3
-    url: overview-post
-    desc: You can control visibility from _config.yml file
+  - title: Gov
+    url: https://w3hc.github.io/gov-docs/
+    desc: Gov is a DAO framework built with Open Zeppelin Governor contract in combination with NFTs.
 
   - title: Project 4
     url: overview-post
@@ -38,7 +38,7 @@ project_entries:
 old_project_entries:
   - title: Soopr
     url: https://www.soopr.co
-    desc: Delight your readers - add beautiful share and like buttons easily to your websites 
+    desc: Delight your readers - add beautiful share and like buttons easily to your websites
     highlight: NEW
 
   - title: Cookie
@@ -97,5 +97,3 @@ misc_entries:
 
           - title: it is easy to use, see _data/home.yml to see how to configure it.
             url: false
-
-
