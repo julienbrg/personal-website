@@ -1,39 +1,39 @@
 navbar_entries:
-  - title: about
-    url: about
+  # - title: about
+  #   url: about
 
-  - title: blog
+  - title: Blog
     url: blog
 
-  - title: Full bio
+  - title: Bio
     url: bio
 
 project_entries:
   - title: Arthera
     url: https://arthera.net
-    desc: An EVM-compatible Layer 1 riding on DAGs
+    desc: An EVM-compatible Layer 1 riding on DAGs.
 
   - title: W3HC
     url: https://w3hc.org/
-    desc: The Web3 Hackers Collective is building integrations through mentoring and education.
+    desc: The Web3 Hackers Collective.
 
   - title: Gov
     url: https://w3hc.github.io/gov-docs/
-    desc: Gov is a DAO framework built with Open Zeppelin Governor contract in combination with NFTs.
+    desc: A DAO framework built for everyday people.
 
-  - title: Project 4
-    url: overview-post
-    desc: This project uses highlight markup, configured in _data/home.yml
-    highlight: WIP
+  # - title: Project 4
+  #   url: overview-post
+  #   desc: This project uses highlight markup, configured in _data/home.yml
+  #   highlight: WIP
 
-  - title: Project 5
-    url: overview-post
-    desc: Moonwalk also has horizontal list (used in header and footer)
-    highlight: WIP
+  # - title: Project 5
+  #   url: overview-post
+  #   desc: Moonwalk also has horizontal list (used in header and footer)
+  #   highlight: WIP
 
-  - title: Project 6
-    url: overview-post
-    desc: It also has a scalable vertical list (in case you need it)
+  # - title: Project 6
+  #   url: overview-post
+  #   desc: It also has a scalable vertical list (in case you need it)
 
 old_project_entries:
   - title: Soopr
@@ -54,17 +54,29 @@ old_project_entries:
     desc: The better people know you, the better they collaborate
 
 footer_entries:
-  - title: abhinav's homepage
-    url: https://www.abhinav.co
+  - title: Website
+    url: https://julienberanger.com
 
-  - title: twitter
-    url: https://twitter.com/abhinav
+  - title: Twitter
+    url: https://twitter.com/julienbrg
 
-  - title: github
-    url: https://github.com/abhinavs
+  - title: Github
+    url: https://github.com/julienbrg
 
-  - title: feed
-    url: feed.xml
+  - title: Telegram
+    url: https://t.me/julienbrg
+
+  - title: Discord
+    url: https://discordapp.com/users/julienbrg
+
+  - title: Element
+    url: https://matrix.to/#/@julienbrg:matrix.org
+
+  - title: LinkedIn
+    url: https://www.linkedin.com/in/julienberanger/
+
+  # - title: feed
+  #   url: feed.xml
 
 misc_entries:
   - title: this is an example vertical list
@@ -84,10 +96,10 @@ misc_entries:
     url: false
     entries:
       - title: on Github
-        url: https://github.com/abhinavs/moonwalk
+        url: https://github.com/julienbrg/personal-website
 
-      - title: originally built for abhinav's homepage
-        url: https://www.abhinav.co
+      - title: originally built for Julien's homepage
+        url: https://julienberanger.com
 
       - title: this list is scalable and can be nested
         url: false

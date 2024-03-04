@@ -2,7 +2,7 @@
 
 Live at: [julienberanger.com](https://julienberanger.com)
 
-Portfolio, blog, and full bio.
+Projects, blog, and full bio.
 
 ## Install
 
