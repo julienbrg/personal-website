@@ -9,9 +9,9 @@ navbar_entries:
     url: bio
 
 project_entries:
-  - title: Arthera
-    url: https://arthera.net
-    desc: An EVM-compatible Layer 1 riding on DAGs.
+  - title: Strat
+    url: https://strat.cc
+    desc: Building Web3 since 2013.
 
   - title: W3HC
     url: https://w3hc.org/
