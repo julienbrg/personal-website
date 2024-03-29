@@ -21,6 +21,10 @@ project_entries:
     url: https://w3hc.github.io/gov-docs/
     desc: A DAO framework built for everyday people.
 
+  - title: Pattini
+    url: https://github.com/marketplace/actions/pattini-app
+    desc: Automatic rewards for the contributors of a GitHub project.
+
   # - title: Project 4
   #   url: overview-post
   #   desc: This project uses highlight markup, configured in _data/home.yml
