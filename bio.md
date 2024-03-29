@@ -19,7 +19,6 @@ I'm a volunteer at [Emmaüs Connect](https://emmaus-connect.org/), an organisati
 
 In 2020, I co-founded [Āto](https://ato.works/) which provides top-level IP licenses for NFTs and makes legal easy for the whole Web3 community. I've built several NFT-related apps used by artists, auction houses and fine art galleries.
 
-I co-founded the [W3HC](https://w3hc.org/) (Web3 Hackers Collective), a DAO that focuses on Web3 integrations, mentoring and learning. I'm developing Gov, a DAO framework built with the standard Governor contract in combination with ERC-721, and I also work on the [gCFA](https://github.com/w3hc/gcfa-contracts) project, a crypto version of the CFA Franc, a currency used in 14 African countries (DeFi/stablecoin). I regularly host mentoring, live coding, and ‘build-in-public’ sessions.
+I worked for both [Aurora](https://aurora.dev/) and [Arthera](https://docs.arthera.net/) as a Developer Relations Engineer, and also for institutional partners like [AFNIC](https://www.afnic.fr/en/).
 
-From July to December 2023 I worked for [Arthera](https://docs.arthera.net/) as a Developer Relations Engineer.
-
+I co-founded the [W3HC](https://w3hc.org/) (Web3 Hackers Collective), a DAO that focuses on Web3 integrations, mentoring and learning. I'm developing Gov, a DAO framework built with the standard Governor contract in combination with ERC-721.
