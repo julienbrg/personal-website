@@ -25,6 +25,14 @@ project_entries:
     url: https://github.com/marketplace/actions/pattini-app
     desc: Automatic rewards for the contributors of a GitHub project.
 
+  - title: Web3 DD
+    url: https://github.com/w3hc/web3dd
+    desc: Your on-chain disk.
+
+  - title: THe NFT Registry
+    url: https://github.com/strat-web3/nft-registry-contracts
+    desc: An NFT Registry API for an institutional partner.
+
   # - title: Project 4
   #   url: overview-post
   #   desc: This project uses highlight markup, configured in _data/home.yml
