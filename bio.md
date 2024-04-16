@@ -19,6 +19,6 @@ I'm a volunteer at [Emmaüs Connect](https://emmaus-connect.org/), an organisati
 
 In 2020, I co-founded [Āto](https://ato.works/) which provides top-level IP licenses for NFTs and makes legal easy for the whole Web3 community. I've built several NFT-related apps used by artists, auction houses and fine art galleries.
 
-I worked for both [Aurora](https://aurora.dev/) and [Arthera](https://docs.arthera.net/) as a Developer Relations Engineer, and also for institutional partners like [AFNIC](https://www.afnic.fr/en/).
+As a Developer Relations Engineer, I worked for [Aurora](https://aurora.dev/) and [Arthera](https://docs.arthera.net/). As a dev, I also worked on an NFT Registry for an institutional partner.
 
-I co-founded the [W3HC](https://w3hc.org/) (Web3 Hackers Collective), a DAO that focuses on Web3 integrations, mentoring and learning. I'm developing Gov, a DAO framework built with the standard Governor contract in combination with ERC-721.
+I co-founded the [W3HC](https://w3hc.org/) (Web3 Hackers Collective), a DAO that focuses on Web3 integrations, mentoring and learning. I'm developing Gov, an on-chain voting system designed for everyday people.
