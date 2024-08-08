@@ -22,9 +22,9 @@ project_entries:
     url: https://github.com/marketplace/actions/pattini-app
     desc: Automatic rewards for the contributors of a GitHub project.
 
-  - title: Web3 DD
-    url: https://github.com/w3hc/web3dd
-    desc: Your on-chain disk.
+  # - title: Web3 DD
+  #   url: https://github.com/w3hc/web3dd
+  #   desc: Your on-chain disk.
 
   - title: The NFT Registry
     url: https://github.com/strat-web3/nft-registry-contracts
@@ -34,13 +34,17 @@ project_entries:
     url: https://legislatives.fun/
     desc: An experiment in AI governance in the context of the 2024 legislative election.
 
-  - title: Allô Francis
-    url: https://github.com/strat-web3/allo-francis
-    desc: A decentralized call center.
+  # - title: Allô Francis
+  #   url: https://github.com/strat-web3/allo-francis
+  #   desc: A decentralized call center.
 
   - title: Avventura
     url: https://github.com/strat-web3/avventura
     desc: Web3 social RPG.
+
+  # - title: Zhankai
+  #   url: https://github.com/w3hc/zhankai
+  #   desc: An AI tool for devs
 
 old_project_entries:
   - title: Soopr
