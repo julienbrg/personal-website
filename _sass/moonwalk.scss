@@ -232,6 +232,7 @@ p code, li code {
 .social-icon {
   color: var(--text);
   transition: color 0.3s ease;
+  position: relative;
 }
 
 .social-icon:hover {
@@ -242,5 +243,27 @@ p code, li code {
   width: 24px;
   height: 24px;
   vertical-align: middle;
-  margin-bottom: 7px; /* Added small margin to the bottom */
+  margin-bottom: 2px;
+}
+
+.farcaster-icon .hover-text {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-secondary);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.farcaster-icon:hover .hover-text {
+  opacity: 1;
+  visibility: visible;
 }
