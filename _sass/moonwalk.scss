@@ -221,3 +221,26 @@ p code, li code {
   text-transform: lowercase;
   //border: 1px solid var(--text-secondary);
 }
+
+.social-share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--links);
+}
+
+.farcaster-icon svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-bottom: 7px; /* Added small margin to the bottom */
+}
