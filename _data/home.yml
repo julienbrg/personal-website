@@ -8,43 +8,39 @@ navbar_entries:
 project_entries:
   - title: Strat
     url: https://strat.cc
-    desc: Building Web3 since 2013.
+    desc: Building Web3 since 2013
 
   - title: W3HC
     url: https://w3hc.org/
-    desc: The Web3 Hackers Collective.
+    desc: The Web3 Hackers Collective
 
   - title: Gov
     url: https://w3hc.github.io/gov-docs/
-    desc: DAOs for everyday people.
+    desc: DAOs for everyday people
 
   - title: Pattini
     url: https://github.com/marketplace/actions/pattini-app
-    desc: Automatic rewards for the contributors of a GitHub project.
-
-  # - title: Web3 DD
-  #   url: https://github.com/w3hc/web3dd
-  #   desc: Your on-chain disk.
+    desc: Automatic rewards for the contributors of a GitHub project
 
   - title: The NFT Registry
     url: https://github.com/strat-web3/nft-registry-contracts
-    desc: An NFT Registry API for an institutional partner.
+    desc: An NFT Registry API for an institutional partner
 
   - title: Legislatives.fun
     url: https://legislatives.fun/
-    desc: An experiment in AI governance in the context of the 2024 legislative election.
-
-  # - title: Allô Francis
-  #   url: https://github.com/strat-web3/allo-francis
-  #   desc: A decentralized call center.
+    desc: An experiment in AI governance in the context of the 2024 legislative election
 
   - title: Avventura
     url: https://github.com/strat-web3/avventura
-    desc: Web3 social RPG.
+    desc: Web3 social RPG
 
-  # - title: Zhankai
-  #   url: https://github.com/w3hc/zhankai
-  #   desc: An AI tool for devs
+  - title: Myst
+    url: https://github.com/w3hc/myst-api
+    desc: NFT-gated content
+
+  - title: Zhankai
+    url: https://github.com/w3hc/zhankai
+    desc: An AI tool for devs
 
 old_project_entries:
   - title: Soopr
@@ -71,11 +67,17 @@ footer_entries:
   - title: Element
     url: https://matrix.to/#/@julienbrg:matrix.org
 
-  - title: Github
-    url: https://github.com/julienbrg
+  - title: Status
+    url: https://status.app/u/iwSACggKBkp1bGllbgM=#zQ3shmh1sbvE6qrGotuyNQB22XU5jTrZ2HFC8bA56d5kTS2fy
+
+  - title: Twitter
+    url: https://twitter.com/julienbrg
 
   - title: Telegram
     url: https://t.me/julienbrg
+
+  - title: Github
+    url: https://github.com/julienbrg
 
   - title: Discord
     url: https://discordapp.com/users/julienbrg
@@ -83,8 +85,8 @@ footer_entries:
   - title: LinkedIn
     url: https://www.linkedin.com/in/julienberanger/
 
-  - title: Twitter
-    url: https://twitter.com/julienbrg
+  - title: Calendly
+    url: https://calendly.com/julien_/30min
 
 misc_entries:
   - title: this is an example vertical list
