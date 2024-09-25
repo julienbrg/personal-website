@@ -4,7 +4,7 @@
 html { height: 100%; }
 
 body {
-  font-family:  "Inter", -apple-system, "avenir next", avenir, roboto, noto, ubuntu, "helvetica neue", helvetica, sans-serif;
+  font-family: "Inter", -apple-system, "avenir next", avenir, roboto, noto, ubuntu, "helvetica neue", helvetica, sans-serif;
   font-size: 1.0rem;
   line-height: 2;
   margin: 0;
@@ -68,10 +68,10 @@ img {
       --bg: #FFF;
       --bg-secondary: #f3f4f6;
       --headings: #1e293b;
-      --text: #374151;
-      --text-secondary: #6b7280;
+      --text: #000000;
+      --text-secondary: #4b5563;
       --links: #6366f1;
-      --highlight: #FFECB2; // light yellow
+      --highlight: #FFECB2;
       --code-text: #9D174D;
       --share-text: #999;
   }
@@ -84,8 +84,8 @@ img {
       --highlight: #41C7C7;
       --bg: #1f242A;
       --bg-secondary: #323945;
-      --text: #adb5bd;
-      --text-secondary: #9CA3AF;
+      --text: #FFFFFF;
+      --text-secondary: #FFFFFF;
       --code-text: #91A7FF;
       --share-text: #C4C4C4;
   };
