@@ -2,7 +2,7 @@ title: Julien Béranger
 author: Julien Béranger
 url: https://julienberanger.com # root address of the site
 description: > # description of the site (multiple lines allowed)
-  I’ve been committed to building Web3 for more than ten years. I've co-founded of the Web3 Hackers Collective and I'm currently working on several different apps including Gov, a DAO framework (on-chain voting system) designed for regular users. I code in Solidity, Node.js, TypeScript, and I mostly work with frameworks like React, Next.js, and Nest.js.
+  I'm a Web3 full-stack developer with over a decade of experience building blockchain solutions. As co-founder of the Web3 Hackers Collective, I combine my expertise in Solidity, TypeScript, and Node.js with frameworks like React, Next.js, and Nest.js to create secure and scalable apps. I'm passionate about exploring new techniques and continuously expanding my skills in the ever-evolving Web3 space.
 permalink: /:slug
 favicon: "./logo.png" # relative path to site's favicon
 
