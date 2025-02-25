@@ -66,11 +66,11 @@ img {
 @mixin light-appearance {
   html, body {
       --bg: #FFF;
-      --bg-secondary: #f3f4f6;
-      --headings: #1e293b;
+      --bg-secondary: #FFF;
+      --headings: #8c1c84;
       --text: #000000;
       --text-secondary: #4b5563;
-      --links: #6366f1;
+      --links: #45a2f8;
       --highlight: #FFECB2;
       --code-text: #9D174D;
       --share-text: #999;
@@ -79,11 +79,11 @@ img {
 // -------------- THEME SWITCHER -------------- //
 @mixin dark-appearance {
   html, body  {
-      --headings: #74c0fc;
-      --links: #91A7FF;
+      --headings: #45a2f8;
+      --links: #8c1c84;
       --highlight: #41C7C7;
-      --bg: #1f242A;
-      --bg-secondary: #323945;
+      --bg: #000000;
+      --bg-secondary: #000000;
       --text: #FFFFFF;
       --text-secondary: #FFFFFF;
       --code-text: #91A7FF;
