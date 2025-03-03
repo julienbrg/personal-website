@@ -22,6 +22,10 @@ project_entries:
     url: https://github.com/strat-web3/nft-registry-contracts
     desc: An NFT Registry API for an institutional partner
 
+  - title: Game of Go
+    url: https://github.com/julienbrg/game-of-go
+    desc: Solidity implementation of the game of Go
+
   - title: Zhankai
     url: https://github.com/w3hc/zhankai
     desc: CLI tool for exporting repository content for LLM processing
