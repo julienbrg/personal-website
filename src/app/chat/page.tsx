@@ -38,16 +38,57 @@ const MarkdownComponents = {
       {props.children}
     </Text>
   ),
+  h1: (props: any) => (
+    <Text as="h1" fontSize="2xl" fontWeight="bold" my={4} color="inherit">
+      {props.children}
+    </Text>
+  ),
+  h2: (props: any) => (
+    <Text as="h2" fontSize="xl" fontWeight="bold" my={3} color="inherit">
+      {props.children}
+    </Text>
+  ),
+  h3: (props: any) => (
+    <Text as="h3" fontSize="lg" fontWeight="bold" my={2} color="inherit">
+      {props.children}
+    </Text>
+  ),
+  ul: (props: any) => (
+    <Box as="ul" pl={4} my={2}>
+      {props.children}
+    </Box>
+  ),
+  ol: (props: any) => (
+    <Box as="ol" pl={4} my={2}>
+      {props.children}
+    </Box>
+  ),
+  li: (props: any) => (
+    <Box as="li" mb={1}>
+      {props.children}
+    </Box>
+  ),
+  blockquote: (props: any) => (
+    <Box borderLeftWidth="4px" borderLeftColor="gray.200" pl={4} py={2} my={4}>
+      {props.children}
+    </Box>
+  ),
   code: ({ inline, className, children }: any) => {
     const match = /language-(\w+)/.exec(className || '')
-    return inline ? (
-      <Text as="code" px={1} bg="gray.700" borderRadius="sm" fontSize="0.875em">
-        {children}
-      </Text>
-    ) : (
+    const language = match ? match[1] : ''
+
+    if (inline) {
+      return (
+        <Text as="code" px={1} bg="gray.700" borderRadius="sm" fontSize="0.875em">
+          {children}
+        </Text>
+      )
+    }
+
+    return (
       <Box my={4}>
         <SyntaxHighlighter
-          language={match ? match[1] : ''}
+          language={language}
           style={tomorrow}
           customStyle={{ borderRadius: '8px' }}
         >
@@ -56,6 +97,37 @@ const MarkdownComponents = {
       </Box>
     )
   },
+  pre: (props: any) => <Box {...props} />,
+  strong: (props: any) => (
+    <Text as="strong" fontWeight="bold">
+      {props.children}
+    </Text>
+  ),
+  em: (props: any) => (
+    <Text as="em" fontStyle="italic">
+      {props.children}
+    </Text>
+  ),
+  a: (props: any) => (
+    <Link
+      color="blue.300"
+      href={props.href}
+      isExternal
+      textDecoration="underline"
+      _hover={{
+        color: 'blue.200',
+        textDecoration: 'none',
+      }}
+      onClick={e => {
+        if (!props.href || props.href === '#') {
+          e.preventDefault()
+          return
+        }
+      }}
+    >
+      {props.children}
+    </Link>
+  ),
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, txHash, explorerLink }) => (
