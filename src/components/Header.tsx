@@ -18,6 +18,7 @@ import { HamburgerIcon } from '@chakra-ui/icons'
 import LanguageSelector from './LanguageSelector'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function Header() {
   const { open } = useAppKit()
@@ -68,9 +69,23 @@ export default function Header() {
           transition="all 0.5s ease-in-out"
         >
           <Link href="/">
-            <Heading as="h3" size="md" textAlign="center">
-              Julien
-            </Heading>
+            <Box
+              width="40px"
+              height="40px"
+              borderRadius="full"
+              overflow="hidden"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Image
+                src="/zyzkov-150-150.png"
+                alt="Julien"
+                width={40}
+                height={40}
+                style={{ borderRadius: '50%' }}
+              />
+            </Box>
           </Link>
         </Box>
 
@@ -125,13 +140,13 @@ export default function Header() {
                 <MenuItem fontSize="md">{t.navigation.contactUs}</MenuItem>
               </Link>
               <Link href="/chat" color="white">
-                <MenuItem fontSize="md">Chat</MenuItem>
+                <MenuItem fontSize="md">{t.navigation.chat}</MenuItem>
               </Link>
               <Link href="/bio" color="white">
-                <MenuItem fontSize="md">Bio</MenuItem>
+                <MenuItem fontSize="md">{t.navigation.bio}</MenuItem>
               </Link>
               {/* <Link href="/awesome-ethereum" color="white">
-                <MenuItem fontSize="md">Resources</MenuItem>
+                <MenuItem fontSize="md">{t.navigation.awesome}</MenuItem>
               </Link> */}
             </MenuList>
           </Menu>
