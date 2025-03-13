@@ -21,7 +21,6 @@ import {
 import { useAppKitAccount, useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import { BrowserProvider, parseEther, formatEther } from 'ethers'
 import { useState, useEffect } from 'react'
-import NextLink from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import StylishIntro from '@/components/StylishIntro'
@@ -64,13 +63,13 @@ const projects = [
     title: 'Zhankai',
     url: 'https://github.com/w3hc/zhankai',
     desc: 'CLI tool for exporting repository content for LLM processing',
-    labels: ['AI'],
+    labels: ['AI', 'Web3'],
   },
   {
     title: 'Rukh',
     url: 'https://rukh.w3hc.org/',
     desc: 'Nest.js-based AI agent toolkit',
-    labels: ['AI'],
+    labels: ['AI', 'Web3'],
   },
   {
     title: 'EIP-7702 Playground',
@@ -86,9 +85,9 @@ const projects = [
   },
   {
     title: 'Avventura',
-    url: 'https://github.com/strat-web3/avventura',
+    url: 'https://avventura.fun',
     desc: 'Web3 social RPG',
-    labels: ['Web3'],
+    labels: ['AI', 'Web3'],
   },
   {
     title: 'Myst',
