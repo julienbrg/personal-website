@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: 'Julien Béranger',
-    description: 'Next.js + Web3 Modal + Ethers.js + Chakra UI',
+    description: 'Building Web3 since 2013.',
     url: 'https://julienberanger.com',
     siteName: 'Julien Béranger',
     images: [
