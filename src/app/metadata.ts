@@ -1,23 +1,23 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Genji',
-  description: 'Next.js + Web3 Modal + Ethers.js + Chakra UI',
+  title: 'Julien Béranger',
+  description: 'Building Web3 since 2013.',
 
   keywords: ['Web3', 'Next.js', 'Ethereum', 'DApp', 'Blockchain', 'Wallet'],
   authors: [{ name: 'Julien', url: 'https://github.com/julienbrg' }],
 
   openGraph: {
-    title: 'Genji',
+    title: 'Julien Béranger',
     description: 'Next.js + Web3 Modal + Ethers.js + Chakra UI',
-    url: 'https://genji-app.netlify.app',
-    siteName: 'Genji',
+    url: 'https://julienberanger.com',
+    siteName: 'Julien Béranger',
     images: [
       {
         url: '/huangshan.png',
         width: 1200,
         height: 630,
-        alt: 'Genji Web3 Application',
+        alt: 'Huangshan',
       },
     ],
     locale: 'en_US',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Genji',
-    description: 'Next.js + Web3 Modal + Ethers.js + Chakra UI',
+    title: 'Julien Béranger',
+    description: 'Building Web3 since 2013.',
     images: ['/huangshan.png'],
     creator: '@julienbrg',
   },

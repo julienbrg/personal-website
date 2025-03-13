@@ -69,7 +69,7 @@ export default function Header() {
         >
           <Link href="/">
             <Heading as="h3" size="md" textAlign="center">
-              Genji
+              Julien
             </Heading>
           </Link>
         </Box>
