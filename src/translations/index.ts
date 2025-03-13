@@ -295,7 +295,7 @@ export const translations: Translations = {
       bio: 'Biographie',
     },
     contact: {
-      title: 'Entrer en contact',
+      title: 'Contact',
       github: 'GitHub',
       farcaster: 'Farcaster',
       element: 'Element',
@@ -310,7 +310,7 @@ export const translations: Translations = {
     chat: {
       title: "Discuter avec l'assistant",
       welcomeMessage:
-        "Bonjour ! Je suis Francesca, l'assistante fidèle de Julien. Que voulez-vous savoir à son sujet ?",
+        'Bonjour ! Je suis Francesca, la fidèle assistante de Julien. Que souhaitiez-vous savoir ?',
       inputPlaceholder: "Julien peut-il m'aider à créer une application ou une API ?",
       sendButton: 'Envoyer',
       errorMessage:
