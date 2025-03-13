@@ -35,6 +35,7 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.62",
     "@types/react-dom": "18.2.7",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@types/webpack": "^5.28.5",
     "buffer": "^6.0.3",
     "esbuild": "0.21.1",
