@@ -1,13 +1,25 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
-import { Container, Box, Button, Flex, Input, VStack, Text, useToast, Link } from '@chakra-ui/react'
+import {
+  Container,
+  Box,
+  Button,
+  Flex,
+  Input,
+  VStack,
+  Text,
+  useToast,
+  Link,
+  Heading,
+} from '@chakra-ui/react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import remarkGfm from 'remark-gfm'
 import { useAppKitAccount } from '@reown/appkit/react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface Message {
   text: string
@@ -163,6 +175,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, txHash, expl
 export default function Chat() {
   const toast = useToast()
   const { address } = useAppKitAccount()
+  const t = useTranslation()
 
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState('')
@@ -173,11 +186,11 @@ export default function Chat() {
   useEffect(() => {
     setMessages([
       {
-        text: `Hello! I'm Francesca, Julien's faithful assistant. What do you need to know about him? `,
+        text: t.chat.welcomeMessage,
         isUser: false,
       },
     ])
-  }, [])
+  }, [t.chat.welcomeMessage])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -223,7 +236,7 @@ export default function Chat() {
 
         if (errorData.status === 429) {
           const rateMessage: Message = {
-            text: errorData.message,
+            text: t.chat.rateLimitMessage,
             isUser: false,
           }
           setMessages(prev => [...prev, rateMessage])
@@ -247,7 +260,7 @@ export default function Chat() {
     } catch (error) {
       console.error('Error calling API:', error)
       toast({
-        title: 'Error',
+        title: t.common.error,
         description: error instanceof Error ? error.message : 'Failed to get response from Rukh',
         status: 'error',
         duration: 5000,
@@ -255,7 +268,7 @@ export default function Chat() {
       })
 
       const errorMessage: Message = {
-        text: 'Sorry, there was an error processing your request. Please try again a bit later.',
+        text: t.chat.errorMessage,
         isUser: false,
       }
       setMessages(prev => [...prev, errorMessage])
@@ -290,13 +303,13 @@ export default function Chat() {
         </Container>
       </Box>
 
-      <Box as="form" onSubmit={handleSubmit} p={4}>
+      <Box as="form" onSubmit={handleSubmit} p={4} borderTopWidth="1px" borderColor="gray.800">
         <Container maxW="container.md" mx="auto">
           <Flex gap={2}>
             <Input
               value={inputValue}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
-              placeholder="Can Julien help me build an app or API?"
+              placeholder={t.chat.inputPlaceholder}
               size="lg"
               borderColor="gray.700"
               _focus={{
@@ -310,7 +323,7 @@ export default function Chat() {
               size="lg"
               isDisabled={!inputValue.trim() || isTyping}
             >
-              Send
+              {t.chat.sendButton}
             </Button>
           </Flex>
         </Container>

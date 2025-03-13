@@ -25,6 +25,8 @@ import NextLink from 'next/link'
 import { useTranslation } from '@/hooks/useTranslation'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import StylishIntro from '@/components/StylishIntro'
+import HomeActionButtons from '@/components/HomeActionButtons'
+import ScrollingBanner from '@/components/ScrollingBanner'
 
 // Project data
 const projects = [
@@ -103,7 +105,7 @@ const projects = [
   {
     title: 'W3HC Hardhat Template',
     url: 'https://github.com/w3hc/w3hc-hardhat-template',
-    desc: 'A comprehensive Solidity contract development environment using Hardhat.',
+    desc: 'Solidity contract development environment',
     labels: ['Web3'],
   },
   // {
@@ -217,42 +219,12 @@ export default function Home() {
           {/* Enhanced Intro Component */}
           <StylishIntro />
 
+          <Box mt={6}>
+            <ScrollingBanner text="I'm committed to building Web3 since 2013. I code in Node.js, TypeScript, and Solidity. I love using React, Next.js, and Nest.js to build secure, scalable and maintainable apps and services. It's time to unify Ethereum and improve people's lives for real." />
+          </Box>
+
           {/* Action Buttons */}
-          <Center mt={10}>
-            <ButtonGroup spacing={6}>
-              <Button
-                as={NextLink}
-                href="/chat"
-                size="md"
-                colorScheme="blue"
-                variant="outline"
-                boxShadow="md"
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                }}
-                transition="all 0.3s ease"
-              >
-                Chat with my assistant
-              </Button>
-              <Button
-                as={NextLink}
-                href="/contact"
-                size="md"
-                colorScheme="purple"
-                variant="outline"
-                boxShadow="md"
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                  bg: 'rgba(159, 122, 234, 0.1)',
-                }}
-                transition="all 0.3s ease"
-              >
-                Let&apos;s talk directly!
-              </Button>
-            </ButtonGroup>
-          </Center>
+          <HomeActionButtons />
         </Box>
 
         {/* Projects Section */}

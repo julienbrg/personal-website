@@ -230,7 +230,12 @@ export default function BioPage() {
           </Box>
           <Box mt={7} mb={10}>
             {/* <Center > */}
-            <ButtonGroup spacing={6}>
+            <Flex
+              direction={{ base: 'column', md: 'row' }}
+              gap={{ base: 3, md: 4 }}
+              width={{ base: '100%', md: 'auto' }}
+              px={{ base: 4, md: 0 }}
+            >
               <Button
                 as={NextLink}
                 href="/chat"
@@ -238,14 +243,16 @@ export default function BioPage() {
                 colorScheme="blue"
                 variant="outline"
                 boxShadow="md"
+                width={{ base: '100%', md: 'auto' }}
                 _hover={{
                   transform: 'translateY(-2px)',
                   boxShadow: 'lg',
                 }}
                 transition="all 0.3s ease"
               >
-                Chat with my assistant
+                {t.home.chatButton}
               </Button>
+
               <Button
                 as={NextLink}
                 href="/contact"
@@ -253,6 +260,7 @@ export default function BioPage() {
                 colorScheme="purple"
                 variant="outline"
                 boxShadow="md"
+                width={{ base: '100%', md: 'auto' }}
                 _hover={{
                   transform: 'translateY(-2px)',
                   boxShadow: 'lg',
@@ -260,9 +268,9 @@ export default function BioPage() {
                 }}
                 transition="all 0.3s ease"
               >
-                Let&apos;s talk directly!
+                {t.home.contactButton}
               </Button>
-            </ButtonGroup>
+            </Flex>
             {/* </Center> */}
           </Box>
 
