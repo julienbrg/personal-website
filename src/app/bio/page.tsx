@@ -9,6 +9,9 @@ import {
   Link as ChakraLink,
   Image,
   Flex,
+  Center,
+  ButtonGroup,
+  Button,
 } from '@chakra-ui/react'
 import { useTranslation } from '@/hooks/useTranslation'
 import NextLink from 'next/link'
@@ -225,45 +228,42 @@ export default function BioPage() {
               .
             </Text>
           </Box>
-
-          <Box>
-            <Heading as="h2" size="md" mb={4}>
-              {t.contact.title}
-            </Heading>
-            <Text mb={4}>
-              Feel free to reach out to me on{' '}
-              <ChakraLink
-                href="https://matrix.to/#/@julienbrg:matrix.org"
-                isExternal
-                color="blue.400"
+          <Box mt={7} mb={10}>
+            {/* <Center > */}
+            <ButtonGroup spacing={6}>
+              <Button
+                as={NextLink}
+                href="/chat"
+                size="md"
+                colorScheme="blue"
+                variant="outline"
+                boxShadow="md"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
+                }}
+                transition="all 0.3s ease"
               >
-                Element
-              </ChakraLink>
-              ,{' '}
-              <ChakraLink href="https://warpcast.com/julien-" isExternal color="blue.400">
-                Farcaster
-              </ChakraLink>
-              ,{' '}
-              <ChakraLink href="https://t.me/julienbrg" isExternal color="blue.400">
-                Telegram
-              </ChakraLink>
-              ,{' '}
-              <ChakraLink href="https://twitter.com/julienbrg" isExternal color="blue.400">
-                Twitter
-              </ChakraLink>
-              ,{' '}
-              <ChakraLink href="https://discordapp.com/users/julienbrg" isExternal color="blue.400">
-                Discord
-              </ChakraLink>
-              , or{' '}
-              <ChakraLink
-                href="https://www.linkedin.com/in/julienberanger/"
-                isExternal
-                color="blue.400"
+                Chat with my assistant
+              </Button>
+              <Button
+                as={NextLink}
+                href="/contact"
+                size="md"
+                colorScheme="purple"
+                variant="outline"
+                boxShadow="md"
+                _hover={{
+                  transform: 'translateY(-2px)',
+                  boxShadow: 'lg',
+                  bg: 'rgba(159, 122, 234, 0.1)',
+                }}
+                transition="all 0.3s ease"
               >
-                LinkedIn
-              </ChakraLink>
-            </Text>
+                Let&apos;s talk directly!
+              </Button>
+            </ButtonGroup>
+            {/* </Center> */}
           </Box>
 
           {/* <Flex justifyContent="center" mt={10}>

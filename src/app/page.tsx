@@ -71,6 +71,18 @@ const projects = [
     labels: ['AI'],
   },
   {
+    title: 'EIP-7702 Playground',
+    url: 'https://github.com/w3hc/eip7702-playground',
+    desc: 'Demonstrates EIP-7702',
+    labels: ['Web3'],
+  },
+  {
+    title: 'ERC-5560',
+    url: 'https://eips.ethereum.org/EIPS/eip-5560',
+    desc: 'ERC-5560: Redeemable NFTs',
+    labels: ['Web3'],
+  },
+  {
     title: 'Avventura',
     url: 'https://github.com/strat-web3/avventura',
     desc: 'Web3 social RPG',
@@ -83,23 +95,35 @@ const projects = [
     labels: ['Web3'],
   },
   {
-    title: 'Pattini',
-    url: 'https://github.com/marketplace/actions/pattini-app',
-    desc: 'Automatic rewards for the contributors of a GitHub project',
+    title: 'Genji',
+    url: 'https://github.com/w3hc/genji',
+    desc: 'A Next.js Web3 app template',
     labels: ['Web3'],
   },
   {
-    title: 'Ouf',
-    url: 'https://ethglobal.com/showcase/ouf-ya5wi',
-    desc: "Create and personalize an AI assistant tailored to your organization's needs.",
-    labels: ['AI'],
+    title: 'W3HC Hardhat Template',
+    url: 'https://github.com/w3hc/w3hc-hardhat-template',
+    desc: 'A comprehensive Solidity contract development environment using Hardhat.',
+    labels: ['Web3'],
   },
-  {
-    title: 'Legislatives.fun',
-    url: 'https://legislatives.fun/',
-    desc: 'An experiment in AI governance in the context of the 2024 legislative election',
-    labels: ['AI', 'Web3'],
-  },
+  // {
+  //   title: 'Pattini',
+  //   url: 'https://github.com/marketplace/actions/pattini-app',
+  //   desc: 'Automatic rewards for the contributors of a GitHub project',
+  //   labels: ['Web3'],
+  // },
+  // {
+  //   title: 'Ouf',
+  //   url: 'https://ethglobal.com/showcase/ouf-ya5wi',
+  //   desc: "Create and personalize an AI assistant tailored to your organization's needs.",
+  //   labels: ['AI'],
+  // },
+  // {
+  //   title: 'Legislatives.fun',
+  //   url: 'https://legislatives.fun/',
+  //   desc: 'An experiment in AI governance in the context of the 2024 legislative election',
+  //   labels: ['AI', 'Web3'],
+  // },
 ]
 
 export default function Home() {
@@ -199,8 +223,9 @@ export default function Home() {
               <Button
                 as={NextLink}
                 href="/chat"
-                size="lg"
+                size="md"
                 colorScheme="blue"
+                variant="outline"
                 boxShadow="md"
                 _hover={{
                   transform: 'translateY(-2px)',
@@ -213,7 +238,7 @@ export default function Home() {
               <Button
                 as={NextLink}
                 href="/contact"
-                size="lg"
+                size="md"
                 colorScheme="purple"
                 variant="outline"
                 boxShadow="md"
@@ -224,7 +249,7 @@ export default function Home() {
                 }}
                 transition="all 0.3s ease"
               >
-                Reach out!
+                Let&apos;s talk directly!
               </Button>
             </ButtonGroup>
           </Center>
@@ -232,7 +257,8 @@ export default function Home() {
 
         {/* Projects Section */}
         <Box pt={6}>
-          <Heading as="h2" size="lg" mb={10} textAlign="center">
+          <Heading as="h3" size="lg" mb={10} textAlign="center">
+            {/* A selection of personal projects */}
             Projects
           </Heading>
 

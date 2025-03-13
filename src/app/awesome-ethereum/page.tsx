@@ -134,14 +134,6 @@ export default function AwesomePage() {
               </ReactMarkdown>
             </Box>
           )}
-
-          <Flex justifyContent="center" mt={10}>
-            <NextLink href="/" passHref>
-              <ChakraLink as="span" color="blue.400">
-                {t.newPage.backHome}
-              </ChakraLink>
-            </NextLink>
-          </Flex>
         </VStack>
       </Container>
     </main>

@@ -130,9 +130,9 @@ export default function Header() {
               <Link href="/bio" color="white">
                 <MenuItem fontSize="md">Bio</MenuItem>
               </Link>
-              <Link href="/awesome-ethereum" color="white">
+              {/* <Link href="/awesome-ethereum" color="white">
                 <MenuItem fontSize="md">Resources</MenuItem>
-              </Link>
+              </Link> */}
             </MenuList>
           </Menu>
           <LanguageSelector />

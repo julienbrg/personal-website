@@ -70,7 +70,7 @@ const ContactPage = () => {
   return (
     <Container maxW="container.md" py={20}>
       <VStack spacing={12} align="stretch">
-        <Heading as="h1" size="xl" mb={8} textAlign="center">
+        <Heading as="h3" size="xl" mb={8} textAlign="center">
           {t.contact.title}
         </Heading>
 
