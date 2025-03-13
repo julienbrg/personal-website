@@ -28,12 +28,9 @@ export default function Header() {
 
   const [scrollPosition, setScrollPosition] = useState(0)
 
-  const slideThreshold = 50
-  const leftSlideValue =
-    scrollPosition <= slideThreshold ? 0 : Math.min((scrollPosition - slideThreshold) * 0.5, 100)
-
-  const rightSlideValue =
-    scrollPosition <= slideThreshold ? 0 : Math.min((scrollPosition - slideThreshold) * 0.5, 100)
+  // Make the slide effect more reactive by increasing the multiplier
+  const leftSlideValue = Math.min(scrollPosition * 1.0, 100)
+  const rightSlideValue = Math.min(scrollPosition * 1.0, 100)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +63,7 @@ export default function Header() {
         <Box
           transform={`translateX(-${leftSlideValue}px)`}
           opacity={Math.max(1 - leftSlideValue / 100, 0)}
-          transition="all 0.5s ease-in-out"
+          transition="all 0.2s ease-out"
         >
           <Link href="/">
             <Box
@@ -94,7 +91,7 @@ export default function Header() {
           align="center"
           transform={`translateX(${rightSlideValue}px)`}
           opacity={Math.max(1 - rightSlideValue / 100, 0)}
-          transition="all 0.5s ease-in-out"
+          transition="all 0.2s ease-out"
         >
           {!isConnected ? (
             <Button

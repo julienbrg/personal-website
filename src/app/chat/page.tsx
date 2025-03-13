@@ -182,6 +182,7 @@ export default function Chat() {
   const [isTyping, setIsTyping] = useState(false)
   const [sessionId, setSessionId] = useState<string>('')
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false)
 
   useEffect(() => {
     setMessages([
@@ -190,15 +191,30 @@ export default function Chat() {
         isUser: false,
       },
     ])
+
+    // Set a delay to allow the component to fully render before marking initialization as complete
+    const timer = setTimeout(() => {
+      setInitialLoadComplete(true)
+    }, 100)
+
+    return () => clearTimeout(timer)
   }, [t.chat.welcomeMessage])
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (initialLoadComplete && messagesEndRef.current) {
+      // Use a small delay to ensure DOM has updated
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    // Only scroll on message changes, not on initial load
+    if (initialLoadComplete && messages.length > 1) {
+      scrollToBottom()
+    }
+  }, [messages, initialLoadComplete])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -278,7 +294,14 @@ export default function Chat() {
   }
 
   return (
-    <Box minH="calc(100vh - 80px)" display="flex" flexDirection="column" bg="black">
+    <Box
+      minH="calc(100vh - 80px)"
+      display="flex"
+      flexDirection="column"
+      bg="black"
+      // Add padding to the top to prevent header overlap
+      pt="40px"
+    >
       <Box flex="1" overflowY="auto" px={4}>
         <Container maxW="container.md" h="full" px={0}>
           <VStack spacing={0} align="stretch">
@@ -303,7 +326,7 @@ export default function Chat() {
         </Container>
       </Box>
 
-      <Box as="form" onSubmit={handleSubmit} p={4} borderTopWidth="1px" borderColor="gray.800">
+      <Box as="form" onSubmit={handleSubmit} p={4}>
         <Container maxW="container.md" mx="auto">
           <Flex gap={2}>
             <Input
