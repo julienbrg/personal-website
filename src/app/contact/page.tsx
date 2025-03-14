@@ -96,11 +96,13 @@ const ContactPage = () => {
                 <Icon
                   as={contact.icon}
                   boxSize={6}
-                  color={contact.primary ? 'white' : 'blue.400'}
+                  color={contact.primary ? 'white' : '#45a2f8'}
                   mr={4}
                 />
                 <VStack align="flex-start" spacing={0}>
-                  <Text fontWeight="bold">{contact.name}</Text>
+                  <Text fontWeight="bold" color="white">
+                    {contact.name}
+                  </Text>
                   <Text color={contact.primary ? 'whiteAlpha.800' : 'gray.400'} fontSize="sm">
                     {contact.username}
                   </Text>

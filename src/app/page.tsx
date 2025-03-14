@@ -262,7 +262,8 @@ export default function Home() {
                       key={idx}
                       size="sm"
                       variant="solid"
-                      colorScheme={label === 'Web3' ? 'purple' : 'teal'}
+                      bg={label === 'Web3' ? '#8c1c84' : '#45a2f8'}
+                      color="white"
                       borderRadius="full"
                     >
                       {label}

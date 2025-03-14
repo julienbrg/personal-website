@@ -21,15 +21,17 @@ export default function HomeActionButtons() {
           as={NextLink}
           href="/chat"
           size="md"
-          colorScheme="blue"
           variant="outline"
           boxShadow="md"
           width={{ base: '100%', md: 'auto' }}
           _hover={{
             transform: 'translateY(-2px)',
             boxShadow: 'lg',
+            bg: 'rgba(69, 162, 248, 0.1)',
           }}
           transition="all 0.3s ease"
+          borderColor="#45a2f8"
+          color="#45a2f8"
         >
           {t.home.chatButton}
         </Button>
@@ -38,37 +40,20 @@ export default function HomeActionButtons() {
           as={NextLink}
           href="/contact"
           size="md"
-          colorScheme="purple"
           variant="outline"
           boxShadow="md"
           width={{ base: '100%', md: 'auto' }}
           _hover={{
             transform: 'translateY(-2px)',
             boxShadow: 'lg',
-            bg: 'rgba(159, 122, 234, 0.1)',
+            bg: 'rgba(140, 28, 132, 0.1)',
           }}
           transition="all 0.3s ease"
+          borderColor="#8c1c84"
+          color="#8c1c84"
         >
           {t.home.contactButton}
         </Button>
-
-        {/* <Button
-          as={NextLink}
-          href="/bio"
-          size="md"
-          colorScheme="green"
-          variant="outline"
-          boxShadow="md"
-          width={{ base: '100%', md: 'auto' }}
-          _hover={{
-            transform: 'translateY(-2px)',
-            boxShadow: 'lg',
-            bg: 'rgba(72, 187, 120, 0.1)',
-          }}
-          transition="all 0.3s ease"
-        >
-          {t.home.bioButton}
-        </Button> */}
       </Flex>
     </Center>
   )

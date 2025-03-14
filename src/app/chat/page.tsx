@@ -122,12 +122,12 @@ const MarkdownComponents = {
   ),
   a: (props: any) => (
     <Link
-      color="blue.300"
+      color="#45a2f8"
       href={props.href}
       isExternal
       textDecoration="underline"
       _hover={{
-        color: 'blue.200',
+        color: '#2589e6',
         textDecoration: 'none',
       }}
       onClick={e => {
@@ -336,15 +336,19 @@ export default function Chat() {
               size="lg"
               borderColor="gray.700"
               _focus={{
-                borderColor: 'blue.500',
+                borderColor: '#45a2f8',
                 boxShadow: 'none',
               }}
             />
             <Button
               type="submit"
-              colorScheme="blue"
               size="lg"
               isDisabled={!inputValue.trim() || isTyping}
+              bg="#45a2f8"
+              color="white"
+              _hover={{
+                bg: '#2589e6',
+              }}
             >
               {t.chat.sendButton}
             </Button>
