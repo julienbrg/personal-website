@@ -79,7 +79,7 @@ export const translations: Translations = {
       notConnected: 'Please connect your wallet',
       insufficientBalance: 'Please connect with an account that has a bit of ETH',
       chatButton: 'Chat with my assistant',
-      contactButton: "Let's talk directly!",
+      contactButton: 'Get in touch',
       bioButton: 'Read full bio',
     },
     navigation: {
