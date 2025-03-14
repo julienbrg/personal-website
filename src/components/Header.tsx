@@ -142,9 +142,6 @@ export default function Header() {
               <Link href="/bio" color="white">
                 <MenuItem fontSize="md">{t.navigation.bio}</MenuItem>
               </Link>
-              {/* <Link href="/awesome-ethereum" color="white">
-                <MenuItem fontSize="md">{t.navigation.awesome}</MenuItem>
-              </Link> */}
             </MenuList>
           </Menu>
           <LanguageSelector />
