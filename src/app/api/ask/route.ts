@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
       message,
       context: context || 'francesca',
       sessionId: sessionId || '',
+      model: 'anthropic',
       walletAddress: address || '',
     }
 
