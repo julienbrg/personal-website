@@ -186,50 +186,6 @@ export default function Web3Page() {
               .
             </Text>
           </Box>
-
-          <Box mt={7} mb={10}>
-            <Flex
-              direction={{ base: 'column', md: 'row' }}
-              gap={{ base: 3, md: 4 }}
-              width={{ base: '100%', md: 'auto' }}
-              px={{ base: 4, md: 0 }}
-            >
-              <Button
-                as={NextLink}
-                href="/chat"
-                size="md"
-                colorScheme="blue"
-                variant="outline"
-                boxShadow="md"
-                width={{ base: '100%', md: 'auto' }}
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                }}
-                transition="all 0.3s ease"
-              >
-                {t.home.chatButton}
-              </Button>
-
-              <Button
-                as={NextLink}
-                href="/contact"
-                size="md"
-                colorScheme="purple"
-                variant="outline"
-                boxShadow="md"
-                width={{ base: '100%', md: 'auto' }}
-                _hover={{
-                  transform: 'translateY(-2px)',
-                  boxShadow: 'lg',
-                  bg: 'rgba(159, 122, 234, 0.1)',
-                }}
-                transition="all 0.3s ease"
-              >
-                {t.home.contactButton}
-              </Button>
-            </Flex>
-          </Box>
         </VStack>
       </Container>
     </main>
