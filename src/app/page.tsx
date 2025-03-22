@@ -33,79 +33,79 @@ const projects = [
   {
     title: 'Strat',
     url: 'https://strat.cc',
-    desc: 'Building Web3 since 2013',
+    desc: 'Building Web3 since 2013 - Strat is a Web3 development studio.',
     labels: ['Web3'],
   },
   {
     title: 'W3HC',
     url: 'https://w3hc.org/',
-    desc: 'The Web3 Hackers Collective',
+    desc: 'The Web3 Hackers Collective - Building integrations through mentoring and learning.',
     labels: ['Web3'],
   },
   {
     title: 'Gov',
     url: 'https://github.com/w3hc/gov',
-    desc: 'DAOs for regular users',
+    desc: 'DAOs for regular users - Gov is a DAO framework built with Open Zeppelin’s Governor contract in combination with NFTs.',
     labels: ['Web3'],
   },
   {
     title: 'The NFT Registry',
     url: 'https://github.com/strat-web3/nft-registry-contracts',
-    desc: 'An NFT Registry API for an institutional partner',
+    desc: 'An NFT Registry API for an institutional partner.',
     labels: ['Web3'],
   },
   {
     title: 'Game of Go',
     url: 'https://github.com/julienbrg/game-of-go',
-    desc: 'Solidity implementation of the game of Go',
+    desc: 'Solidity implementation of the game of Go.',
     labels: ['Web3'],
   },
   {
     title: 'Zhankai',
     url: 'https://github.com/w3hc/zhankai',
-    desc: 'CLI tool for exporting repository content for LLM processing',
+    desc: 'CLI tool for exporting repository content for LLM processing.',
     labels: ['AI', 'Web3'],
   },
   {
     title: 'Rukh',
     url: 'https://rukh.w3hc.org/',
-    desc: 'Nest.js-based AI agent toolkit',
+    desc: 'Minimalist Agentic RAG framework',
     labels: ['AI', 'Web3'],
   },
   {
     title: 'EIP-7702 Playground',
     url: 'https://github.com/w3hc/eip7702-playground',
-    desc: 'Demonstrates EIP-7702',
+    desc: 'Demonstrates the EIP-7702 - Set EOA account code.',
     labels: ['Web3'],
   },
   {
     title: 'ERC-5560',
     url: 'https://eips.ethereum.org/EIPS/eip-5560',
-    desc: 'ERC-5560: Redeemable NFTs',
+    desc: 'ERC-5560: Redeemable NFTs.',
     labels: ['Web3'],
   },
   {
     title: 'Avventura',
     url: 'https://avventura.fun',
-    desc: 'Web3 social RPG',
+    desc: 'The one and only text-based Web3-enabled social RPG.',
     labels: ['AI', 'Web3'],
   },
   {
     title: 'Myst',
     url: 'https://github.com/w3hc/myst-api',
-    desc: 'NFT-gated content',
+    desc: 'NFT-gated content.',
     labels: ['Web3'],
   },
   {
     title: 'Genji',
     url: 'https://github.com/w3hc/genji',
-    desc: 'A Next.js Web3 app template',
+    desc: 'A Next.js Web3 app template.',
     labels: ['Web3'],
   },
   {
     title: 'W3HC Hardhat Template',
     url: 'https://github.com/w3hc/w3hc-hardhat-template',
-    desc: 'Solidity contract development environment',
+    desc: 'Solidity contract development environment.',
     labels: ['Web3'],
   },
 ]
@@ -207,7 +207,7 @@ export default function Home() {
 
         {/* Projects Section with increased top margin */}
         <Box>
-          <Heading as="h3" size="lg" mb={12} textAlign="center">
+          <Heading as="h2" size="lg" mb={20} textAlign="center">
             Projects
           </Heading>
 
