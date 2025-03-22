@@ -32,7 +32,7 @@ import Partners from '@/components/Partners'
 const projects = [
   {
     title: 'Strat',
-    url: 'https://strat.cc',
+    url: 'https://julienberanger.com/strat',
     desc: 'Building Web3 since 2013 - Strat is a Web3 development studio.',
     labels: ['Web3'],
   },
