@@ -1,10 +1,20 @@
 'use client'
 
 import { Container, VStack, Heading, Link, Icon, Flex, Text, Box } from '@chakra-ui/react'
-import { FaTelegram, FaTwitter, FaDiscord, FaLinkedin, FaGithub, FaCalendar } from 'react-icons/fa'
+import {
+  FaTelegram,
+  FaTwitter,
+  FaDiscord,
+  FaLinkedin,
+  FaGithub,
+  FaCalendar,
+  FaWhatsapp,
+  FaInstagram,
+} from 'react-icons/fa'
 import { SiElement, SiFarcaster } from 'react-icons/si'
 import { HiOutlineStatusOnline } from 'react-icons/hi'
 import { useTranslation } from '@/hooks/useTranslation'
+import Image from 'next/image'
 
 const ContactPage = () => {
   const t = useTranslation()
@@ -17,16 +27,16 @@ const ContactPage = () => {
       username: 'julienbrg',
     },
     {
+      name: t.contact.element,
+      url: 'https://matrix.to/#/@julienbrg:matrix.org',
+      icon: SiElement,
+      username: 'julienbrg',
+    },
+    {
       name: t.contact.farcaster,
       url: 'https://warpcast.com/julien-',
       icon: SiFarcaster,
       username: 'julien-',
-    },
-    {
-      name: t.contact.element,
-      url: 'https://matrix.to/#/@julienbrg:matrix.org',
-      icon: SiElement,
-      username: '@julienbrg:matrix.org',
     },
     {
       name: t.contact.status,
@@ -38,7 +48,13 @@ const ContactPage = () => {
       name: t.contact.telegram,
       url: 'https://t.me/julienbrg',
       icon: FaTelegram,
-      username: '@julienbrg',
+      username: 'julienbrg',
+    },
+    {
+      name: t.contact.discord,
+      url: 'https://discordapp.com/users/julienbrg',
+      icon: FaDiscord,
+      username: 'julienbrg',
     },
     {
       name: t.contact.twitter,
@@ -47,10 +63,16 @@ const ContactPage = () => {
       username: '@julienbrg',
     },
     {
-      name: t.contact.discord,
-      url: 'https://discordapp.com/users/julienbrg',
-      icon: FaDiscord,
-      username: 'julienbrg',
+      name: 'WhatsApp',
+      url: 'https://wa.me/33630905448',
+      icon: FaWhatsapp,
+      username: 'Julien Béranger',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/julienberanger',
+      icon: FaInstagram,
+      username: '@julienberanger',
     },
     {
       name: t.contact.linkedin,
@@ -110,6 +132,25 @@ const ContactPage = () => {
               </Flex>
             </Link>
           ))}
+        </VStack>
+        <VStack>
+          <Box
+            position="relative"
+            width="200px"
+            height="200px"
+            overflow="hidden"
+            borderRadius="lg"
+            mt={30}
+          >
+            <Image
+              priority
+              layout="fill"
+              objectFit="cover"
+              alt="qr-code"
+              src="/julienberanger-com-qr-code-image.png"
+            />
+          </Box>
+          <Link href="https://julienberanger.com">https://julienberanger.com</Link>
         </VStack>
       </VStack>
     </Container>
