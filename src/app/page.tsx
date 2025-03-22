@@ -26,6 +26,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import StylishIntro from '@/components/StylishIntro'
 import HomeActionButtons from '@/components/HomeActionButtons'
 import ScrollingBanner from '@/components/ScrollingBanner'
+import Partners from '@/components/Partners'
 
 // Project data
 const projects = [
@@ -43,7 +44,7 @@ const projects = [
   },
   {
     title: 'Gov',
-    url: 'https://w3hc.github.io/gov-docs/',
+    url: 'https://github.com/w3hc/gov',
     desc: 'DAOs for regular users',
     labels: ['Web3'],
   },
@@ -107,24 +108,6 @@ const projects = [
     desc: 'Solidity contract development environment',
     labels: ['Web3'],
   },
-  // {
-  //   title: 'Pattini',
-  //   url: 'https://github.com/marketplace/actions/pattini-app',
-  //   desc: 'Automatic rewards for the contributors of a GitHub project',
-  //   labels: ['Web3'],
-  // },
-  // {
-  //   title: 'Ouf',
-  //   url: 'https://ethglobal.com/showcase/ouf-ya5wi',
-  //   desc: "Create and personalize an AI assistant tailored to your organization's needs.",
-  //   labels: ['AI'],
-  // },
-  // {
-  //   title: 'Legislatives.fun',
-  //   url: 'https://legislatives.fun/',
-  //   desc: 'An experiment in AI governance in the context of the 2024 legislative election',
-  //   labels: ['AI', 'Web3'],
-  // },
 ]
 
 export default function Home() {
@@ -207,18 +190,14 @@ export default function Home() {
   const hasEnoughBalance = Number(balance) >= 0.0001
 
   return (
-    <Container maxW="container.lg" py={16}>
+    <Container maxW="container.lg" py={20}>
       {/* Bio Section */}
-      <VStack spacing={16} mb={16} align="stretch">
+      <VStack spacing={24} align="stretch">
         <Box>
-          {/* <Heading as="h1" size="xl" mb={10} textAlign="center">
-            Julien Béranger
-          </Heading> */}
-
           {/* Enhanced Intro Component */}
           <StylishIntro />
 
-          <Box mt={6}>
+          <Box mt={10}>
             <ScrollingBanner text="I'm committed to building Web3 since 2013. I code in Node.js, TypeScript, and Solidity. I love using React, Next.js, and Nest.js to build secure, scalable and maintainable apps and services. It's time to unify Ethereum and improve people's lives for real." />
           </Box>
 
@@ -226,14 +205,13 @@ export default function Home() {
           <HomeActionButtons />
         </Box>
 
-        {/* Projects Section */}
-        <Box pt={6}>
-          <Heading as="h3" size="lg" mb={10} textAlign="center">
-            {/* A selection of personal projects */}
+        {/* Projects Section with increased top margin */}
+        <Box>
+          <Heading as="h3" size="lg" mb={12} textAlign="center">
             Projects
           </Heading>
 
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             {projects.map((project, index) => (
               <Box
                 key={index}
@@ -274,48 +252,50 @@ export default function Home() {
             ))}
           </SimpleGrid>
         </Box>
-      </VStack>
 
-      {/* Original Send Transaction Section */}
-      <Box mt={16} pt={8}>
-        <VStack spacing={4} align="center">
-          {/* <Text mb={4}>{t.home.title}</Text> */}
-          {isConnected && (
-            <Tooltip
-              label={!hasEnoughBalance ? t.home.insufficientBalance : ''}
-              isDisabled={hasEnoughBalance}
-              hasArrow
-              bg="black"
-              color="white"
-              borderWidth="1px"
-              borderColor="red.500"
-              borderRadius="md"
-              p={2}
-            >
-              <Button
-                onClick={handleSend}
-                isLoading={isLoading}
-                loadingText={t.common.loading}
-                bg="#45a2f8"
+        {/* Partners Section with consistent spacing */}
+        <Partners />
+
+        {/* Original Send Transaction Section with increased spacing */}
+        <Box>
+          <VStack spacing={4} align="center">
+            {isConnected && (
+              <Tooltip
+                label={!hasEnoughBalance ? t.home.insufficientBalance : ''}
+                isDisabled={hasEnoughBalance}
+                hasArrow
+                bg="black"
                 color="white"
-                _hover={{
-                  bg: '#3182ce',
-                }}
-                isDisabled={!hasEnoughBalance}
+                borderWidth="1px"
+                borderColor="red.500"
+                borderRadius="md"
+                p={2}
               >
-                {t.home.sendEth}
-              </Button>
-            </Tooltip>
-          )}
-          {txHash && isConnected && (
-            <Text py={4} fontSize="14px" color="#45a2f8">
-              <Link href={txLink ? txLink : ''} isExternal>
-                {txHash}
-              </Link>
-            </Text>
-          )}
-        </VStack>
-      </Box>
+                <Button
+                  onClick={handleSend}
+                  isLoading={isLoading}
+                  loadingText={t.common.loading}
+                  bg="#45a2f8"
+                  color="white"
+                  _hover={{
+                    bg: '#3182ce',
+                  }}
+                  isDisabled={!hasEnoughBalance}
+                >
+                  {t.home.sendEth}
+                </Button>
+              </Tooltip>
+            )}
+            {txHash && isConnected && (
+              <Text py={4} fontSize="14px" color="#45a2f8">
+                <Link href={txLink ? txLink : ''} isExternal>
+                  {txHash}
+                </Link>
+              </Text>
+            )}
+          </VStack>
+        </Box>
+      </VStack>
     </Container>
   )
 }
