@@ -136,11 +136,14 @@ export default function Header() {
               <Link href="/contact" color="white">
                 <MenuItem fontSize="md">{t.navigation.contactUs}</MenuItem>
               </Link>
-              <Link href="/chat" color="white">
-                <MenuItem fontSize="md">{t.navigation.chat}</MenuItem>
+              <Link href="/strat" color="white">
+                <MenuItem fontSize="md">Services</MenuItem>
               </Link>
               <Link href="/bio" color="white">
                 <MenuItem fontSize="md">{t.navigation.bio}</MenuItem>
+              </Link>
+              <Link href="/chat" color="white">
+                <MenuItem fontSize="md">{t.navigation.chat}</MenuItem>
               </Link>
             </MenuList>
           </Menu>
