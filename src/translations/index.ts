@@ -53,6 +53,12 @@ type TranslationKeys = {
     errorMessage: string
     rateLimitMessage: string
   }
+  resume: {
+    title: string
+    download: string
+    openInNewTab: string
+    loading: string
+  }
 }
 
 // Define translations for each supported language
@@ -111,6 +117,12 @@ export const translations: Translations = {
         'Sorry, there was an error processing your request. Please try again a bit later.',
       rateLimitMessage: 'Sorry, you reached the limit. Please come back in one hour.',
     },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
+    },
   },
 
   // Mandarin Chinese
@@ -160,6 +172,12 @@ export const translations: Translations = {
       sendButton: '发送',
       errorMessage: '抱歉，处理您的请求时出错。请稍后再试。',
       rateLimitMessage: '抱歉，您已达到限制。请一小时后再来。',
+    },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
     },
   },
 
@@ -213,6 +231,12 @@ export const translations: Translations = {
         'क्षमा करें, आपके अनुरोध को संसाधित करने में एक त्रुटि हुई। कृपया थोड़ी देर बाद फिर से प्रयास करें।',
       rateLimitMessage: 'क्षमा करें, आप सीमा तक पहुंच गए हैं। कृपया एक घंटे बाद वापस आएं।',
     },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
+    },
   },
 
   // Spanish
@@ -264,6 +288,12 @@ export const translations: Translations = {
       errorMessage:
         'Lo siento, hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo más tarde.',
       rateLimitMessage: 'Lo siento, has alcanzado el límite. Por favor, vuelve en una hora.',
+    },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
     },
   },
 
@@ -317,6 +347,12 @@ export const translations: Translations = {
         "Désolé, une erreur s'est produite lors du traitement de votre demande. Veuillez réessayer un peu plus tard.",
       rateLimitMessage: 'Désolé, vous avez atteint la limite. Veuillez revenir dans une heure.',
     },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
+    },
   },
 
   // Arabic
@@ -366,6 +402,12 @@ export const translations: Translations = {
       sendButton: 'إرسال',
       errorMessage: 'عذرًا، حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى لاحقًا.',
       rateLimitMessage: 'عذرًا، لقد وصلت إلى الحد. يرجى العودة بعد ساعة واحدة.',
+    },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
     },
   },
 
@@ -419,6 +461,12 @@ export const translations: Translations = {
         'দুঃখিত, আপনার অনুরোধ প্রক্রিয়া করতে একটি ত্রুটি হয়েছে। অনুগ্রহ করে কিছুক্ষণ পরে আবার চেষ্টা করুন।',
       rateLimitMessage: 'দুঃখিত, আপনি সীমা পৌঁছে গেছেন। অনুগ্রহ করে এক ঘন্টা পরে আবার আসুন।',
     },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
+    },
   },
 
   // Russian
@@ -469,6 +517,12 @@ export const translations: Translations = {
       errorMessage:
         'Извините, произошла ошибка при обработке вашего запроса. Пожалуйста, попробуйте позже.',
       rateLimitMessage: 'Извините, вы достигли лимита. Пожалуйста, вернитесь через час.',
+    },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
     },
   },
 
@@ -522,6 +576,12 @@ export const translations: Translations = {
         'Desculpe, ocorreu um erro ao processar sua solicitação. Por favor, tente novamente mais tarde.',
       rateLimitMessage: 'Desculpe, você atingiu o limite. Por favor, volte em uma hora.',
     },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
+    },
   },
 
   // Urdu
@@ -573,6 +633,12 @@ export const translations: Translations = {
       errorMessage:
         'معذرت، آپ کی درخواست پر کارروائی کرتے ہوئے ایک خرابی پیش آئی۔ براہ کرم کچھ دیر بعد دوبارہ کوشش کریں۔',
       rateLimitMessage: 'معذرت، آپ حد تک پہنچ گئے ہیں۔ براہ کرم ایک گھنٹے بعد واپس آئیں۔',
+    },
+    resume: {
+      title: 'Professional Resume',
+      download: 'Download PDF',
+      openInNewTab: 'Open in New Tab',
+      loading: 'Loading resume...',
     },
   },
 }
