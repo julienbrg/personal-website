@@ -38,6 +38,11 @@ const partners: Partner[] = [
       'Leading centre for the study of humanities education and research in Île-de-France.',
   },
   {
+    name: 'Galleria Continua',
+    url: 'https://www.galleriacontinua.com/',
+    description: 'International contemporary art gallery.',
+  },
+  {
     name: 'Boischaut',
     url: 'https://boischaut.fr/',
     description: 'The auction house specializing in intangible assets.',
