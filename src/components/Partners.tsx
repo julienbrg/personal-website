@@ -38,6 +38,11 @@ const partners: Partner[] = [
       'Leading centre for the study of humanities education and research in Île-de-France.',
   },
   {
+    name: 'STUDI',
+    url: 'https://www.studi.com/',
+    description: 'Online higher education institution in Montpellier, France.',
+  },
+  {
     name: 'Galleria Continua',
     url: 'https://www.galleriacontinua.com/',
     description: 'International contemporary art gallery.',
