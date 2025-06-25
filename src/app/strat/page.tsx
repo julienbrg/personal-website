@@ -9,6 +9,14 @@ import NextLink from 'next/link'
 // Define services data
 const services = [
   {
+    title: 'Custom AI Integrations',
+    description: 'Custom AI apps and automation services',
+  },
+  {
+    title: 'Personalized Training',
+    description: "Enhance your team's knowledge and master best practices",
+  },
+  {
     title: 'Solidity Contracts Security Audit',
     description: 'Comprehensive security assessments for smart contracts',
   },
@@ -17,12 +25,12 @@ const services = [
     description: 'End-to-end Web3 project development and deployment',
   },
   {
-    title: 'Custom DAO Deployment',
-    description: 'Tailored DAO solutions for your organization',
+    title: 'Custom Web3 APIs',
+    description: 'Custom Web3 APIs built with Nest.js',
   },
   {
-    title: 'On-measure Web3 APIs',
-    description: 'Custom Web3 APIs built with Nest.js',
+    title: 'Custom DAO Deployment',
+    description: 'Tailored DAO solutions for your organization',
   },
 ]
 
