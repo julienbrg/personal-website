@@ -86,7 +86,7 @@ const projects = [
   },
   {
     title: 'Avventura',
-    url: 'https://avventura.fun',
+    url: 'https://v2.avventura.fun',
     desc: 'The one and only text-based Web3-enabled social RPG.',
     labels: ['AI', 'Web3'],
   },
@@ -257,7 +257,7 @@ export default function Home() {
         <Partners />
 
         {/* Original Send Transaction Section with increased spacing */}
-        <Box>
+        {/* <Box>
           <VStack spacing={4} align="center">
             {isConnected && (
               <Tooltip
@@ -294,7 +294,7 @@ export default function Home() {
               </Text>
             )}
           </VStack>
-        </Box>
+        </Box> */}
       </VStack>
     </Container>
   )
