@@ -61,8 +61,8 @@ export default function BioPage() {
                 INALCO
               </ChakraLink>{' '}
               (National Institute for Oriental Languages and Civilizations). For the next five
-              years, I worked as a Chinese teacher in several high schools, including a particularly
-              interesting stint at the{' '}
+              years, I worked as a Chinese teacher in several high schools, including an interesting
+              stint at the{' '}
               <ChakraLink
                 href="http://www.aefe.fr/reseau-scolaire-mondial/rechercher-un-etablissement/viet-nam-ho-chi-minh-ville-lycee-francais"
                 isExternal
@@ -74,10 +74,11 @@ export default function BioPage() {
             </Text>
 
             <Text mb={4}>
-              My journey into the Web3 space began in 2011 when I first heard about Bitcoin. By
-              April 2013, I was experimenting with and designing decentralized apps. Later that
-              year, while working on an iOS payment app, I came across Vitalik Buterin&apos;s
-              Ethereum white paper.
+              My journey into the Web3 space began in 2011 when I first heard about Bitcoin, as I
+              was looking for simple ways to monetize a game for my students. In April 2013, I had
+              what we call the &apos;Bitcoin moment&apos;, and started to experiment with and design
+              decentralized apps. Later that year, while working on an iOS payment app, I came
+              across Vitalik Buterin&apos;s Ethereum white paper.
             </Text>
 
             <Text mb={4}>
@@ -213,7 +214,7 @@ export default function BioPage() {
               <ChakraLink href="https://nestjs.com/" isExternal color="blue.400">
                 Nest.js
               </ChakraLink>
-              . I recently implemented{' '}
+              . During the Devon 7 in Bangkok, I implemented{' '}
               <ChakraLink
                 href="https://github.com/julienbrg/game-of-go"
                 isExternal
@@ -225,7 +226,27 @@ export default function BioPage() {
               <ChakraLink href="https://github.com/julienbrg" isExternal color="blue.400">
                 GitHub profile page
               </ChakraLink>
-              .
+              . More recently, I&apos;ve been working on a{' '}
+              <ChakraLink href="https://github.com/w3hc/gov-crosschain" isExternal color="blue.400">
+                cross-chain variant of Gov
+              </ChakraLink>
+              , basically allowing people to deploy their own DAO to all networks. I also developed{' '}
+              <ChakraLink href="https://v2.avventura.fun/" isExternal color="blue.400">
+                Avventura
+              </ChakraLink>
+              : an text-based RPG infinite game. Anyone can easily create their own stories.
+            </Text>
+
+            <Text mb={4}>
+              I&apos;m currently teaching Node.js at{' '}
+              <ChakraLink href="https://www.studi.com/" isExternal color="blue.400">
+                STUDI
+              </ChakraLink>
+              , an online higher education institution. Feel free to have a look at{' '}
+              <ChakraLink href="./strat" color="blue.400">
+                the various services I can provide
+              </ChakraLink>
+              , I&apos;d be happy to help!
             </Text>
           </Box>
         </VStack>
