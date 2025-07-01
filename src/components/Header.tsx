@@ -132,12 +132,15 @@ export default function Header() {
               variant="ghost"
               size="sm"
             />
-            <MenuList>
+            <MenuList minWidth="auto">
               <Link href="/contact" color="white">
                 <MenuItem fontSize="md">{t.navigation.contactUs}</MenuItem>
               </Link>
               <Link href="/strat" color="white">
                 <MenuItem fontSize="md">Services</MenuItem>
+              </Link>
+              <Link href="/ia" color="white">
+                <MenuItem fontSize="md">AI</MenuItem>
               </Link>
               <Link href="/bio" color="white">
                 <MenuItem fontSize="md">{t.navigation.bio}</MenuItem>
