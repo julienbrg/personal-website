@@ -10,6 +10,7 @@ import {
   FaCalendar,
   FaWhatsapp,
   FaInstagram,
+  FaEnvelope,
 } from 'react-icons/fa'
 import { SiElement, SiFarcaster } from 'react-icons/si'
 import { HiOutlineStatusOnline } from 'react-icons/hi'
@@ -79,6 +80,12 @@ const ContactPage = () => {
       url: 'https://www.linkedin.com/in/julienberanger/',
       icon: FaLinkedin,
       username: 'julienberanger',
+    },
+    {
+      name: 'Email',
+      url: 'mailto:julien@strat.cc',
+      icon: FaEnvelope,
+      username: 'julien@strat.cc',
     },
     {
       name: t.contact.schedule,
