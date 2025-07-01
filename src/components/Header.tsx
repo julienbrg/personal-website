@@ -139,9 +139,9 @@ export default function Header() {
               <Link href="/strat" color="white">
                 <MenuItem fontSize="md">Services</MenuItem>
               </Link>
-              <Link href="/ia" color="white">
+              {/* <Link href="/ia" color="white">
                 <MenuItem fontSize="md">AI</MenuItem>
-              </Link>
+              </Link> */}
               <Link href="/bio" color="white">
                 <MenuItem fontSize="md">{t.navigation.bio}</MenuItem>
               </Link>
