@@ -101,9 +101,9 @@ export default function IAPage() {
               ou{' '}
               <ChakraLink href="https://github.com/w3hc/zhankai" isExternal color="#45a2f8">
                 Zhankai
-              </ChakraLink>{' '}
+              </ChakraLink>
               . Je peux vous former, vous expliquer les bonnes pratiques d&apos;utilisation de
-              l&apos;IA, et vous guider dans l&apos;automatisation de tout ce qui peut l&apos;être !
+              l&apos;IA, et vous guider dans l&apos;automatisation de tout ce qui peut l&apos;être.
             </Text>
           </Box>
 
@@ -187,7 +187,7 @@ export default function IAPage() {
           {/* Autres services IA */}
           <Box>
             <Heading as="h2" size="xl" textAlign="center" mb={12} color="white">
-              Autres Services IA
+              Pour les entreprises et collectivités
             </Heading>
 
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mb={16}>
@@ -252,7 +252,7 @@ export default function IAPage() {
                 textAlign="center"
               >
                 <Text fontWeight="bold" mb={1}>
-                  Assistant Personnel
+                  Francesca
                 </Text>
                 <Text fontSize="sm" opacity={0.8}>
                   Discutez avec Francesca, ma fidèle assistante !
