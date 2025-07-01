@@ -252,7 +252,7 @@ export default function IAPage() {
                 textAlign="center"
               >
                 <Text fontWeight="bold" mb={1}>
-                  Francesca
+                  Assistant personnel
                 </Text>
                 <Text fontSize="sm" opacity={0.8}>
                   Discutez avec Francesca, ma fidèle assistante !
