@@ -47,7 +47,6 @@ const teacherServices = [
   },
 ]
 
-// Autres services IA
 const generalServices = [
   {
     title: "Développement d'Applications IA",
@@ -109,8 +108,20 @@ export default function IAPage() {
 
           {/* Services pour enseignants - Section mise en avant */}
           <Box>
-            <Flex align="center" justify="center" mb={8}>
-              <Icon as={FaGraduationCap} boxSize={8} color="#8c1c84" mr={4} />
+            <Flex
+              direction={{ base: 'column', md: 'row' }}
+              align="center"
+              justify="center"
+              mb={8}
+              textAlign="center"
+            >
+              <Icon
+                as={FaGraduationCap}
+                boxSize={8}
+                color="#8c1c84"
+                mr={{ base: 0, md: 4 }}
+                mb={{ base: 3, md: 0 }}
+              />
               <Heading as="h2" size="xl" color="#8c1c84">
                 Services pour l&apos;Enseignement
               </Heading>
@@ -119,7 +130,6 @@ export default function IAPage() {
               Formations et solutions IA spécialement conçues pour les enseignants et établissements
               scolaires
             </Text>
-
             <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={10} mb={16}>
               {teacherServices.map((service, index) => (
                 <Box
@@ -244,21 +254,30 @@ export default function IAPage() {
                   bg: 'rgba(69, 162, 248, 0.1)',
                   transform: 'translateY(-2px)',
                 }}
-                leftIcon={<MdChat />}
                 height="auto"
                 py={4}
                 px={6}
-                flexDirection="column"
                 textAlign="center"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                minH="120px"
               >
+                <Icon as={MdChat} boxSize={5} mb={2} />
                 <Text fontWeight="bold" mb={1}>
                   Assistant personnel
                 </Text>
-                <Text fontSize="sm" opacity={0.8}>
+                <Text
+                  fontSize="sm"
+                  opacity={0.8}
+                  whiteSpace="normal"
+                  wordBreak="break-word"
+                  lineHeight="1.4"
+                  px={2}
+                >
                   Discutez avec Francesca, ma fidèle assistante !
                 </Text>
               </Button>
-
               <Button
                 as={NextLink}
                 href="/move-78"
@@ -270,17 +289,27 @@ export default function IAPage() {
                   bg: 'rgba(140, 28, 132, 0.1)',
                   transform: 'translateY(-2px)',
                 }}
-                leftIcon={<FaBookOpen />}
                 height="auto"
                 py={4}
                 px={6}
-                flexDirection="column"
                 textAlign="center"
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                minH="120px"
               >
+                <Icon as={FaBookOpen} boxSize={5} mb={2} />
                 <Text fontWeight="bold" mb={1}>
                   Le coup 78
                 </Text>
-                <Text fontSize="sm" opacity={0.8}>
+                <Text
+                  fontSize="sm"
+                  opacity={0.8}
+                  whiteSpace="normal"
+                  wordBreak="break-word"
+                  lineHeight="1.4"
+                  px={2}
+                >
                   Le 13 mars 2016 à 15h19, heure de Séoul, Lee Sedol joue le coup 78...
                 </Text>
               </Button>
