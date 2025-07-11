@@ -31,22 +31,22 @@ import Partners from '@/components/Partners'
 // Project data
 const projects = [
   {
-    title: 'Strat',
-    url: 'https://julienberanger.com/strat',
-    desc: 'Building Web3 since 2013 - Strat is a Web3 development studio.',
-    labels: ['Web3'],
-  },
-  {
-    title: 'W3HC',
-    url: 'https://w3hc.org/',
-    desc: 'The Web3 Hackers Collective - Building integrations through mentoring and learning.',
-    labels: ['Web3'],
-  },
-  {
     title: 'Gov',
     url: 'https://github.com/w3hc/gov',
     desc: 'DAOs for regular users - Gov is a DAO framework built with Open Zeppelin’s Governor contract in combination with NFTs.',
     labels: ['Web3'],
+  },
+  {
+    title: 'Avventura',
+    url: 'https://v2.avventura.fun',
+    desc: 'The one and only text-based Web3-enabled social RPG.',
+    labels: ['AI', 'Web3'],
+  },
+  {
+    title: 'Affix',
+    url: 'https://affix-ui.vercel.app/',
+    desc: 'Affix your onchain seal, let the world verify it.',
+    labels: ['AI', 'Web3'],
   },
   {
     title: 'The NFT Registry',
@@ -60,16 +60,17 @@ const projects = [
     desc: 'Solidity implementation of the game of Go.',
     labels: ['Web3'],
   },
+
+  {
+    title: 'Rukh API',
+    url: 'https://rukh.w3hc.org/',
+    desc: 'Minimalist Agentic RAG framework',
+    labels: ['AI', 'Web3'],
+  },
   {
     title: 'Zhankai',
     url: 'https://github.com/w3hc/zhankai',
     desc: 'CLI tool for exporting repository content for LLM processing.',
-    labels: ['AI', 'Web3'],
-  },
-  {
-    title: 'Rukh',
-    url: 'https://rukh.w3hc.org/',
-    desc: 'Minimalist Agentic RAG framework',
     labels: ['AI', 'Web3'],
   },
   {
@@ -84,12 +85,7 @@ const projects = [
     desc: 'ERC-5560: Redeemable NFTs.',
     labels: ['Web3'],
   },
-  {
-    title: 'Avventura',
-    url: 'https://v2.avventura.fun',
-    desc: 'The one and only text-based Web3-enabled social RPG.',
-    labels: ['AI', 'Web3'],
-  },
+
   {
     title: 'Myst',
     url: 'https://github.com/w3hc/myst-api',
@@ -106,6 +102,18 @@ const projects = [
     title: 'W3HC Hardhat Template',
     url: 'https://github.com/w3hc/w3hc-hardhat-template',
     desc: 'Solidity contract development environment.',
+    labels: ['Web3'],
+  },
+  {
+    title: 'Strat',
+    url: 'https://julienberanger.com/strat',
+    desc: 'Web3 development studio.',
+    labels: ['Web3'],
+  },
+  {
+    title: 'W3HC',
+    url: 'https://w3hc.org/',
+    desc: 'The Web3 Hackers Collective - Building integrations through mentoring and learning.',
     labels: ['Web3'],
   },
 ]
