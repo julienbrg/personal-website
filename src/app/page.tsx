@@ -18,6 +18,7 @@ import {
   Center,
   ButtonGroup,
 } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { useAppKitAccount, useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
 import { BrowserProvider, parseEther, formatEther } from 'ethers'
 import { useState, useEffect } from 'react'
@@ -33,7 +34,7 @@ const projects = [
   {
     title: 'Gov',
     url: 'https://github.com/w3hc/gov',
-    desc: 'DAOs for regular users - Gov is a DAO framework built with Open Zeppelin’s Governor contract in combination with NFTs.',
+    desc: "DAOs for regular users - Gov is a DAO framework built with Open Zeppelin's Governor contract in combination with NFTs.",
     labels: ['Web3'],
   },
   {
@@ -221,42 +222,49 @@ export default function Home() {
 
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
             {projects.map((project, index) => (
-              <Box
+              <Link
                 key={index}
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="hidden"
-                p={5}
-                _hover={{
-                  transform: 'translateY(-4px)',
-                  boxShadow: 'lg',
-                  borderColor: 'blue.400',
-                }}
-                transition="all 0.3s ease"
+                href={project.url}
+                isExternal
+                _hover={{ textDecoration: 'none' }}
+                display="block"
               >
-                <Heading as="h3" size="md" mb={2}>
-                  <Link href={project.url} isExternal color="blue.400">
+                <Box
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  p={5}
+                  height="100%"
+                  cursor="pointer"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'lg',
+                    borderColor: 'blue.400',
+                  }}
+                  transition="all 0.3s ease"
+                >
+                  <Heading as="h3" size="md" mb={2} color="blue.400">
                     {project.title} <ExternalLinkIcon mx="2px" />
-                  </Link>
-                </Heading>
-                <Text color="gray.400" mb={3}>
-                  {project.desc}
-                </Text>
-                <HStack spacing={2}>
-                  {project.labels.map((label, idx) => (
-                    <Tag
-                      key={idx}
-                      size="sm"
-                      variant="solid"
-                      bg={label === 'Web3' ? '#8c1c84' : '#45a2f8'}
-                      color="white"
-                      borderRadius="full"
-                    >
-                      {label}
-                    </Tag>
-                  ))}
-                </HStack>
-              </Box>
+                  </Heading>
+                  <Text color="gray.400" mb={3}>
+                    {project.desc}
+                  </Text>
+                  <HStack spacing={2}>
+                    {project.labels.map((label, idx) => (
+                      <Tag
+                        key={idx}
+                        size="sm"
+                        variant="solid"
+                        bg={label === 'Web3' ? '#8c1c84' : '#45a2f8'}
+                        color="white"
+                        borderRadius="full"
+                      >
+                        {label}
+                      </Tag>
+                    ))}
+                  </HStack>
+                </Box>
+              </Link>
             ))}
           </SimpleGrid>
         </Box>

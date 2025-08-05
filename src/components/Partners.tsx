@@ -96,28 +96,35 @@ export default function Partners() {
 
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
         {partners.map((partner, index) => (
-          <Box
+          <Link
             key={index}
-            borderWidth="1px"
-            borderRadius="lg"
-            overflow="hidden"
-            p={5}
-            _hover={{
-              transform: 'translateY(-4px)',
-              boxShadow: 'lg',
-              borderColor: '#8c1c84',
-            }}
-            transition="all 0.3s ease"
+            href={partner.url}
+            isExternal
+            _hover={{ textDecoration: 'none' }}
+            display="block"
           >
-            <Heading as="h3" size="md" mb={2}>
-              <Link href={partner.url} isExternal color="#8c1c84">
+            <Box
+              borderWidth="1px"
+              borderRadius="lg"
+              overflow="hidden"
+              p={5}
+              height="100%"
+              cursor="pointer"
+              _hover={{
+                transform: 'translateY(-4px)',
+                boxShadow: 'lg',
+                borderColor: '#8c1c84',
+              }}
+              transition="all 0.3s ease"
+            >
+              <Heading as="h3" size="md" mb={2} color="#8c1c84">
                 {partner.name} <ExternalLinkIcon mx="2px" />
-              </Link>
-            </Heading>
-            <Text color="gray.400" mb={3}>
-              {partner.description}
-            </Text>
-          </Box>
+              </Heading>
+              <Text color="gray.400" mb={3}>
+                {partner.description}
+              </Text>
+            </Box>
+          </Link>
         ))}
       </SimpleGrid>
     </Box>
