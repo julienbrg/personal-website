@@ -135,40 +135,12 @@ const ContactPage = () => {
         </Heading>
 
         <VStack spacing={6} align="stretch">
-          {contactLinks.map(contact =>
-            contact.isWeChat ? (
-              <Box
-                key={contact.name}
-                onClick={() => handleContactClick(contact)}
-                cursor="pointer"
-                _hover={{ textDecoration: 'none' }}
-              >
-                <Flex
-                  align="center"
-                  p={4}
-                  bg="gray.800"
-                  borderRadius="lg"
-                  transition="all 0.2s"
-                  _hover={{
-                    bg: 'gray.700',
-                    transform: 'translateY(-2px)',
-                  }}
-                >
-                  <Icon as={contact.icon} boxSize={6} color="#45a2f8" mr={4} />
-                  <VStack align="flex-start" spacing={0}>
-                    <Text fontWeight="bold" color="white">
-                      {contact.name}
-                    </Text>
-                    <Text color="gray.400" fontSize="sm">
-                      {contact.username}
-                    </Text>
-                  </VStack>
-                </Flex>
-              </Box>
-            ) : (
+          {contactLinks
+            .filter(contact => !contact.isWeChat)
+            .map(contact => (
               <Link
                 key={contact.name}
-                href={contact.url}
+                href={contact.url!}
                 isExternal
                 _hover={{ textDecoration: 'none' }}
               >
@@ -199,8 +171,41 @@ const ContactPage = () => {
                   </VStack>
                 </Flex>
               </Link>
-            )
-          )}
+            ))}
+
+          {/* WeChat Card - Special handling */}
+          {contactLinks
+            .filter(contact => contact.isWeChat)
+            .map(contact => (
+              <Box
+                key={contact.name}
+                onClick={() => handleContactClick(contact)}
+                cursor="pointer"
+                _hover={{ textDecoration: 'none' }}
+              >
+                <Flex
+                  align="center"
+                  p={4}
+                  bg="gray.800"
+                  borderRadius="lg"
+                  transition="all 0.2s"
+                  _hover={{
+                    bg: 'gray.700',
+                    transform: 'translateY(-2px)',
+                  }}
+                >
+                  <Icon as={contact.icon} boxSize={6} color="#45a2f8" mr={4} />
+                  <VStack align="flex-start" spacing={0}>
+                    <Text fontWeight="bold" color="white">
+                      {contact.name}
+                    </Text>
+                    <Text color="gray.400" fontSize="sm">
+                      {contact.username}
+                    </Text>
+                  </VStack>
+                </Flex>
+              </Box>
+            ))}
         </VStack>
         <VStack>
           <Box
@@ -228,7 +233,7 @@ const ContactPage = () => {
           <ModalContent bg="gray.800" borderRadius="xl">
             <ModalHeader color="white" textAlign="center">
               <Icon as={FaWeixin} mr={2} color="#45a2f8" />
-              WeChat QR Code
+              Julien on WeChat
             </ModalHeader>
             <ModalCloseButton color="white" />
             <ModalBody pb={6}>
@@ -250,7 +255,7 @@ const ContactPage = () => {
                   />
                 </Box>
                 <Text color="gray.300" textAlign="center" fontSize="sm">
-                  Scan this QR code with WeChat to add me
+                  Scan this QR code with WeChat
                 </Text>
                 <Text color="#45a2f8" textAlign="center" fontWeight="bold">
                   julienbrg
