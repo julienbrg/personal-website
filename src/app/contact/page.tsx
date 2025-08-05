@@ -1,6 +1,22 @@
 'use client'
 
-import { Container, VStack, Heading, Link, Icon, Flex, Text, Box } from '@chakra-ui/react'
+import {
+  Container,
+  VStack,
+  Heading,
+  Link,
+  Icon,
+  Flex,
+  Text,
+  Box,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react'
 import {
   FaTelegram,
   FaTwitter,
@@ -11,6 +27,7 @@ import {
   FaWhatsapp,
   FaInstagram,
   FaEnvelope,
+  FaWeixin,
 } from 'react-icons/fa'
 import { SiElement, SiFarcaster } from 'react-icons/si'
 import { HiOutlineStatusOnline } from 'react-icons/hi'
@@ -19,6 +36,7 @@ import Image from 'next/image'
 
 const ContactPage = () => {
   const t = useTranslation()
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const contactLinks = [
     {
@@ -64,6 +82,13 @@ const ContactPage = () => {
       username: '@julienbrg',
     },
     {
+      name: 'WeChat',
+      url: null, // Special case for modal
+      icon: FaWeixin,
+      username: 'julienbrg',
+      isWeChat: true,
+    },
+    {
       name: 'WhatsApp',
       url: 'https://wa.me/33630905448',
       icon: FaWhatsapp,
@@ -96,6 +121,12 @@ const ContactPage = () => {
     },
   ]
 
+  const handleContactClick = (contact: any) => {
+    if (contact.isWeChat) {
+      onOpen()
+    }
+  }
+
   return (
     <Container maxW="container.md" py={20}>
       <VStack spacing={12} align="stretch">
@@ -104,41 +135,72 @@ const ContactPage = () => {
         </Heading>
 
         <VStack spacing={6} align="stretch">
-          {contactLinks.map(contact => (
-            <Link
-              key={contact.name}
-              href={contact.url}
-              isExternal
-              _hover={{ textDecoration: 'none' }}
-            >
-              <Flex
-                align="center"
-                p={4}
-                bg={contact.primary ? '#8c1c84' : 'gray.800'}
-                borderRadius="lg"
-                transition="all 0.2s"
-                _hover={{
-                  bg: contact.primary ? '#6d1566' : 'gray.700',
-                  transform: 'translateY(-2px)',
-                }}
+          {contactLinks.map(contact =>
+            contact.isWeChat ? (
+              <Box
+                key={contact.name}
+                onClick={() => handleContactClick(contact)}
+                cursor="pointer"
+                _hover={{ textDecoration: 'none' }}
               >
-                <Icon
-                  as={contact.icon}
-                  boxSize={6}
-                  color={contact.primary ? 'white' : '#45a2f8'}
-                  mr={4}
-                />
-                <VStack align="flex-start" spacing={0}>
-                  <Text fontWeight="bold" color="white">
-                    {contact.name}
-                  </Text>
-                  <Text color={contact.primary ? 'whiteAlpha.800' : 'gray.400'} fontSize="sm">
-                    {contact.username}
-                  </Text>
-                </VStack>
-              </Flex>
-            </Link>
-          ))}
+                <Flex
+                  align="center"
+                  p={4}
+                  bg="gray.800"
+                  borderRadius="lg"
+                  transition="all 0.2s"
+                  _hover={{
+                    bg: 'gray.700',
+                    transform: 'translateY(-2px)',
+                  }}
+                >
+                  <Icon as={contact.icon} boxSize={6} color="#45a2f8" mr={4} />
+                  <VStack align="flex-start" spacing={0}>
+                    <Text fontWeight="bold" color="white">
+                      {contact.name}
+                    </Text>
+                    <Text color="gray.400" fontSize="sm">
+                      {contact.username}
+                    </Text>
+                  </VStack>
+                </Flex>
+              </Box>
+            ) : (
+              <Link
+                key={contact.name}
+                href={contact.url}
+                isExternal
+                _hover={{ textDecoration: 'none' }}
+              >
+                <Flex
+                  align="center"
+                  p={4}
+                  bg={contact.primary ? '#8c1c84' : 'gray.800'}
+                  borderRadius="lg"
+                  transition="all 0.2s"
+                  _hover={{
+                    bg: contact.primary ? '#6d1566' : 'gray.700',
+                    transform: 'translateY(-2px)',
+                  }}
+                >
+                  <Icon
+                    as={contact.icon}
+                    boxSize={6}
+                    color={contact.primary ? 'white' : '#45a2f8'}
+                    mr={4}
+                  />
+                  <VStack align="flex-start" spacing={0}>
+                    <Text fontWeight="bold" color="white">
+                      {contact.name}
+                    </Text>
+                    <Text color={contact.primary ? 'whiteAlpha.800' : 'gray.400'} fontSize="sm">
+                      {contact.username}
+                    </Text>
+                  </VStack>
+                </Flex>
+              </Link>
+            )
+          )}
         </VStack>
         <VStack>
           <Box
@@ -159,6 +221,44 @@ const ContactPage = () => {
           </Box>
           <Link href="https://julienberanger.com">https://julienberanger.com</Link>
         </VStack>
+
+        {/* WeChat QR Code Modal */}
+        <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>
+          <ModalOverlay bg="blackAlpha.800" />
+          <ModalContent bg="gray.800" borderRadius="xl">
+            <ModalHeader color="white" textAlign="center">
+              <Icon as={FaWeixin} mr={2} color="#45a2f8" />
+              WeChat QR Code
+            </ModalHeader>
+            <ModalCloseButton color="white" />
+            <ModalBody pb={6}>
+              <VStack spacing={4}>
+                <Box
+                  position="relative"
+                  width="300px"
+                  height="300px"
+                  overflow="hidden"
+                  borderRadius="lg"
+                  bg="white"
+                  p={2}
+                >
+                  <Image
+                    src="/julien-wechat-qr-code.png"
+                    alt="Julien WeChat QR Code"
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </Box>
+                <Text color="gray.300" textAlign="center" fontSize="sm">
+                  Scan this QR code with WeChat to add me
+                </Text>
+                <Text color="#45a2f8" textAlign="center" fontWeight="bold">
+                  julienbrg
+                </Text>
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </VStack>
     </Container>
   )
