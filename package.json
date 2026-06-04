@@ -44,5 +44,6 @@
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.4.2",
     "typescript": "5.4.2"
-  }
+  },
+  "packageManager": "pnpm@10.23.0+sha1.b4a44ab0dc2adf2e36371d11d8eb0dc78ffc976c"
 }
