@@ -42,6 +42,7 @@ type TranslationKeys = {
     twitter: string
     discord: string
     linkedin: string
+    signal: string
     schedule: string
     meetingDuration: string
   }
@@ -104,6 +105,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'Schedule a Call',
       meetingDuration: '30 min meeting',
     },
@@ -162,6 +164,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: '安排通话',
       meetingDuration: '30分钟会议',
     },
@@ -218,6 +221,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'कॉल शेड्यूल करें',
       meetingDuration: '30 मिनट की मीटिंग',
     },
@@ -276,6 +280,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'Programar una llamada',
       meetingDuration: 'Reunión de 30 minutos',
     },
@@ -334,6 +339,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'Planifier un appel',
       meetingDuration: 'Réunion de 30 minutes',
     },
@@ -392,6 +398,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'جدولة مكالمة',
       meetingDuration: 'اجتماع لمدة 30 دقيقة',
     },
@@ -448,6 +455,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'কল শিডিউল করুন',
       meetingDuration: '৩০ মিনিটের মিটিং',
     },
@@ -506,6 +514,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'Запланировать звонок',
       meetingDuration: 'Встреча на 30 минут',
     },
@@ -563,6 +572,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'Agendar uma chamada',
       meetingDuration: 'Reunião de 30 minutos',
     },
@@ -621,6 +631,7 @@ export const translations: Translations = {
       twitter: 'Twitter',
       discord: 'Discord',
       linkedin: 'LinkedIn',
+      signal: 'Signal',
       schedule: 'کال شیڈول کریں',
       meetingDuration: '30 منٹ کی میٹنگ',
     },

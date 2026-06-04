@@ -29,7 +29,7 @@ import {
   FaEnvelope,
   FaWeixin,
 } from 'react-icons/fa'
-import { SiElement, SiFarcaster } from 'react-icons/si'
+import { SiElement, SiFarcaster, SiSignal } from 'react-icons/si'
 import { HiOutlineStatusOnline } from 'react-icons/hi'
 import { useTranslation } from '@/hooks/useTranslation'
 import Image from 'next/image'
@@ -39,6 +39,18 @@ const ContactPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const contactLinks = [
+    {
+      name: t.contact.linkedin,
+      url: 'https://www.linkedin.com/in/julienberanger/',
+      icon: FaLinkedin,
+      username: 'julienberanger',
+    },
+    {
+      name: t.contact.signal,
+      url: 'https://signal.me/#eu/EDRSqKH2CGosoqANDz4epZDnhWtT9zN7D23gBryx8ZA1pL5rLRBF4779m2SvZxkY',
+      icon: SiSignal,
+      username: 'julienbrg.88',
+    },
     {
       name: t.contact.github,
       url: 'https://github.com/julienbrg',
@@ -64,6 +76,19 @@ const ContactPage = () => {
       username: 'julien',
     },
     {
+      name: 'WhatsApp',
+      url: 'https://wa.me/33630905448',
+      icon: FaWhatsapp,
+      username: 'Julien Béranger',
+    },
+    {
+      name: 'WeChat',
+      url: null, // Special case for modal
+      icon: FaWeixin,
+      username: 'julienbrg',
+      isWeChat: true,
+    },
+    {
       name: t.contact.telegram,
       url: 'https://t.me/julienbrg',
       icon: FaTelegram,
@@ -81,30 +106,12 @@ const ContactPage = () => {
       icon: FaTwitter,
       username: '@julienbrg',
     },
-    {
-      name: 'WeChat',
-      url: null, // Special case for modal
-      icon: FaWeixin,
-      username: 'julienbrg',
-      isWeChat: true,
-    },
-    {
-      name: 'WhatsApp',
-      url: 'https://wa.me/33630905448',
-      icon: FaWhatsapp,
-      username: 'Julien Béranger',
-    },
+
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/julienberanger',
       icon: FaInstagram,
       username: '@julienberanger',
-    },
-    {
-      name: t.contact.linkedin,
-      url: 'https://www.linkedin.com/in/julienberanger/',
-      icon: FaLinkedin,
-      username: 'julienberanger',
     },
     {
       name: 'Email',
@@ -114,7 +121,14 @@ const ContactPage = () => {
     },
     {
       name: t.contact.schedule,
-      url: 'https://calendly.com/julien_/30min?month=2024-12',
+      url: 'https://calendly.com/julien_/30min',
+      icon: FaCalendar,
+      username: t.contact.meetingDuration,
+      primary: true,
+    },
+    {
+      name: 'Cal.com',
+      url: 'https://cal.com/julien-beranger/30min',
       icon: FaCalendar,
       username: t.contact.meetingDuration,
       primary: true,
