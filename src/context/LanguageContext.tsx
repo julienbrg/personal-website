@@ -33,7 +33,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     const initializeLanguage = () => {
       // Check if there's a stored language preference
       const storedLang = localStorage.getItem('userLanguage')
-      
+
       if (storedLang && isValidLanguage(storedLang)) {
         setLanguageState(storedLang)
       } else {
