@@ -9,12 +9,13 @@ interface ScrollingBannerProps {
   speed?: number // in seconds
 }
 
-const ScrollingBanner = ({ text, speed = 42 }: ScrollingBannerProps) => {
+const ScrollingBanner = ({ text, speed = 20 }: ScrollingBannerProps) => {
   const [containerWidth, setContainerWidth] = useState(0)
   const [textWidth, setTextWidth] = useState(0)
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true)
 
     const updateWidths = () => {

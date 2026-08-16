@@ -1,317 +1,369 @@
 'use client'
 
-import {
-  Container,
-  Text,
-  useToast,
-  Button,
-  Tooltip,
-  VStack,
-  Heading,
-  Box,
-  SimpleGrid,
-  Link,
-  Flex,
-  HStack,
-  Tag,
-  Divider,
-  Center,
-  ButtonGroup,
-} from '@chakra-ui/react'
+import { Text, VStack, Box, Heading, SimpleGrid, Link as ChakraLink, Icon } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { useAppKitAccount, useAppKitNetwork, useAppKitProvider } from '@reown/appkit/react'
-import { BrowserProvider, parseEther, formatEther } from 'ethers'
-import { useState, useEffect } from 'react'
+import { Button } from '@/components/ui/button'
+import { useW3PK } from '@/context/W3PK'
 import { useTranslation } from '@/hooks/useTranslation'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { useState, useEffect } from 'react'
+import { toaster } from '@/components/ui/toaster'
+import { FiExternalLink } from 'react-icons/fi'
+import { brandColors } from '@/theme'
 import StylishIntro from '@/components/StylishIntro'
-import HomeActionButtons from '@/components/HomeActionButtons'
 import ScrollingBanner from '@/components/ScrollingBanner'
 import Partners from '@/components/Partners'
 
+type ProjectKey =
+  | 'w3pk'
+  | 'avventura'
+  | 'shebam'
+  | 'affix'
+  | 'gov'
+  | 'rukh'
+  | 'zkApi'
+  | 'nftRegistry'
+  | 'gameOfGo'
+  | 'zhankai'
+  | 'eip7702'
+  | 'erc5560'
+  | 'genji'
+  | 'hardhatTemplate'
+  | 'strat'
+  | 'w3hc'
+
+interface Project {
+  key: ProjectKey
+  title: string
+  webUrl?: string
+  githubUrl?: string
+  labels: readonly string[]
+}
+
 // Project data
-const projects = [
+const projects: Project[] = [
   {
-    title: 'Gov',
-    url: 'https://github.com/w3hc/gov',
-    desc: "DAOs for regular users - Gov is a DAO framework built with Open Zeppelin's Governor contract in combination with NFTs.",
+    key: 'w3pk',
+    title: 'w3pk',
+    webUrl: 'https://w3pk.w3hc.org',
+    githubUrl: 'https://github.com/w3hc/w3pk',
     labels: ['Web3'],
   },
   {
+    key: 'avventura',
     title: 'Avventura',
-    url: 'https://v2.avventura.fun',
-    desc: 'The one and only text-based Web3-enabled social RPG.',
+    webUrl: 'https://avventura.fun/',
+    githubUrl: 'https://github.com/w3hc/avventura-v3',
     labels: ['AI', 'Web3'],
   },
   {
+    key: 'shebam',
+    title: 'Shebam',
+    webUrl: 'https://shebam.w3hc.org/',
+    githubUrl: 'https://github.com/w3hc/shebam',
+    labels: ['Web3'],
+  },
+  {
+    key: 'affix',
     title: 'Affix',
-    url: 'https://affix-ui.vercel.app/',
-    desc: 'Affix your onchain seal, let the world verify it.',
+    webUrl: 'https://affix.w3hc.org/',
+    githubUrl: 'https://github.com/julienbrg/affix-ui',
+    labels: ['Web3'],
+  },
+  {
+    key: 'gov',
+    title: 'Gov',
+    webUrl: 'https://w3hc.github.io/gov-docs/',
+    githubUrl: 'https://github.com/w3hc/gov-crosschain',
+    labels: ['Web3'],
+  },
+  {
+    key: 'rukh',
+    title: 'Rukh',
+    webUrl: 'https://rukh.w3hc.org/',
+    githubUrl: 'https://github.com/w3hc/rukh',
     labels: ['AI', 'Web3'],
   },
   {
+    key: 'zkApi',
+    title: 'ZK API',
+    githubUrl: 'https://github.com/w3hc/zk-api',
+    labels: ['AI', 'Web3'],
+  },
+  {
+    key: 'nftRegistry',
     title: 'The NFT Registry',
-    url: 'https://github.com/strat-web3/nft-registry-contracts',
-    desc: 'An NFT Registry API for an institutional partner.',
+    githubUrl: 'https://github.com/strat-web3/nft-registry-contracts',
     labels: ['Web3'],
   },
   {
+    key: 'gameOfGo',
     title: 'Game of Go',
-    url: 'https://github.com/julienbrg/game-of-go',
-    desc: 'Solidity implementation of the game of Go.',
+    githubUrl: 'https://github.com/julienbrg/game-of-go',
     labels: ['Web3'],
   },
-
   {
-    title: 'Rukh API',
-    url: 'https://rukh.w3hc.org/',
-    desc: 'Minimalist Agentic RAG framework',
-    labels: ['AI', 'Web3'],
-  },
-  {
+    key: 'zhankai',
     title: 'Zhankai',
-    url: 'https://github.com/w3hc/zhankai',
-    desc: 'CLI tool for exporting repository content for LLM processing.',
+    githubUrl: 'https://github.com/w3hc/zhankai',
     labels: ['AI', 'Web3'],
   },
   {
+    key: 'eip7702',
     title: 'EIP-7702 Playground',
-    url: 'https://github.com/w3hc/eip7702-playground',
-    desc: 'Demonstrates the EIP-7702 - Set EOA account code.',
+    githubUrl: 'https://github.com/w3hc/eip7702-playground',
     labels: ['Web3'],
   },
   {
+    key: 'erc5560',
     title: 'ERC-5560',
-    url: 'https://eips.ethereum.org/EIPS/eip-5560',
-    desc: 'ERC-5560: Redeemable NFTs.',
-    labels: ['Web3'],
-  },
-
-  {
-    title: 'Myst',
-    url: 'https://github.com/w3hc/myst-api',
-    desc: 'NFT-gated content.',
+    webUrl: 'https://eips.ethereum.org/EIPS/eip-5560',
     labels: ['Web3'],
   },
   {
+    key: 'genji',
     title: 'Genji',
-    url: 'https://github.com/w3hc/genji',
-    desc: 'A Next.js Web3 app template.',
+    githubUrl: 'https://github.com/w3hc/genji-passkey',
     labels: ['Web3'],
   },
   {
+    key: 'hardhatTemplate',
     title: 'W3HC Hardhat Template',
-    url: 'https://github.com/w3hc/w3hc-hardhat-template',
-    desc: 'Solidity contract development environment.',
+    githubUrl: 'https://github.com/w3hc/w3hc-hardhat-template',
     labels: ['Web3'],
   },
   {
+    key: 'strat',
     title: 'Strat',
-    url: 'https://julienberanger.com/strat',
-    desc: 'Web3 development studio.',
+    webUrl: 'https://julienberanger.com/strat',
     labels: ['Web3'],
   },
   {
+    key: 'w3hc',
     title: 'W3HC',
-    url: 'https://w3hc.org/',
-    desc: 'The Web3 Hackers Collective - Building integrations through mentoring and learning.',
+    webUrl: 'https://github.com/w3hc',
     labels: ['Web3'],
   },
 ]
 
-export default function Home() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [txLink, setTxLink] = useState<string>()
-  const [txHash, setTxHash] = useState<string>()
-  const [balance, setBalance] = useState<string>('0')
+const shimmerStyles = `
+  @keyframes colorWave {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 
-  const { address, isConnected } = useAppKitAccount()
-  const { walletProvider } = useAppKitProvider('eip155')
-  const toast = useToast()
+  .shimmer-text {
+    background: linear-gradient(120deg, #3182ce 0%, #ffffff 25%, #805ad5 50%, #ffffff 75%, #3182ce 100%);
+    background-size: 400% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorWave 10s ease-in-out infinite;
+  }
+`
+
+export default function Home() {
+  const { isAuthenticated, user, login, signMessage, deriveWallet, getAddress } = useW3PK()
   const t = useTranslation()
+  const [primaryAddress, setPrimaryAddress] = useState<string>('')
+  const [mainAddress, setMainAddress] = useState<string>('')
+  const [openbarAddress, setOpenbarAddress] = useState<string>('')
+  const [isLoadingMain, setIsLoadingMain] = useState(false)
 
   useEffect(() => {
-    const checkBalance = async () => {
-      if (address && walletProvider) {
-        try {
-          const provider = new BrowserProvider(walletProvider as any)
-          const balance = await provider.getBalance(address)
-          setBalance(formatEther(balance))
-        } catch (error) {
-          console.error('Error fetching balance:', error)
+    let cancelled = false
+
+    const loadAddresses = async () => {
+      if (!isAuthenticated || !user) {
+        return
+      }
+
+      try {
+        // Load MAIN address
+        if (!mainAddress) {
+          setIsLoadingMain(true)
+          const mainWallet = await deriveWallet('STANDARD', 'MAIN')
+          if (cancelled) return
+          setMainAddress(mainWallet.address)
+          setIsLoadingMain(false)
+        }
+      } catch (error) {
+        if (!cancelled) {
+          console.error('Failed to load addresses:', error)
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoadingMain(false)
         }
       }
     }
 
-    checkBalance()
-  }, [address, walletProvider])
+    loadAddresses()
 
-  const handleSend = async () => {
-    setTxHash('')
-    setTxLink('')
-    if (!address || !walletProvider) {
-      toast({
-        title: t.common.error,
-        description: t.home.notConnected,
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      })
-      return
+    return () => {
+      cancelled = true
     }
+  }, [isAuthenticated, user, mainAddress, openbarAddress, primaryAddress, deriveWallet, getAddress])
 
-    setIsLoading(true)
+  const handleSignMessage = async (addressType: string, address: string) => {
+    const message = `Sign this message from ${addressType} address: ${address}`
+
     try {
-      const provider = new BrowserProvider(walletProvider as any)
-      const signer = await provider.getSigner()
-
-      const tx = await signer.sendTransaction({
-        to: address,
-        value: parseEther('0.0001'),
-      })
-
-      const receipt = await tx.wait(1)
-
-      setTxHash(receipt?.hash)
-      setTxLink('https://sepolia.etherscan.io/tx/' + receipt?.hash)
-
-      toast({
-        title: t.common.success,
-        description: `${t.home.transactionSuccess}: 0.0001 ETH to ${address}`,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      })
+      const signature = await signMessage(message)
+      if (signature) {
+        toaster.create({
+          title: 'Message Signed',
+          description: `Signature: ${signature.substring(0, 20)}...`,
+          type: 'success',
+          duration: 5000,
+        })
+      }
     } catch (error) {
-      console.error('Transaction failed:', error)
-      toast({
-        title: t.home.transactionFailed,
-        description: error instanceof Error ? error.message : 'Unknown error occurred',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      })
-    } finally {
-      setIsLoading(false)
+      console.error('Failed to sign message:', error)
     }
   }
 
-  const hasEnoughBalance = Number(balance) >= 0.0001
-
   return (
-    <Container maxW="container.lg" py={20}>
-      {/* Bio Section */}
-      <VStack spacing={24} align="stretch">
+    <>
+      <style dangerouslySetInnerHTML={{ __html: shimmerStyles }} />
+      <VStack gap={8} align="stretch" py={20}>
         <Box>
-          {/* Enhanced Intro Component */}
           <StylishIntro />
-
           <Box mt={10}>
-            <ScrollingBanner text="I'm committed to building Web3 since 2013. I code in Node.js, TypeScript, and Solidity. I love using React, Next.js, and Nest.js to build secure, scalable and maintainable apps and services. It's time to unify Ethereum and improve people's lives for real." />
+            <ScrollingBanner text={t.home.bannerText} />
           </Box>
 
-          {/* Action Buttons */}
-          <HomeActionButtons />
+          <Box display="flex" justifyContent="center" mt={10} mb={20}>
+            <Button
+              asChild
+              size="md"
+              variant="outline"
+              boxShadow="md"
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+                bg: 'rgba(140, 28, 132, 0.1)',
+              }}
+              transition="all 0.3s ease"
+              borderColor={brandColors.primary}
+            >
+              <NextLink href="/contact" className="shimmer-text">
+                {t.home.contactButton}
+              </NextLink>
+            </Button>
+          </Box>
         </Box>
 
-        {/* Projects Section with increased top margin */}
+        {/* Projects Section */}
         <Box>
           <Heading as="h2" size="lg" mb={20} textAlign="center">
-            Projects
+            {t.projects.heading}
           </Heading>
 
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
             {projects.map((project, index) => (
-              <Link
+              <Box
                 key={index}
-                href={project.url}
-                isExternal
-                _hover={{ textDecoration: 'none' }}
-                display="block"
+                bg="gray.900"
+                border="1px solid"
+                borderColor="gray.700"
+                borderRadius="lg"
+                overflow="hidden"
+                p={5}
+                height="100%"
+                _hover={{
+                  transform: 'translateY(-4px)',
+                  boxShadow: 'lg',
+                  borderColor: brandColors.accent,
+                }}
+                transition="all 0.3s ease"
               >
-                <Box
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  overflow="hidden"
-                  p={5}
-                  height="100%"
-                  cursor="pointer"
-                  _hover={{
-                    transform: 'translateY(-4px)',
-                    boxShadow: 'lg',
-                    borderColor: 'blue.400',
-                  }}
-                  transition="all 0.3s ease"
-                >
-                  <Heading as="h3" size="md" mb={2} color="blue.400">
-                    {project.title} <ExternalLinkIcon mx="2px" />
-                  </Heading>
-                  <Text color="gray.400" mb={3}>
-                    {project.desc}
-                  </Text>
-                  <HStack spacing={2}>
-                    {project.labels.map((label, idx) => (
-                      <Tag
-                        key={idx}
-                        size="sm"
-                        variant="solid"
-                        bg={label === 'Web3' ? '#8c1c84' : '#45a2f8'}
-                        color="white"
-                        borderRadius="full"
-                      >
-                        {label}
-                      </Tag>
-                    ))}
-                  </HStack>
+                <Heading as="h3" size="md" mb={2} color={brandColors.accent}>
+                  {project.title}
+                </Heading>
+                <Text color="gray.400" mb={3}>
+                  {t.projects.items[project.key]}
+                </Text>
+                <Box display="flex" gap={3} mb={3}>
+                  {project.webUrl && (
+                    <ChakraLink
+                      href={project.webUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      fontSize="sm"
+                      color={brandColors.accent}
+                      display="flex"
+                      alignItems="center"
+                      gap={1}
+                      _hover={{ textDecoration: 'underline' }}
+                    >
+                      {t.projects.webLabel} <Icon as={FiExternalLink} boxSize={3} />
+                    </ChakraLink>
+                  )}
+                  {project.githubUrl && (
+                    <ChakraLink
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      fontSize="sm"
+                      color={brandColors.accent}
+                      display="flex"
+                      alignItems="center"
+                      gap={1}
+                      _hover={{ textDecoration: 'underline' }}
+                    >
+                      {t.projects.githubLabel} <Icon as={FiExternalLink} boxSize={3} />
+                    </ChakraLink>
+                  )}
                 </Box>
-              </Link>
+                <Box display="flex" gap={2}>
+                  {project.labels.map((label, idx) => (
+                    <Box
+                      key={idx}
+                      as="span"
+                      fontSize="xs"
+                      fontWeight="bold"
+                      px={2}
+                      py={1}
+                      borderRadius="full"
+                      bg={label === 'Web3' ? brandColors.primary : brandColors.accent}
+                      color="white"
+                    >
+                      {label}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
             ))}
           </SimpleGrid>
         </Box>
 
-        {/* Partners Section with consistent spacing */}
+        {/* Partners Section */}
         <Partners />
 
-        {/* Original Send Transaction Section with increased spacing */}
-        {/* <Box>
-          <VStack spacing={4} align="center">
-            {isConnected && (
-              <Tooltip
-                label={!hasEnoughBalance ? t.home.insufficientBalance : ''}
-                isDisabled={hasEnoughBalance}
-                hasArrow
-                bg="black"
-                color="white"
-                borderWidth="1px"
-                borderColor="red.500"
-                borderRadius="md"
-                p={2}
-              >
-                <Button
-                  onClick={handleSend}
-                  isLoading={isLoading}
-                  loadingText={t.common.loading}
-                  bg="#45a2f8"
-                  color="white"
-                  _hover={{
-                    bg: '#3182ce',
-                  }}
-                  isDisabled={!hasEnoughBalance}
-                >
-                  {t.home.sendEth}
-                </Button>
-              </Tooltip>
-            )}
-            {txHash && isConnected && (
-              <Text py={4} fontSize="14px" color="#45a2f8">
-                <Link href={txLink ? txLink : ''} isExternal>
-                  {txHash}
-                </Link>
-              </Text>
-            )}
-          </VStack>
-        </Box> */}
+        <Box display="flex" justifyContent="center" mt={10}>
+          <Button
+            asChild
+            size="md"
+            variant="outline"
+            boxShadow="md"
+            _hover={{
+              transform: 'translateY(-2px)',
+              boxShadow: 'lg',
+              bg: 'rgba(140, 28, 132, 0.1)',
+            }}
+            transition="all 0.3s ease"
+            borderColor={brandColors.primary}
+          >
+            <NextLink href="/contact" className="shimmer-text">
+              {t.home.contactButton}
+            </NextLink>
+          </Button>
+        </Box>
       </VStack>
-    </Container>
+    </>
   )
 }
