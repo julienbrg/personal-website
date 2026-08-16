@@ -9,14 +9,10 @@ import {
   Flex,
   Text,
   Box,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
   useDisclosure,
+  CloseButton,
 } from '@chakra-ui/react'
+import { Dialog, Portal } from '@/components/ui/dialog'
 import {
   FaTelegram,
   FaTwitter,
@@ -32,11 +28,12 @@ import {
 import { SiElement, SiFarcaster, SiSignal } from 'react-icons/si'
 import { HiOutlineStatusOnline } from 'react-icons/hi'
 import { useTranslation } from '@/hooks/useTranslation'
+import { brandColors } from '@/theme'
 import Image from 'next/image'
 
 const ContactPage = () => {
   const t = useTranslation()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { open: isOpen, onOpen, onClose } = useDisclosure()
 
   const contactLinks = [
     {
@@ -83,7 +80,7 @@ const ContactPage = () => {
     },
     {
       name: 'WeChat',
-      url: null, // Special case for modal
+      url: null as string | null, // Special case for modal
       icon: FaWeixin,
       username: 'julienbrg',
       isWeChat: true,
@@ -106,7 +103,6 @@ const ContactPage = () => {
       icon: FaTwitter,
       username: '@julienbrg',
     },
-
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/julienberanger',
@@ -135,7 +131,7 @@ const ContactPage = () => {
     },
   ]
 
-  const handleContactClick = (contact: any) => {
+  const handleContactClick = (contact: (typeof contactLinks)[number]) => {
     if (contact.isWeChat) {
       onOpen()
     }
@@ -143,39 +139,42 @@ const ContactPage = () => {
 
   return (
     <Container maxW="container.md" py={20}>
-      <VStack spacing={12} align="stretch">
+      <VStack gap={12} align="stretch">
         <Heading as="h3" size="xl" mb={8} textAlign="center">
           {t.contact.title}
         </Heading>
 
-        <VStack spacing={6} align="stretch">
+        <VStack gap={6} align="stretch">
           {contactLinks
             .filter(contact => !contact.isWeChat)
             .map(contact => (
               <Link
                 key={contact.name}
                 href={contact.url!}
-                isExternal
+                target="_blank"
+                rel="noopener noreferrer"
+                display="block"
+                width="full"
                 _hover={{ textDecoration: 'none' }}
               >
                 <Flex
                   align="center"
                   p={4}
-                  bg={contact.primary ? '#8c1c84' : 'gray.800'}
+                  bg={contact.primary ? brandColors.primary : 'gray.800'}
                   borderRadius="lg"
                   transition="all 0.2s"
                   _hover={{
-                    bg: contact.primary ? '#6d1566' : 'gray.700',
+                    bg: contact.primary ? brandColors.secondary : 'gray.700',
                     transform: 'translateY(-2px)',
                   }}
                 >
                   <Icon
                     as={contact.icon}
                     boxSize={6}
-                    color={contact.primary ? 'white' : '#45a2f8'}
+                    color={contact.primary ? 'white' : brandColors.accent}
                     mr={4}
                   />
-                  <VStack align="flex-start" spacing={0}>
+                  <VStack align="flex-start" gap={0}>
                     <Text fontWeight="bold" color="white">
                       {contact.name}
                     </Text>
@@ -208,8 +207,8 @@ const ContactPage = () => {
                     transform: 'translateY(-2px)',
                   }}
                 >
-                  <Icon as={contact.icon} boxSize={6} color="#45a2f8" mr={4} />
-                  <VStack align="flex-start" spacing={0}>
+                  <Icon as={contact.icon} boxSize={6} color={brandColors.accent} mr={4} />
+                  <VStack align="flex-start" gap={0}>
                     <Text fontWeight="bold" color="white">
                       {contact.name}
                     </Text>
@@ -221,6 +220,7 @@ const ContactPage = () => {
               </Box>
             ))}
         </VStack>
+
         <VStack>
           <Box
             position="relative"
@@ -232,52 +232,64 @@ const ContactPage = () => {
           >
             <Image
               priority
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
               alt="qr-code"
               src="/julienberanger-com-qr-code-image.png"
             />
           </Box>
-          <Link href="https://julienberanger.com">https://julienberanger.com</Link>
+          <Link href="https://julienberanger.com" target="_blank" rel="noopener noreferrer">
+            https://julienberanger.com
+          </Link>
         </VStack>
 
         {/* WeChat QR Code Modal */}
-        <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>
-          <ModalOverlay bg="blackAlpha.800" />
-          <ModalContent bg="gray.800" borderRadius="xl">
-            <ModalHeader color="white" textAlign="center">
-              <Icon as={FaWeixin} mr={2} color="#45a2f8" />
-              Julien on WeChat
-            </ModalHeader>
-            <ModalCloseButton color="white" />
-            <ModalBody pb={6}>
-              <VStack spacing={4}>
-                <Box
-                  position="relative"
-                  width="300px"
-                  height="300px"
-                  overflow="hidden"
-                  borderRadius="lg"
-                  bg="white"
-                  p={2}
-                >
-                  <Image
-                    src="/julien-wechat-qr-code.png"
-                    alt="Julien WeChat QR Code"
-                    fill
-                    style={{ objectFit: 'contain' }}
-                  />
-                </Box>
-                <Text color="gray.300" textAlign="center" fontSize="sm">
-                  Scan this QR code with WeChat
-                </Text>
-                <Text color="#45a2f8" textAlign="center" fontWeight="bold">
-                  julienbrg
-                </Text>
-              </VStack>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+        <Dialog.Root
+          open={isOpen}
+          onOpenChange={(e: { open: boolean }) => (e.open ? null : onClose())}
+          size="md"
+        >
+          <Portal>
+            <Dialog.Backdrop bg="blackAlpha.800" />
+            <Dialog.Positioner>
+              <Dialog.Content bg="gray.800" borderRadius="xl">
+                <Dialog.Header color="white" textAlign="center">
+                  <Icon as={FaWeixin} mr={2} color={brandColors.accent} />
+                  Julien on WeChat
+                </Dialog.Header>
+                <Dialog.Body pb={6}>
+                  <VStack gap={4}>
+                    <Box
+                      position="relative"
+                      width="300px"
+                      height="300px"
+                      overflow="hidden"
+                      borderRadius="lg"
+                      bg="white"
+                      p={2}
+                    >
+                      <Image
+                        src="/julien-wechat-qr-code.png"
+                        alt="Julien WeChat QR Code"
+                        fill
+                        style={{ objectFit: 'contain' }}
+                      />
+                    </Box>
+                    <Text color="gray.300" textAlign="center" fontSize="sm">
+                      Scan this QR code with WeChat
+                    </Text>
+                    <Text color={brandColors.accent} textAlign="center" fontWeight="bold">
+                      julienbrg
+                    </Text>
+                  </VStack>
+                </Dialog.Body>
+                <Dialog.CloseTrigger asChild>
+                  <CloseButton color="white" />
+                </Dialog.CloseTrigger>
+              </Dialog.Content>
+            </Dialog.Positioner>
+          </Portal>
+        </Dialog.Root>
       </VStack>
     </Container>
   )

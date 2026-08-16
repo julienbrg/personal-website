@@ -1,8 +1,9 @@
 'use client'
 
-import { Box, Text, Icon, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, Icon } from '@chakra-ui/react'
 import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
+import { brandColors } from '@/theme'
 
 const quotes = [
   {
@@ -28,9 +29,7 @@ const StylishIntro = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
   const [isFading, setIsFading] = useState(false)
 
-  // Handle initial visibility
   useEffect(() => {
-    // Small delay before showing the animation
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 300)
@@ -38,31 +37,25 @@ const StylishIntro = () => {
     return () => clearTimeout(timer)
   }, [])
 
-  // Handle quote rotation
   useEffect(() => {
-    // Set up quote rotation interval
     const rotationInterval = setInterval(() => {
-      // Start fade out
       setIsFading(true)
 
-      // After fade out is complete, change the quote and start fade in
       setTimeout(() => {
-        // Move to the next quote in sequence
         setCurrentQuoteIndex(prevIndex => (prevIndex + 1) % quotes.length)
         setIsFading(false)
-      }, 2000) // 2 seconds for fade out
-    }, 10000) // 10 seconds between quote changes
+      }, 2000)
+    }, 10000)
 
     return () => clearInterval(rotationInterval)
   }, [])
 
-  // Get the current quote based on the index
   const currentQuote = quotes[currentQuoteIndex]
 
   return (
     <Box
       width="100%"
-      height={{ base: '400px', md: '230px' }} // Taller on mobile, shorter on desktop
+      height={{ base: '400px', md: '230px' }}
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -95,7 +88,7 @@ const StylishIntro = () => {
           top={4}
           left={4}
           fontSize="2xl"
-          color="#45a2f8"
+          color={brandColors.accent}
           opacity={0.6}
         />
 
@@ -123,7 +116,7 @@ const StylishIntro = () => {
           bottom={4}
           right={4}
           fontSize="2xl"
-          color="#45a2f8"
+          color={brandColors.accent}
           opacity={0.6}
         />
       </Box>

@@ -1,23 +1,24 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Julien Béranger',
-  description: 'Building Web3 since 2013.',
+  metadataBase: new URL('https://w3pk.w3hc.org'),
 
-  keywords: ['Web3', 'Next.js', 'Ethereum', 'DApp', 'Blockchain', 'Wallet'],
-  authors: [{ name: 'Julien', url: 'https://github.com/julienbrg' }],
+  title: 'Julien Beranger',
+  description: "Julien's projects, partners, bio and blog posts",
+
+  keywords: ['w3pk', 'WebAuthn', 'Next.js', 'Web3', 'Ethereum'],
+  authors: [{ name: 'W3HC', url: 'https://github.com/w3hc' }],
 
   openGraph: {
-    title: 'Julien Béranger',
-    description: 'Building Web3 since 2013.',
-    url: 'https://julienberanger.com',
-    siteName: 'Julien Béranger',
+    title: 'Julien Beranger',
+    description: "Julien's projects, partners, bio and blog posts",
+    siteName: 'Julien Beranger',
     images: [
       {
         url: '/huangshan.png',
         width: 1200,
         height: 630,
-        alt: 'Huangshan',
+        alt: "Julien's projects, partners, bio and blog posts",
       },
     ],
     locale: 'en_US',
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Julien Béranger',
-    description: 'Building Web3 since 2013.',
+    title: 'Julien Beranger',
+    description: "Julien's projects, partners, bio and blog posts",
     images: ['/huangshan.png'],
     creator: '@julienbrg',
   },

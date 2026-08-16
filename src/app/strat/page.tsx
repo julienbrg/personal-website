@@ -1,151 +1,118 @@
 'use client'
 
-import { Container, VStack, Heading, Text, Box, Image, SimpleGrid, Button } from '@chakra-ui/react'
-import { useTranslation } from '@/hooks/useTranslation'
-import { useEffect, useState } from 'react'
-import Partners from '@/components/Partners'
+import { Box, Heading, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Button } from '@/components/ui/button'
 import NextLink from 'next/link'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { useTranslation } from '@/hooks/useTranslation'
+import { brandColors } from '@/theme'
+import Partners from '@/components/Partners'
 
-// Define services data
-const services = [
-  {
-    title: 'Custom AI Integrations',
-    description: 'Custom AI apps and automation services',
-  },
-  {
-    title: 'Personalized Training',
-    description: "Enhance your team's knowledge and master best practices",
-  },
-  {
-    title: 'Solidity Contracts Security Audit',
-    description: 'Comprehensive security assessments for smart contracts',
-  },
-  {
-    title: 'Web3 Project Design and Implementation',
-    description: 'End-to-end Web3 project development and deployment',
-  },
-  {
-    title: 'Custom Web3 APIs',
-    description: 'Custom Web3 APIs built with Nest.js',
-  },
-  {
-    title: 'Custom DAO Deployment',
-    description: 'Tailored DAO solutions for your organization',
-  },
+type ServiceKey =
+  'aiIntegrations' | 'training' | 'securityAudit' | 'web3Design' | 'web3Apis' | 'daoDeployment'
+
+const serviceKeys: ServiceKey[] = [
+  'aiIntegrations',
+  'training',
+  'securityAudit',
+  'web3Design',
+  'web3Apis',
+  'daoDeployment',
 ]
 
 export default function StratPage() {
   const t = useTranslation()
   const [isVisible, setIsVisible] = useState(false)
 
-  // Handle visibility for animations
   useEffect(() => {
-    setIsVisible(true)
+    const timer = setTimeout(() => setIsVisible(true), 300)
+    return () => clearTimeout(timer)
   }, [])
 
-  const handleServiceClick = () => {
-    // Handle service click, e.g., redirect to contact page
-    window.location.href = '/contact'
-  }
-
   return (
-    <main>
-      <Container maxW="container.xl" py={20}>
-        <VStack spacing={16} align="center">
-          {/* Logo and Tagline Section */}
-          <VStack spacing={12}>
-            <Box width="100%" maxW="900px" textAlign="center">
-              <Image
-                src="/stratLogoWhitepng.png"
-                alt="Strat Logo"
-                width="100%"
-                height="auto"
-                maxW="900px"
-                opacity={0}
-                animation="fadeIn 3s ease-in forwards"
-                sx={{
-                  '@keyframes fadeIn': {
-                    '0%': { opacity: 0 },
-                    '100%': { opacity: 1 },
-                  },
+    <VStack gap={16} align="stretch" py={20}>
+      <VStack gap={8}>
+        <Box
+          width="100%"
+          maxW="900px"
+          mx="auto"
+          opacity={isVisible ? 1 : 0}
+          transition="opacity 1.5s ease-in"
+        >
+          <Image
+            src="/stratLogoWhitepng.png"
+            alt="Strat"
+            width={900}
+            height={430}
+            style={{ width: '100%', height: 'auto' }}
+            priority
+          />
+        </Box>
+        <Text
+          fontSize="2xl"
+          fontWeight="bold"
+          color={brandColors.accent}
+          textAlign="center"
+          opacity={isVisible ? 1 : 0}
+          transition="opacity 1.5s ease-in"
+          transitionDelay="0.5s"
+        >
+          Building Web3 since 2013.
+        </Text>
+      </VStack>
+
+      <Box>
+        <Heading as="h2" size="lg" mb={20} textAlign="center">
+          {t.strat.servicesHeading}
+        </Heading>
+        <SimpleGrid columns={{ base: 1, md: 2 }} gap={8} maxW="1200px" mx="auto">
+          {serviceKeys.map(key => (
+            <NextLink key={key} href="/contact" style={{ display: 'block' }}>
+              <Box
+                bg="gray.900"
+                border="1px solid"
+                borderColor="gray.700"
+                borderRadius="lg"
+                p={6}
+                height="100%"
+                cursor="pointer"
+                _hover={{
+                  transform: 'translateY(-4px)',
+                  boxShadow: 'lg',
+                  borderColor: brandColors.accent,
                 }}
-              />
-            </Box>
-            <Text
-              fontSize="2xl"
-              fontWeight="bold"
-              color="#45a2f8"
-              opacity={0}
-              animation="fadeInText 3s ease-in forwards"
-              style={{ animationDelay: '3s' }}
-              sx={{
-                '@keyframes fadeInText': {
-                  '0%': { opacity: 0 },
-                  '100%': { opacity: 1 },
-                },
-              }}
-              textAlign="center"
-            >
-              Building Web3 since 2013.
-            </Text>
-          </VStack>
+                transition="all 0.3s ease"
+              >
+                <Heading as="h3" size="md" mb={3} color={brandColors.accent}>
+                  {t.strat.services[key].title}
+                </Heading>
+                <Text color="gray.400">{t.strat.services[key].description}</Text>
+              </Box>
+            </NextLink>
+          ))}
+        </SimpleGrid>
+      </Box>
 
-          {/* Services Section */}
-          <VStack
-            w="100%"
-            spacing={8}
-            opacity={isVisible ? 1 : 0}
-            transition="opacity 2s ease-in"
-            transitionDelay="5s"
-          >
-            <Heading as="h2" size="lg" color="white" mb={20} mt={20}>
-              Services
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} width="100%" maxW="1200px" mb={20}>
-              {services.map(service => (
-                <Box
-                  key={service.title}
-                  bg="gray.800"
-                  p={6}
-                  borderRadius="lg"
-                  cursor="pointer"
-                  onClick={handleServiceClick}
-                  transition="all 0.2s"
-                  _hover={{
-                    transform: 'translateY(-4px)',
-                    bg: 'gray.700',
-                  }}
-                >
-                  <Text fontSize="xl" fontWeight="bold" mb={3}>
-                    {service.title}
-                  </Text>
-                  <Text color="gray.400">{service.description}</Text>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </VStack>
+      <Partners />
 
-          <Partners />
-          <Button
-            as={NextLink}
-            href="/contact"
-            size="md"
-            variant="outline"
-            boxShadow="md"
-            width={{ base: '100%', md: 'auto' }}
-            _hover={{
-              transform: 'translateY(-2px)',
-              boxShadow: 'lg',
-              bg: 'rgba(140, 28, 132, 0.1)',
-            }}
-            transition="all 0.3s ease"
-            borderColor="#45a2f8"
-            color="#45a2f8"
-          >
-            {t.home.contactButton}
-          </Button>
-        </VStack>
-      </Container>
-    </main>
+      <Box display="flex" justifyContent="center">
+        <Button
+          asChild
+          size="md"
+          variant="outline"
+          boxShadow="md"
+          _hover={{
+            transform: 'translateY(-2px)',
+            boxShadow: 'lg',
+            bg: 'rgba(140, 28, 132, 0.1)',
+          }}
+          transition="all 0.3s ease"
+          borderColor={brandColors.primary}
+        >
+          <NextLink href="/contact">{t.home.contactButton}</NextLink>
+        </Button>
+      </Box>
+    </VStack>
   )
 }
