@@ -1,6 +1,15 @@
 'use client'
 
-import { Container, VStack, Heading, Text, Box, Link as ChakraLink, Image, Center } from '@chakra-ui/react'
+import {
+  Container,
+  VStack,
+  Heading,
+  Text,
+  Box,
+  Link as ChakraLink,
+  Image,
+  Center,
+} from '@chakra-ui/react'
 import { ListRoot, ListItem } from '@/components/ui/list'
 
 export default function MeditationSouriantePage() {
