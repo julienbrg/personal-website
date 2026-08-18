@@ -264,80 +264,100 @@ export default function Home() {
           </Heading>
 
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={8}>
-            {projects.map((project, index) => (
-              <Box
-                key={index}
-                bg="gray.900"
-                border="1px solid"
-                borderColor="gray.700"
-                borderRadius="lg"
-                overflow="hidden"
-                p={5}
-                height="100%"
-                _hover={{
-                  transform: 'translateY(-4px)',
-                  boxShadow: 'lg',
-                  borderColor: brandColors.accent,
-                }}
-                transition="all 0.3s ease"
-              >
-                <Heading as="h3" size="md" mb={2} color={brandColors.accent}>
-                  {project.title}
-                </Heading>
-                <Text color="gray.400" mb={3}>
-                  {t.projects.items[project.key]}
-                </Text>
-                <Box display="flex" gap={3} mb={3}>
-                  {project.webUrl && (
-                    <ChakraLink
-                      href={project.webUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fontSize="sm"
-                      color={brandColors.accent}
-                      display="flex"
-                      alignItems="center"
-                      gap={1}
-                      _hover={{ textDecoration: 'underline' }}
-                    >
-                      {t.projects.webLabel} <Icon as={FiExternalLink} boxSize={3} />
-                    </ChakraLink>
-                  )}
-                  {project.githubUrl && (
-                    <ChakraLink
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      fontSize="sm"
-                      color={brandColors.accent}
-                      display="flex"
-                      alignItems="center"
-                      gap={1}
-                      _hover={{ textDecoration: 'underline' }}
-                    >
-                      {t.projects.githubLabel} <Icon as={FiExternalLink} boxSize={3} />
-                    </ChakraLink>
-                  )}
+            {projects.map((project, index) => {
+              const primaryUrl = project.webUrl ?? project.githubUrl
+
+              return (
+                <Box
+                  key={index}
+                  bg="gray.900"
+                  border="1px solid"
+                  borderColor="gray.700"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  p={5}
+                  height="100%"
+                  cursor={primaryUrl ? 'pointer' : undefined}
+                  role={primaryUrl ? 'link' : undefined}
+                  tabIndex={primaryUrl ? 0 : undefined}
+                  onClick={() => {
+                    if (primaryUrl) {
+                      window.open(primaryUrl, '_blank', 'noopener,noreferrer')
+                    }
+                  }}
+                  onKeyDown={e => {
+                    if (primaryUrl && (e.key === 'Enter' || e.key === ' ')) {
+                      e.preventDefault()
+                      window.open(primaryUrl, '_blank', 'noopener,noreferrer')
+                    }
+                  }}
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'lg',
+                    borderColor: brandColors.accent,
+                  }}
+                  transition="all 0.3s ease"
+                >
+                  <Heading as="h3" size="md" mb={2} color={brandColors.accent}>
+                    {project.title}
+                  </Heading>
+                  <Text color="gray.400" mb={3}>
+                    {t.projects.items[project.key]}
+                  </Text>
+                  <Box display="flex" gap={3} mb={3}>
+                    {project.webUrl && (
+                      <ChakraLink
+                        href={project.webUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fontSize="sm"
+                        color={brandColors.accent}
+                        display="flex"
+                        alignItems="center"
+                        gap={1}
+                        _hover={{ textDecoration: 'underline' }}
+                        onClick={e => e.stopPropagation()}
+                      >
+                        {t.projects.webLabel} <Icon as={FiExternalLink} boxSize={3} />
+                      </ChakraLink>
+                    )}
+                    {project.githubUrl && (
+                      <ChakraLink
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        fontSize="sm"
+                        color={brandColors.accent}
+                        display="flex"
+                        alignItems="center"
+                        gap={1}
+                        _hover={{ textDecoration: 'underline' }}
+                        onClick={e => e.stopPropagation()}
+                      >
+                        {t.projects.githubLabel} <Icon as={FiExternalLink} boxSize={3} />
+                      </ChakraLink>
+                    )}
+                  </Box>
+                  <Box display="flex" gap={2}>
+                    {project.labels.map((label, idx) => (
+                      <Box
+                        key={idx}
+                        as="span"
+                        fontSize="xs"
+                        fontWeight="bold"
+                        px={2}
+                        py={1}
+                        borderRadius="full"
+                        bg={label === 'Web3' ? brandColors.primary : brandColors.accent}
+                        color="white"
+                      >
+                        {label}
+                      </Box>
+                    ))}
+                  </Box>
                 </Box>
-                <Box display="flex" gap={2}>
-                  {project.labels.map((label, idx) => (
-                    <Box
-                      key={idx}
-                      as="span"
-                      fontSize="xs"
-                      fontWeight="bold"
-                      px={2}
-                      py={1}
-                      borderRadius="full"
-                      bg={label === 'Web3' ? brandColors.primary : brandColors.accent}
-                      color="white"
-                    >
-                      {label}
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            ))}
+              )
+            })}
           </SimpleGrid>
         </Box>
 
