@@ -10,7 +10,7 @@ import { toaster } from '@/components/ui/toaster'
 import { FiExternalLink } from 'react-icons/fi'
 import { brandColors } from '@/theme'
 import StylishIntro from '@/components/StylishIntro'
-import ScrollingBanner from '@/components/ScrollingBanner'
+import IntroBubble from '@/components/IntroBubble'
 import Partners from '@/components/Partners'
 
 type ProjectKey =
@@ -232,11 +232,11 @@ export default function Home() {
       <VStack gap={8} align="stretch" py={20}>
         <Box>
           <StylishIntro />
-          <Box mt={10}>
-            <ScrollingBanner text={t.home.bannerText} />
+          <Box mt={20}>
+            <IntroBubble text={t.home.bannerText} />
           </Box>
 
-          <Box display="flex" justifyContent="center" mt={10} mb={20}>
+          <Box display="flex" justifyContent="center" mt={20} mb={36}>
             <Button
               asChild
               size="md"
