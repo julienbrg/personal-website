@@ -39,3 +39,6 @@ next-env.d.ts
 # Misc
 NOTES.md
 /zhankai
+
+# blog post staging (DB is the source of truth, see scripts/posts.ts)
+/content
