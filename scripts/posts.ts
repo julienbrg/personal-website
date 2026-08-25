@@ -65,7 +65,9 @@ async function add(filePath: string) {
 }
 
 async function del(slug: string) {
-  const rows = (await sql`DELETE FROM posts WHERE slug = ${slug} RETURNING slug`) as { slug: string }[]
+  const rows = (await sql`DELETE FROM posts WHERE slug = ${slug} RETURNING slug`) as {
+    slug: string
+  }[]
 
   if (rows.length === 0) {
     console.log(`no post found with slug "${slug}"`)

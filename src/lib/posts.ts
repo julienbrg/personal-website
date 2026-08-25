@@ -49,7 +49,9 @@ function rowToPost(row: PostRow): Post {
 }
 
 export async function getPostSlugs(): Promise<string[]> {
-  const rows = (await sql`SELECT slug FROM posts ORDER BY date DESC NULLS LAST`) as { slug: string }[]
+  const rows = (await sql`SELECT slug FROM posts ORDER BY date DESC NULLS LAST`) as {
+    slug: string
+  }[]
   return rows.map(row => row.slug)
 }
 

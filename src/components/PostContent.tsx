@@ -73,7 +73,11 @@ const components: Components = {
     </ListRoot>
   ),
   li: ({ children }) => (
-    <ListItem lineHeight={PROSE_LINE_HEIGHT} ps={1} css={{ '&::marker': { color: brandColors.white } }}>
+    <ListItem
+      lineHeight={PROSE_LINE_HEIGHT}
+      ps={1}
+      css={{ '&::marker': { color: brandColors.white } }}
+    >
       {children}
     </ListItem>
   ),
