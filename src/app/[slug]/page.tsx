@@ -2,19 +2,16 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { Box, VStack, Heading, Text, Link as ChakraLink } from '@chakra-ui/react'
 import PostContent from '@/components/PostContent'
-import { getPost, getPostSlugs, formatPostDate } from '@/lib/posts'
+import { getPost, formatPostDate } from '@/lib/posts'
 import { brandColors } from '@/theme'
 
-// Posts live in Neon and are added/removed via the terminal (pnpm posts),
-// so slugs are looked up per-request rather than fixed at build time.
+// Posts live in Neon and can be edited directly there, so the page is
+// rendered dynamically per-request rather than statically prerendered —
+// content changes show up immediately without a redeploy.
+export const dynamic = 'force-dynamic'
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
-}
-
-export async function generateStaticParams() {
-  const slugs = await getPostSlugs()
-  return slugs.map(slug => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {

@@ -48,13 +48,6 @@ function rowToPost(row: PostRow): Post {
   }
 }
 
-export async function getPostSlugs(): Promise<string[]> {
-  const rows = (await sql`SELECT slug FROM posts ORDER BY date DESC NULLS LAST`) as {
-    slug: string
-  }[]
-  return rows.map(row => row.slug)
-}
-
 export async function getPost(slug: string): Promise<Post | null> {
   if (!isValidSlug(slug)) return null
 
