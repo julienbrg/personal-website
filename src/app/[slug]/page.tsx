@@ -76,27 +76,26 @@ export default async function PostPage({ params }: PostPageProps) {
             </Text>
           )}
           {post.model && (
-            <Text fontSize="xs" fontStyle="italic" color={brandColors.primary} mt={1}>
+            <Text fontSize="xs" fontStyle="italic" color={brandColors.white} mt={1}>
               {post.conversation ? (
                 <>
-                  <Text as="span" color={brandColors.white}>
-                    +
-                  </Text>{' '}
+                  +{' '}
                   <ChakraLink
                     href={post.conversation}
                     target="_blank"
                     rel="noopener noreferrer"
-                    fontWeight="bold"
+                    color={brandColors.white}
+                    className="shimmer-text"
                   >
                     {post.model}
                   </ChakraLink>
                 </>
               ) : (
                 <>
-                  <Text as="span" color={brandColors.white}>
-                    +
-                  </Text>{' '}
-                  {post.model}
+                  +{' '}
+                  <Text as="span" className="shimmer-text">
+                    {post.model}
+                  </Text>
                 </>
               )}
             </Text>
