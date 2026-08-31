@@ -145,26 +145,6 @@ const projects: Project[] = [
   },
 ]
 
-const shimmerStyles = `
-  @keyframes colorWave {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .shimmer-text {
-    background: linear-gradient(120deg, #3182ce 0%, #ffffff 25%, #805ad5 50%, #ffffff 75%, #3182ce 100%);
-    background-size: 400% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: colorWave 10s ease-in-out infinite;
-  }
-`
-
 export default function Home() {
   const { isAuthenticated, user, login, signMessage, deriveWallet, getAddress } = useW3PK()
   const t = useTranslation()
@@ -228,7 +208,6 @@ export default function Home() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: shimmerStyles }} />
       <VStack gap={8} align="stretch" py={20}>
         <Box>
           <StylishIntro />
