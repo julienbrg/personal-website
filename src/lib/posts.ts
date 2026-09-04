@@ -57,9 +57,12 @@ export async function getPost(slug: string): Promise<Post | null> {
   return rowToPost(rows[0])
 }
 
-// e.g. "Mardi 25 août 2025"
-export function formatPostDate(date: string): string {
-  const formatted = new Intl.DateTimeFormat('fr-FR', {
+// Frontmatter locales are OpenGraph-style ("fr_FR", "en_US"); Intl wants BCP 47.
+// e.g. "Mardi 25 août 2025" (fr_FR) or "Thursday, September 4, 2026" (en_US)
+export function formatPostDate(date: string, locale?: string): string {
+  const tag = (locale ?? 'fr_FR').replace('_', '-')
+
+  const formatted = new Intl.DateTimeFormat(tag, {
     weekday: 'long',
     day: 'numeric',
     month: 'long',

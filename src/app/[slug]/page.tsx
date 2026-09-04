@@ -67,7 +67,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </Heading>
           {post.date && (
             <Text fontSize="sm" color="fg.muted">
-              <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+              <time dateTime={post.date}>{formatPostDate(post.date, post.locale)}</time>
             </Text>
           )}
           {post.author && (
