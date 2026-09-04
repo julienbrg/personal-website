@@ -1,14 +1,34 @@
 'use client'
 
+import { Children, isValidElement, type ReactElement, type ReactNode } from 'react'
 import ReactMarkdown, { type Components } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Box, Heading, Text, Image, Table, Link as ChakraLink } from '@chakra-ui/react'
 import { ListRoot, ListItem } from '@/components/ui/list'
 import { brandColors } from '@/theme'
+import PostCodeBlock from '@/components/PostCodeBlock'
 import NextLink from 'next/link'
 
 // Prose rhythm: generous leading, and space between blocks scaled to match.
 const PROSE_LINE_HEIGHT = '1.9'
+
+// A markdown `pre` wraps exactly one `code` element; pull the fence tag and the
+// raw source back out of it so the highlighter gets a plain string.
+function readFence(children: ReactNode): { language?: string; code: string } | null {
+  const child = Children.toArray(children)[0]
+
+  if (!isValidElement(child)) return null
+
+  const { className, children: code } = (
+    child as ReactElement<{ className?: string; children?: ReactNode }>
+  ).props
+
+  if (typeof code !== 'string' && !Array.isArray(code)) return null
+
+  const language = className?.match(/language-([\w+-]+)/)?.[1]
+
+  return { language, code: Children.toArray(code).join('').replace(/\n$/, '') }
+}
 
 const components: Components = {
   h1: ({ children }) => (
@@ -129,25 +149,34 @@ const components: Components = {
       )
     }
 
-    return <Box as="code">{children}</Box>
+    // Fenced blocks are rendered by `pre` below, which owns the highlighting.
+    return <>{children}</>
   },
-  pre: ({ children }) => (
-    <Box
-      as="pre"
-      bg="bg.muted"
-      borderWidth="1px"
-      borderColor="border"
-      p={5}
-      my={8}
-      borderRadius="lg"
-      overflowX="auto"
-      fontFamily="monospace"
-      fontSize="sm"
-      lineHeight="tall"
-    >
-      {children}
-    </Box>
-  ),
+  pre: ({ children }) => {
+    const fence = readFence(children)
+
+    if (fence) {
+      return <PostCodeBlock language={fence.language} code={fence.code} />
+    }
+
+    return (
+      <Box
+        as="pre"
+        bg="bg.muted"
+        borderWidth="1px"
+        borderColor="border"
+        p={5}
+        my={8}
+        borderRadius="lg"
+        overflowX="auto"
+        fontFamily="monospace"
+        fontSize="sm"
+        lineHeight="tall"
+      >
+        {children}
+      </Box>
+    )
+  },
   table: ({ children }) => (
     <Box
       my={10}
