@@ -4,6 +4,7 @@ import { Box, VStack, Heading, Text, Link as ChakraLink } from '@chakra-ui/react
 import PostContent from '@/components/PostContent'
 import { getPost, formatPostDate } from '@/lib/posts'
 import { brandColors } from '@/theme'
+import { siteUrl } from '@/lib/site'
 
 // Posts live in Neon and can be edited directly there, so the page is
 // rendered dynamically per-request rather than statically prerendered —
@@ -28,6 +29,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   return {
     title: post.title,
     description,
+    // The markdown alternate lets anything that would rather read the source
+    // than the rendered page find it without guessing the URL.
+    alternates: {
+      canonical: `${siteUrl}/${slug}`,
+      types: { 'text/markdown': `${siteUrl}/${slug}/raw` },
+    },
     openGraph: {
       title: post.title,
       description,

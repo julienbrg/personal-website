@@ -1,22 +1,17 @@
 'use client'
 
 import { type ReactNode, memo } from 'react'
-import { ChakraProvider, Flex } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { ColorModeProvider } from '@/components/ui/color-mode'
 import { system } from '@/theme/system'
-import Spinner from '@/components/Spinner'
-import dynamic from 'next/dynamic'
+import { W3pkProvider } from './W3PK'
 
-// Dynamically import W3pkProvider to avoid SSR issues with w3pk dependencies
-const W3pkProvider = dynamic(() => import('./W3PK').then(mod => ({ default: mod.W3pkProvider })), {
-  ssr: false,
-  loading: () => (
-    <Flex align="center" justify="center" height="100vh">
-      <Spinner size="200px" />
-    </Flex>
-  ),
-})
-
+// W3pkProvider used to be loaded with `ssr: false`, which meant the server
+// rendered a spinner in place of the entire app: crawlers, link previews and
+// AI assistants fetching a post URL got no content at all, only the JS bundle.
+// The w3pk SDK imports and instantiates fine under Node (its browser APIs are
+// only touched from effects and handlers), so the provider is rendered on the
+// server like any other, and pages ship real HTML.
 const ContextProvider = memo(function ContextProvider({ children }: { children: ReactNode }) {
   return (
     <ColorModeProvider defaultTheme="dark">

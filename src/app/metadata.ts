@@ -1,7 +1,10 @@
 import { Metadata } from 'next'
+import { siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://w3pk.w3hc.org'),
+  // Was pointing at w3pk.w3hc.org (a different site), which made every
+  // relative OG image resolve to the wrong origin in link previews.
+  metadataBase: new URL(siteUrl),
 
   title: 'Julien Beranger',
   description: "Julien's projects, partners, bio and blog posts",

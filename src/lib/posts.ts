@@ -72,3 +72,22 @@ export function formatPostDate(date: string, locale?: string): string {
 
   return formatted.charAt(0).toUpperCase() + formatted.slice(1)
 }
+
+export interface PostSummary {
+  slug: string
+  date?: string
+  createdAt: string
+}
+
+/** Every post, newest first — the sitemap is the only index the site has. */
+export async function getPostSummaries(): Promise<PostSummary[]> {
+  const rows = (await sql`
+    SELECT slug, date, created_at FROM posts ORDER BY created_at DESC
+  `) as { slug: string; date: string | null; created_at: string }[]
+
+  return rows.map(row => ({
+    slug: row.slug,
+    date: row.date ?? undefined,
+    createdAt: row.created_at,
+  }))
+}

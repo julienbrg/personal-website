@@ -42,3 +42,4 @@ NOTES.md
 
 # blog post staging (DB is the source of truth, see scripts/posts.ts)
 /content
+docs/notes
