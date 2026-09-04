@@ -6,7 +6,12 @@ export const metadata: Metadata = {
   // relative OG image resolve to the wrong origin in link previews.
   metadataBase: new URL(siteUrl),
 
-  title: 'Julien Beranger',
+  // Post pages set only their own title; the template appends the site name,
+  // so a search result reads "Rukh — Roadmap — Julien Beranger".
+  title: {
+    default: 'Julien Beranger',
+    template: '%s — Julien Beranger',
+  },
   description: "Julien's projects, partners, bio and blog posts",
 
   keywords: ['w3pk', 'WebAuthn', 'Next.js', 'Web3', 'Ethereum'],

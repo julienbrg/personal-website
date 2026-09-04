@@ -1,3 +1,4 @@
+import { unstable_cache } from 'next/cache'
 import { sql } from '@/lib/db'
 import { isValidSlug } from '@/lib/markdown'
 
@@ -48,7 +49,7 @@ function rowToPost(row: PostRow): Post {
   }
 }
 
-export async function getPost(slug: string): Promise<Post | null> {
+async function fetchPost(slug: string): Promise<Post | null> {
   if (!isValidSlug(slug)) return null
 
   const rows = (await sql`SELECT * FROM posts WHERE slug = ${slug} LIMIT 1`) as PostRow[]
@@ -56,6 +57,18 @@ export async function getPost(slug: string): Promise<Post | null> {
 
   return rowToPost(rows[0])
 }
+
+// The Neon driver queries over fetch with `no-store`, which opts every route
+// that touches it out of caching entirely. Wrapping the queries is what makes
+// the pages' `revalidate` actually bite: one database round-trip per minute
+// per post instead of one per request, which matters when a crawler walks the
+// whole sitemap.
+const CACHE_SECONDS = 60
+
+export const getPost = unstable_cache(fetchPost, ['post'], {
+  revalidate: CACHE_SECONDS,
+  tags: ['posts'],
+})
 
 // Frontmatter locales are OpenGraph-style ("fr_FR", "en_US"); Intl wants BCP 47.
 // e.g. "Mardi 25 août 2025" (fr_FR) or "Thursday, September 4, 2026" (en_US)
@@ -79,11 +92,15 @@ export interface PostSummary {
   createdAt: string
 }
 
-/** Every post, newest first — the sitemap is the only index the site has. */
-export async function getPostSummaries(): Promise<PostSummary[]> {
+type PostSummaryRow = Pick<PostRow, 'slug' | 'date'> & { created_at: string }
+
+/** Every post, newest first — the sitemap is the site's only index. */
+async function fetchPostSummaries(): Promise<PostSummary[]> {
   const rows = (await sql`
-    SELECT slug, date, created_at FROM posts ORDER BY created_at DESC
-  `) as { slug: string; date: string | null; created_at: string }[]
+    SELECT slug, date, created_at
+    FROM posts
+    ORDER BY COALESCE(date, created_at::text) DESC
+  `) as PostSummaryRow[]
 
   return rows.map(row => ({
     slug: row.slug,
@@ -91,3 +108,8 @@ export async function getPostSummaries(): Promise<PostSummary[]> {
     createdAt: row.created_at,
   }))
 }
+
+export const getPostSummaries = unstable_cache(fetchPostSummaries, ['post-summaries'], {
+  revalidate: CACHE_SECONDS,
+  tags: ['posts'],
+})

@@ -6,10 +6,17 @@ import { getPost, formatPostDate } from '@/lib/posts'
 import { brandColors } from '@/theme'
 import { siteUrl } from '@/lib/site'
 
-// Posts live in Neon and can be edited directly there, so the page is
-// rendered dynamically per-request rather than statically prerendered —
-// content changes show up immediately without a redeploy.
-export const dynamic = 'force-dynamic'
+// Posts live in Neon and can be edited directly there, so pages are never
+// baked at build time. They are cached for a minute rather than rebuilt on
+// every request: an edit in the database shows up within 60s, and crawlers
+// (which hit these URLs repeatedly) get a static-speed response instead of a
+// database round-trip each time.
+export const revalidate = 60
+
+/** Frontmatter images may be site-relative or already absolute. */
+function toAbsoluteUrl(path: string): string {
+  return path.startsWith('http') ? path : `${siteUrl}${path}`
+}
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
@@ -59,8 +66,33 @@ export default async function PostPage({ params }: PostPageProps) {
 
   if (!post) notFound()
 
+  // Search engines read the page in whatever language the root <html> claims,
+  // and that is hardcoded to "en" for the app chrome. Most posts are French,
+  // so the article carries its own language tag.
+  const lang = post.locale?.replace('_', '-')
+
+  // BlogPosting markup: what turns a result into a dated, attributed article
+  // in search rather than an anonymous page.
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: lang,
+    author: { '@type': 'Person', name: post.author ?? 'Julien Béranger' },
+    publisher: { '@type': 'Person', name: 'Julien Béranger' },
+    image: toAbsoluteUrl(post.image ?? '/huangshan.png'),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/${slug}` },
+  }
+
   return (
-    <Box as="article" py={10}>
+    <Box as="article" lang={lang} py={10}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <VStack gap={8} align="stretch">
         <Box textAlign="center" mb={4}>
           <Heading
