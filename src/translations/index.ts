@@ -507,7 +507,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Signature: ${signature.substring(0, 20)}...`,
       contactButton: 'Get in touch',
       bannerText:
-        "Hello Anon! 👋\n\nWeb3 hacker, AI builder and privacy maxi, I'm the co-founder of the [Web3 Hackers Collective](https://github.com/w3hc) and CEO of [Strat](https://strat.cc/).\n\nI mainly code in [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/), and I love working with frameworks like [React](https://react.dev/), [Next.js](https://nextjs.org/), and [Nest.js](https://nestjs.com/).",
+        "Hey Anon 👋\n\nZK/AI/Web3 builder, privacy maxi. Co-founder of the [Web3 Hackers Collective](https://github.com/w3hc), CEO of [Strat](https://strat.cc/).\n\nI ship with [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) and [Nest.js](https://nestjs.com/).\n\nWhen I'm not building, I teach teams to use AI the right way.",
     },
     navigation: {
       contactUs: 'Contact',
@@ -1060,7 +1060,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `签名：${signature.substring(0, 20)}...`,
       contactButton: '直接联系我！',
       bannerText:
-        '你好，匿名用户！👋\n\n作为 Web3 黑客、AI 构建者和隐私极客，我是 [Web3 Hackers Collective](https://github.com/w3hc) 的联合创始人，同时担任 [Strat](https://strat.cc/) 的 CEO。\n\n我主要使用 [TypeScript](https://www.typescriptlang.org/)、[Node.js](https://nodejs.org/en)、[Solidity](https://docs.soliditylang.org/) 编程，也喜欢使用 [React](https://react.dev/)、[Next.js](https://nextjs.org/) 和 [Nest.js](https://nestjs.com/) 等框架。',
+        '你好 Anon 👋\n\nZK/AI/Web3 开发者，隐私极客。[Web3 Hackers Collective](https://github.com/w3hc) 联合创始人，[Strat](https://strat.cc/) CEO。\n\n我用 [TypeScript](https://www.typescriptlang.org/)、[Solidity](https://docs.soliditylang.org/)、[React](https://react.dev/)、[Next.js](https://nextjs.org/) 和 [Nest.js](https://nestjs.com/) 开发。\n\n不写代码的时候，我教团队正确地使用 AI。',
     },
     navigation: {
       contactUs: '联系我们',
@@ -1586,7 +1586,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `हस्ताक्षर: ${signature.substring(0, 20)}...`,
       contactButton: 'सीधे बात करें!',
       bannerText:
-        'नमस्ते मित्र! 👋\n\nएक Web3 हैकर, AI बिल्डर और प्राइवेसी मैक्सी के रूप में, मैं [Web3 Hackers Collective](https://github.com/w3hc) का सह-संस्थापक और [Strat](https://strat.cc/) का CEO हूँ।\n\nमैं मुख्य रूप से [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/) में कोड लिखता हूँ, और मुझे [React](https://react.dev/), [Next.js](https://nextjs.org/), और [Nest.js](https://nestjs.com/) जैसे फ्रेमवर्क के साथ काम करना पसंद है।',
+        'नमस्ते Anon 👋\n\nZK/AI/Web3 बिल्डर, प्राइवेसी मैक्सी। [Web3 Hackers Collective](https://github.com/w3hc) का सह-संस्थापक, [Strat](https://strat.cc/) का CEO।\n\nमैं [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) और [Nest.js](https://nestjs.com/) के साथ काम करता हूँ।\n\nजब मैं कुछ बना नहीं रहा होता, तब मैं टीमों को AI का सही इस्तेमाल करना सिखाता हूँ।',
     },
     navigation: {
       contactUs: 'संपर्क करें',
@@ -2149,7 +2149,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Firma: ${signature.substring(0, 20)}...`,
       contactButton: '¡Hablemos directamente!',
       bannerText:
-        '¡Hola Anon! 👋\n\nHacker de Web3, constructor de IA y maximalista de la privacidad, soy cofundador de [Web3 Hackers Collective](https://github.com/w3hc) y CEO de [Strat](https://strat.cc/).\n\nProgramo principalmente en [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/), y me encanta trabajar con frameworks como [React](https://react.dev/), [Next.js](https://nextjs.org/) y [Nest.js](https://nestjs.com/).',
+        '¡Hola Anon! 👋\n\nConstructor ZK/AI/Web3, privacy maxi. Cofundador del [Web3 Hackers Collective](https://github.com/w3hc), CEO de [Strat](https://strat.cc/).\n\nProgramo con [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) y [Nest.js](https://nestjs.com/).\n\nCuando no estoy construyendo, enseño a los equipos a usar la IA de la forma correcta.',
     },
     navigation: {
       contactUs: 'Contacto',
@@ -2733,7 +2733,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Signature : ${signature.substring(0, 20)}...`,
       contactButton: 'Échangeons !',
       bannerText:
-        "Bonjour Anon ! 👋\n\nWeb3 Hacker, ingénieur IA et privacy maxi, je suis cofondateur du [Web3 Hackers Collective](https://github.com/w3hc) et CEO de [Strat](https://strat.cc/).\n\nJe code principalement en [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/), et j'aime travailler avec des frameworks tels que [React](https://react.dev/), [Next.js](https://nextjs.org/) et [Nest.js](https://nestjs.com/).",
+        "Salut Anon 👋\n\nDéveloppeur ZK/AI/Web3, privacy maxi. Cofondateur du [Web3 Hackers Collective](https://github.com/w3hc), CEO de [Strat](https://strat.cc/).\n\nJe code avec [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) et [Nest.js](https://nestjs.com/).\n\nQuand je ne construis pas, j'apprends aux équipes à utiliser l'IA correctement.",
     },
     navigation: {
       contactUs: 'Contact',
@@ -3320,7 +3320,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `التوقيع: ${signature.substring(0, 20)}...`,
       contactButton: 'لنتحدث مباشرة!',
       bannerText:
-        'مرحباً أيها المجهول! 👋\n\nهاكر Web3، وباني حلول الذكاء الاصطناعي، ومناصر متشدد للخصوصية، أنا الشريك المؤسس لـ [Web3 Hackers Collective](https://github.com/w3hc) والرئيس التنفيذي لشركة [Strat](https://strat.cc/).\n\nأبرمج بشكل أساسي بلغات [TypeScript](https://www.typescriptlang.org/) و[Node.js](https://nodejs.org/en) و[Solidity](https://docs.soliditylang.org/)، وأحب العمل مع أطر عمل مثل [React](https://react.dev/) و[Next.js](https://nextjs.org/) و[Nest.js](https://nestjs.com/).',
+        'مرحباً Anon 👋\n\nمطوّر ZK/AI/Web3، ومناصر متشدد للخصوصية. الشريك المؤسس لـ [Web3 Hackers Collective](https://github.com/w3hc)، والرئيس التنفيذي لـ [Strat](https://strat.cc/).\n\nأطوّر باستخدام [TypeScript](https://www.typescriptlang.org/) و[Solidity](https://docs.soliditylang.org/) و[React](https://react.dev/) و[Next.js](https://nextjs.org/) و[Nest.js](https://nestjs.com/).\n\nوعندما لا أبرمج، أُدرّب الفرق على استخدام الذكاء الاصطناعي بالطريقة الصحيحة.',
     },
     navigation: {
       contactUs: 'اتصل بنا',
@@ -3865,7 +3865,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `স্বাক্ষর: ${signature.substring(0, 20)}...`,
       contactButton: 'চলুন সরাসরি কথা বলি!',
       bannerText:
-        'হ্যালো বন্ধু! 👋\n\nএকজন Web3 হ্যাকার, AI নির্মাতা এবং প্রাইভেসি ম্যাক্সি হিসেবে, আমি [Web3 Hackers Collective](https://github.com/w3hc)-এর সহ-প্রতিষ্ঠাতা এবং [Strat](https://strat.cc/)-এর CEO।\n\nআমি মূলত [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/)-তে কোড লিখি, এবং [React](https://react.dev/), [Next.js](https://nextjs.org/), ও [Nest.js](https://nestjs.com/)-এর মতো ফ্রেমওয়ার্ক নিয়ে কাজ করতে ভালোবাসি।',
+        'হ্যালো Anon 👋\n\nZK/AI/Web3 বিল্ডার, প্রাইভেসি ম্যাক্সি। [Web3 Hackers Collective](https://github.com/w3hc)-এর সহ-প্রতিষ্ঠাতা, [Strat](https://strat.cc/)-এর CEO।\n\nআমি [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) ও [Nest.js](https://nestjs.com/) দিয়ে কাজ করি।\n\nযখন আমি কিছু বানাই না, তখন আমি টিমগুলোকে সঠিকভাবে AI ব্যবহার করতে শেখাই।',
     },
     navigation: {
       contactUs: 'যোগাযোগ করুন',
@@ -4440,7 +4440,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Подпись: ${signature.substring(0, 20)}...`,
       contactButton: 'Давайте пообщаемся напрямую!',
       bannerText:
-        'Привет, незнакомец! 👋\n\nWeb3-хакер, AI-разработчик и приватность-максималист, я сооснователь [Web3 Hackers Collective](https://github.com/w3hc) и CEO [Strat](https://strat.cc/).\n\nПишу в основном на [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/), и люблю работать с такими фреймворками, как [React](https://react.dev/), [Next.js](https://nextjs.org/) и [Nest.js](https://nestjs.com/).',
+        'Привет, Anon 👋\n\nZK/AI/Web3-разработчик, приватность-максималист. Сооснователь [Web3 Hackers Collective](https://github.com/w3hc), CEO [Strat](https://strat.cc/).\n\nПишу на [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) и [Nest.js](https://nestjs.com/).\n\nКогда не строю продукты, учу команды правильно использовать ИИ.',
     },
     navigation: {
       contactUs: 'Контакты',
@@ -5019,7 +5019,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Assinatura: ${signature.substring(0, 20)}...`,
       contactButton: 'Vamos conversar diretamente!',
       bannerText:
-        'Olá Anon! 👋\n\nHacker Web3, construtor de IA e maximalista da privacidade, sou cofundador do [Web3 Hackers Collective](https://github.com/w3hc) e CEO da [Strat](https://strat.cc/).\n\nCodifico principalmente em [TypeScript](https://www.typescriptlang.org/), [Node.js](https://nodejs.org/en), [Solidity](https://docs.soliditylang.org/), e adoro trabalhar com frameworks como [React](https://react.dev/), [Next.js](https://nextjs.org/) e [Nest.js](https://nestjs.com/).',
+        'Olá Anon 👋\n\nBuilder ZK/AI/Web3, privacy maxi. Cofundador do [Web3 Hackers Collective](https://github.com/w3hc), CEO da [Strat](https://strat.cc/).\n\nDesenvolvo com [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) e [Nest.js](https://nestjs.com/).\n\nQuando não estou construindo, ensino equipes a usar IA do jeito certo.',
     },
     navigation: {
       contactUs: 'Contato',
@@ -5601,7 +5601,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `دستخط: ${signature.substring(0, 20)}...`,
       contactButton: 'براہ راست بات کریں!',
       bannerText:
-        'ہیلو دوست! 👋\n\nWeb3 ہیکر، AI بلڈر اور پرائیویسی میکسی کے طور پر، میں [Web3 Hackers Collective](https://github.com/w3hc) کا شریک بانی اور [Strat](https://strat.cc/) کا CEO ہوں۔\n\nمیں بنیادی طور پر [TypeScript](https://www.typescriptlang.org/)، [Node.js](https://nodejs.org/en)، [Solidity](https://docs.soliditylang.org/) میں کوڈ لکھتا ہوں، اور مجھے [React](https://react.dev/)، [Next.js](https://nextjs.org/)، اور [Nest.js](https://nestjs.com/) جیسے فریم ورکس کے ساتھ کام کرنا پسند ہے۔',
+        'ہیلو Anon 👋\n\nZK/AI/Web3 بلڈر، پرائیویسی میکسی۔ [Web3 Hackers Collective](https://github.com/w3hc) کا شریک بانی، [Strat](https://strat.cc/) کا CEO۔\n\nمیں [TypeScript](https://www.typescriptlang.org/)، [Solidity](https://docs.soliditylang.org/)، [React](https://react.dev/)، [Next.js](https://nextjs.org/) اور [Nest.js](https://nestjs.com/) کے ساتھ کام کرتا ہوں۔\n\nجب میں کچھ نہیں بنا رہا ہوتا تو میں ٹیموں کو AI کا درست استعمال سکھاتا ہوں۔',
     },
     navigation: {
       contactUs: 'رابطہ کریں',
