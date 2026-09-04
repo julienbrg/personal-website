@@ -104,9 +104,9 @@ type PostSummaryRow = Pick<
 }
 
 /**
- * Every post, newest first. Feeds the sitemap, the feed and the llms.txt
- * index — the site has no HTML page that links to every post, so these
- * machine-readable listings are the only way a crawler finds them all.
+ * Every post, newest first. Feeds /posts, the sitemap, the feed and the
+ * llms.txt index — nothing in the site chrome links to every post, so these
+ * listings are how a crawler finds them all.
  */
 async function fetchPostSummaries(): Promise<PostSummary[]> {
   const rows = (await sql`
