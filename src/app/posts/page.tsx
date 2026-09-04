@@ -102,12 +102,7 @@ export default async function PostsIndexPage() {
 
             return (
               <Box as="li" key={post.slug}>
-                <ChakraLink
-                  asChild
-                  fontSize="lg"
-                  fontWeight="medium"
-                  color={brandColors.accent}
-                >
+                <ChakraLink asChild fontSize="lg" fontWeight="medium" color={brandColors.accent}>
                   <NextLink href={`/${post.slug}`} hrefLang={lang}>
                     <Text as="span" lang={lang}>
                       {post.title}
