@@ -43,9 +43,24 @@ const securityHeaders = [
   },
 ]
 
+// Post slugs, as validated in src/lib/markdown.ts. Spelling the character
+// class out keeps the trailing `.md` literal instead of being swallowed by a
+// greedy `:slug`.
+const slugPattern = '[a-z0-9][a-z0-9\\-]*'
+
 const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@chakra-ui/react'],
+  },
+  // `<url>.md` is the convention agents and doc crawlers try first for a
+  // markdown copy of a page; /<slug>/raw is the handler that serves it.
+  async rewrites() {
+    return [
+      {
+        source: `/:slug(${slugPattern})\\.md`,
+        destination: '/:slug/raw',
+      },
+    ]
   },
   async headers() {
     return [

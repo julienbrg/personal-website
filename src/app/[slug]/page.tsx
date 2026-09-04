@@ -5,6 +5,7 @@ import PostContent from '@/components/PostContent'
 import { getPost, formatPostDate } from '@/lib/posts'
 import { brandColors } from '@/theme'
 import { siteUrl } from '@/lib/site'
+import { postMarkdownUrl, postUrl } from '@/lib/postMarkdown'
 
 // Posts live in Neon and can be edited directly there, so pages are never
 // baked at build time. They are cached for a minute rather than rebuilt on
@@ -37,10 +38,14 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     title: post.title,
     description,
     // The markdown alternate lets anything that would rather read the source
-    // than the rendered page find it without guessing the URL.
+    // than the rendered page find it without guessing the URL: a
+    // <link rel="alternate" type="text/markdown"> any client can follow.
     alternates: {
-      canonical: `${siteUrl}/${slug}`,
-      types: { 'text/markdown': `${siteUrl}/${slug}/raw` },
+      canonical: postUrl(slug),
+      types: {
+        'text/markdown': postMarkdownUrl(slug),
+        'application/rss+xml': `${siteUrl}/feed.xml`,
+      },
     },
     openGraph: {
       title: post.title,
@@ -84,7 +89,13 @@ export default async function PostPage({ params }: PostPageProps) {
     author: { '@type': 'Person', name: post.author ?? 'Julien Béranger' },
     publisher: { '@type': 'Person', name: 'Julien Béranger' },
     image: toAbsoluteUrl(post.image ?? '/huangshan.png'),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl(slug) },
+    // Points a consumer of the structured data at the markdown source too.
+    encoding: {
+      '@type': 'MediaObject',
+      encodingFormat: 'text/markdown',
+      contentUrl: postMarkdownUrl(slug),
+    },
   }
 
   return (

@@ -88,28 +88,59 @@ export function formatPostDate(date: string, locale?: string): string {
 
 export interface PostSummary {
   slug: string
+  title: string
+  description?: string
   date?: string
+  locale?: string
+  author?: string
   createdAt: string
 }
 
-type PostSummaryRow = Pick<PostRow, 'slug' | 'date'> & { created_at: string }
+type PostSummaryRow = Pick<
+  PostRow,
+  'slug' | 'title' | 'description' | 'date' | 'locale' | 'author'
+> & {
+  created_at: string
+}
 
-/** Every post, newest first — the sitemap is the site's only index. */
+/**
+ * Every post, newest first. Feeds the sitemap, the feed and the llms.txt
+ * index — the site has no HTML page that links to every post, so these
+ * machine-readable listings are the only way a crawler finds them all.
+ */
 async function fetchPostSummaries(): Promise<PostSummary[]> {
   const rows = (await sql`
-    SELECT slug, date, created_at
+    SELECT slug, title, description, date, locale, author, created_at
     FROM posts
     ORDER BY COALESCE(date, created_at::text) DESC
   `) as PostSummaryRow[]
 
   return rows.map(row => ({
     slug: row.slug,
+    title: row.title,
+    description: row.description ?? undefined,
     date: row.date ?? undefined,
+    locale: row.locale ?? undefined,
+    author: row.author ?? undefined,
     createdAt: row.created_at,
   }))
 }
 
 export const getPostSummaries = unstable_cache(fetchPostSummaries, ['post-summaries'], {
+  revalidate: CACHE_SECONDS,
+  tags: ['posts'],
+})
+
+/** Every post with its body, newest first — for the full-text bundles. */
+async function fetchPosts(): Promise<Post[]> {
+  const rows = (await sql`
+    SELECT * FROM posts ORDER BY COALESCE(date, created_at::text) DESC
+  `) as PostRow[]
+
+  return rows.map(rowToPost)
+}
+
+export const getPosts = unstable_cache(fetchPosts, ['posts'], {
   revalidate: CACHE_SECONDS,
   tags: ['posts'],
 })
