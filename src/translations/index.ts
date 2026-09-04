@@ -2733,7 +2733,7 @@ export const translations: Translations = {
       messageSignedDescription: signature => `Signature : ${signature.substring(0, 20)}...`,
       contactButton: 'Échangeons !',
       bannerText:
-        "Salut Anon 👋\n\nDéveloppeur ZK/AI/Web3, privacy maxi. Cofondateur du [Web3 Hackers Collective](https://github.com/w3hc), CEO de [Strat](https://strat.cc/).\n\nJe code avec [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) et [Nest.js](https://nestjs.com/).\n\nQuand je ne construis pas, j'apprends aux équipes à utiliser l'IA correctement.",
+        "Bonjour 👋\n\nDéveloppeur ZK/AI/Web3 et privacy maxi, je suis le cofondateur du [Web3 Hackers Collective](https://github.com/w3hc), et le CEO de [Strat](https://strat.cc/).\n\nJe code avec [TypeScript](https://www.typescriptlang.org/), [Solidity](https://docs.soliditylang.org/), [React](https://react.dev/), [Next.js](https://nextjs.org/) et [Nest.js](https://nestjs.com/).\n\nQuand je ne code pas, j'entraîne les équipes à utiliser l'IA comme il faut.",
     },
     navigation: {
       contactUs: 'Contact',
