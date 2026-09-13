@@ -2,7 +2,7 @@ import { getPostSummaries } from '@/lib/posts'
 import { postIndexEntry } from '@/lib/postMarkdown'
 import { siteUrl } from '@/lib/site'
 
-// Built per-request like the sitemap: the post list lives in Neon, so
+// Built per-request like the sitemap: the post list lives in Postgres, so
 // prerendering this at build time would make the build depend on the
 // database. The queries underneath are cached for a minute (see getPost*),
 // and the header below lets a CDN hold the response for just as long.

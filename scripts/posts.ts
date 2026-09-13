@@ -1,4 +1,4 @@
-// Terminal control for blog posts stored in Neon. Usage:
+// Terminal control for blog posts stored in Postgres. Usage:
 //   pnpm posts init                 create the posts table
 //   pnpm posts add <file.md>        insert or update a post from a markdown file
 //   pnpm posts delete <slug>        remove a post
