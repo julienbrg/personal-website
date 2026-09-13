@@ -17,6 +17,13 @@ html {
   translate: no;
 }
 
+/* Smooth-scroll to anchors (e.g. table of contents links), respecting motion preference */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Accessibility: Focus indicators */
 *:focus-visible {
   outline: 2px solid var(--brand-primary);

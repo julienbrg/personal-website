@@ -3,6 +3,7 @@
 import { Children, isValidElement, type ReactElement, type ReactNode } from 'react'
 import ReactMarkdown, { type Components } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeSlug from 'rehype-slug'
 import { Box, Heading, Text, Image, Table, Link as ChakraLink } from '@chakra-ui/react'
 import { ListRoot, ListItem } from '@/components/ui/list'
 import { brandColors } from '@/theme'
@@ -31,31 +32,51 @@ function readFence(children: ReactNode): { language?: string; code: string } | n
 }
 
 const components: Components = {
-  h1: ({ children }) => (
-    <Heading as="h2" size="xl" mt={16} mb={5} color={brandColors.accent} lineHeight="1.3">
+  h1: ({ id, children }) => (
+    <Heading
+      as="h2"
+      id={id}
+      size="xl"
+      mt={16}
+      mb={5}
+      color={brandColors.accent}
+      lineHeight="1.3"
+      scrollMarginTop={6}
+    >
       {children}
     </Heading>
   ),
-  h2: ({ children }) => (
+  h2: ({ id, children }) => (
     <Heading
       as="h2"
+      id={id}
       size={{ base: 'xl', md: '2xl' }}
       mt={14}
       mb={7}
       color={brandColors.primary}
       lineHeight="1.35"
       textShadow="0 0 12px rgba(255, 255, 255, 0.45)"
+      scrollMarginTop={6}
     >
       {children}
     </Heading>
   ),
-  h3: ({ children }) => (
-    <Heading as="h3" size="md" mt={10} mb={4} lineHeight="1.4">
+  h3: ({ id, children }) => (
+    <Heading as="h3" id={id} size="md" mt={10} mb={4} lineHeight="1.4" scrollMarginTop={6}>
       {children}
     </Heading>
   ),
-  h4: ({ children }) => (
-    <Heading as="h4" size="sm" mt={8} mb={3} color="fg.muted" lineHeight="1.4">
+  h4: ({ id, children }) => (
+    <Heading
+      as="h4"
+      id={id}
+      size="sm"
+      mt={8}
+      mb={3}
+      color="fg.muted"
+      lineHeight="1.4"
+      scrollMarginTop={6}
+    >
       {children}
     </Heading>
   ),
@@ -218,7 +239,7 @@ const components: Components = {
 
 export default function PostContent({ content }: { content: string }) {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={components}>
       {content}
     </ReactMarkdown>
   )
