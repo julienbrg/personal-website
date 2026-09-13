@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getPostSummaries } from '@/lib/posts'
 import { siteUrl } from '@/lib/site'
 
-// Posts live in Neon, so the sitemap is generated per-request rather than
+// Posts live in Postgres, so the sitemap is generated per-request rather than
 // baked at build time.
 export const dynamic = 'force-dynamic'
 

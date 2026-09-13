@@ -52,17 +52,16 @@ function rowToPost(row: PostRow): Post {
 async function fetchPost(slug: string): Promise<Post | null> {
   if (!isValidSlug(slug)) return null
 
-  const rows = (await sql`SELECT * FROM posts WHERE slug = ${slug} LIMIT 1`) as PostRow[]
+  const rows = await sql<PostRow[]>`SELECT * FROM posts WHERE slug = ${slug} LIMIT 1`
   if (rows.length === 0) return null
 
   return rowToPost(rows[0])
 }
 
-// The Neon driver queries over fetch with `no-store`, which opts every route
-// that touches it out of caching entirely. Wrapping the queries is what makes
-// the pages' `revalidate` actually bite: one database round-trip per minute
-// per post instead of one per request, which matters when a crawler walks the
-// whole sitemap.
+// `sitemap.ts` is force-dynamic and `/feed.xml`, `/llms.txt` and `/llms-full.txt`
+// are route handlers, so none of them benefit from route-level caching. Wrapping
+// the queries gives them one database round-trip per minute instead of one per
+// request, which matters when a crawler walks every URL in the sitemap.
 const CACHE_SECONDS = 60
 
 export const getPost = unstable_cache(fetchPost, ['post'], {
@@ -100,7 +99,7 @@ type PostSummaryRow = Pick<
   PostRow,
   'slug' | 'title' | 'description' | 'date' | 'locale' | 'author'
 > & {
-  created_at: string
+  created_at: Date
 }
 
 /**
@@ -109,11 +108,11 @@ type PostSummaryRow = Pick<
  * listings are how a crawler finds them all.
  */
 async function fetchPostSummaries(): Promise<PostSummary[]> {
-  const rows = (await sql`
+  const rows = await sql<PostSummaryRow[]>`
     SELECT slug, title, description, date, locale, author, created_at
     FROM posts
     ORDER BY COALESCE(date, created_at::text) DESC
-  `) as PostSummaryRow[]
+  `
 
   return rows.map(row => ({
     slug: row.slug,
@@ -122,7 +121,7 @@ async function fetchPostSummaries(): Promise<PostSummary[]> {
     date: row.date ?? undefined,
     locale: row.locale ?? undefined,
     author: row.author ?? undefined,
-    createdAt: row.created_at,
+    createdAt: row.created_at.toISOString(),
   }))
 }
 

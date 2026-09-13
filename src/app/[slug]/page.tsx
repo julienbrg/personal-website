@@ -7,7 +7,7 @@ import { brandColors } from '@/theme'
 import { siteUrl } from '@/lib/site'
 import { postMarkdownUrl, postUrl } from '@/lib/postMarkdown'
 
-// Posts live in Neon and can be edited directly there, so pages are never
+// Posts live in Postgres and can be edited directly there, so pages are never
 // baked at build time. They are cached for a minute rather than rebuilt on
 // every request: an edit in the database shows up within 60s, and crawlers
 // (which hit these URLs repeatedly) get a static-speed response instead of a
