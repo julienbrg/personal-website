@@ -26,7 +26,7 @@ export async function GET(request: Request, { params }: RawPostProps) {
   const prefersHtml = accept.includes('text/html') && !accept.includes('text/markdown')
   const contentType = prefersHtml ? 'text/plain; charset=utf-8' : 'text/markdown; charset=utf-8'
 
-  const headers = {
+  const headers: Record<string, string> = {
     'Content-Type': contentType,
     // Same freshness as the HTML page, and the type varies by request.
     'Cache-Control': 'public, max-age=0, s-maxage=60, stale-while-revalidate=300',
@@ -38,6 +38,12 @@ export async function GET(request: Request, { params }: RawPostProps) {
       status: 404,
       headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' },
     })
+  }
+
+  // Unlisted posts are reachable here too, so the noindex signal that the
+  // HTML page sets via <meta name="robots"> needs a header equivalent.
+  if (post.unlisted) {
+    headers['X-Robots-Tag'] = 'noindex, nofollow'
   }
 
   return new Response(postToMarkdown(post), { headers })
