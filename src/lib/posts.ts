@@ -12,6 +12,7 @@ export interface PostFrontmatter {
   author?: string
   model?: string
   conversation?: string
+  unlisted?: boolean
 }
 
 export interface Post extends PostFrontmatter {
@@ -30,6 +31,7 @@ interface PostRow {
   author: string | null
   model: string | null
   conversation: string | null
+  unlisted: boolean
   content: string
 }
 
@@ -45,6 +47,7 @@ function rowToPost(row: PostRow): Post {
     author: row.author ?? undefined,
     model: row.model ?? undefined,
     conversation: row.conversation ?? undefined,
+    unlisted: row.unlisted,
     content: row.content,
   }
 }
@@ -103,14 +106,17 @@ type PostSummaryRow = Pick<
 }
 
 /**
- * Every post, newest first. Feeds /posts, the sitemap, the feed and the
- * llms.txt index — nothing in the site chrome links to every post, so these
- * listings are how a crawler finds them all.
+ * Every listed post, newest first. Feeds /posts, the sitemap, the feed and
+ * the llms.txt index — nothing in the site chrome links to every post, so
+ * these listings are how a crawler finds them all. Unlisted posts are left
+ * out on purpose: they stay reachable at their direct URL (see `getPost`)
+ * but never appear here.
  */
 async function fetchPostSummaries(): Promise<PostSummary[]> {
   const rows = await sql<PostSummaryRow[]>`
     SELECT slug, title, description, date, locale, author, created_at
     FROM posts
+    WHERE unlisted IS NOT TRUE
     ORDER BY COALESCE(date, created_at::text) DESC
   `
 
@@ -130,10 +136,14 @@ export const getPostSummaries = unstable_cache(fetchPostSummaries, ['post-summar
   tags: ['posts'],
 })
 
-/** Every post with its body, newest first — for the full-text bundles. */
+/**
+ * Every listed post with its body, newest first — for the full-text bundles
+ * (feed.xml, llms-full.txt). Unlisted posts are excluded, same as
+ * `getPostSummaries`.
+ */
 async function fetchPosts(): Promise<Post[]> {
   const rows = (await sql`
-    SELECT * FROM posts ORDER BY COALESCE(date, created_at::text) DESC
+    SELECT * FROM posts WHERE unlisted IS NOT TRUE ORDER BY COALESCE(date, created_at::text) DESC
   `) as PostRow[]
 
   return rows.map(rowToPost)
