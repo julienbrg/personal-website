@@ -47,6 +47,9 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
         'application/rss+xml': `${siteUrl}/feed.xml`,
       },
     },
+    // Unlisted posts are still reachable by direct link, but a search engine
+    // or assistant that stumbles onto the URL should not index it.
+    ...(post.unlisted && { robots: { index: false, follow: false } }),
     openGraph: {
       title: post.title,
       description,
