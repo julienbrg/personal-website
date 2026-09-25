@@ -8,6 +8,7 @@ import { Box, Heading, Text, Image, Table, Link as ChakraLink } from '@chakra-ui
 import { ListRoot, ListItem } from '@/components/ui/list'
 import { brandColors } from '@/theme'
 import PostCodeBlock from '@/components/PostCodeBlock'
+import MermaidDiagram from '@/components/MermaidDiagram'
 import NextLink from 'next/link'
 
 // Prose rhythm: generous leading, and space between blocks scaled to match.
@@ -175,6 +176,10 @@ const components: Components = {
   },
   pre: ({ children }) => {
     const fence = readFence(children)
+
+    if (fence?.language === 'mermaid') {
+      return <MermaidDiagram code={fence.code} />
+    }
 
     if (fence) {
       return <PostCodeBlock language={fence.language} code={fence.code} />

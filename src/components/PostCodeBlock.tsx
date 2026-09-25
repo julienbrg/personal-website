@@ -1,6 +1,8 @@
 'use client'
 
-import { Box } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import { Box, IconButton } from '@chakra-ui/react'
+import { LuCheck, LuCopy } from 'react-icons/lu'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism-light'
 import oneDark from 'react-syntax-highlighter/dist/esm/styles/prism/one-dark'
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash'
@@ -46,9 +48,54 @@ interface PostCodeBlockProps {
   code: string
 }
 
+function CopyButton({ code }: { code: string }) {
+  const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (!copied) return
+    const timer = setTimeout(() => setCopied(false), 2000)
+    return () => clearTimeout(timer)
+  }, [copied])
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code)
+      setCopied(true)
+    } catch {
+      // Clipboard access can be denied (insecure context, permissions); nothing to do.
+    }
+  }
+
+  return (
+    <IconButton
+      aria-label={copied ? 'Copied' : 'Copy code'}
+      onClick={copy}
+      position="absolute"
+      top={2}
+      right={2}
+      size="xs"
+      variant="ghost"
+      color="whiteAlpha.800"
+      opacity={{ base: 0.8, md: 0.5 }}
+      _hover={{ opacity: 1, bg: 'whiteAlpha.200' }}
+      _focusVisible={{ opacity: 1 }}
+    >
+      {copied ? <LuCheck /> : <LuCopy />}
+    </IconButton>
+  )
+}
+
 export default function PostCodeBlock({ language, code }: PostCodeBlockProps) {
   return (
-    <Box my={8} borderWidth="1px" borderColor="border" borderRadius="lg" overflow="hidden">
+    <Box
+      position="relative"
+      my={8}
+      borderWidth="1px"
+      borderColor="border"
+      borderRadius="lg"
+      overflow="hidden"
+    >
+      <CopyButton code={code} />
       <SyntaxHighlighter
         language={language}
         style={oneDark}

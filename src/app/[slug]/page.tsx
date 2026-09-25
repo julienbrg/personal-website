@@ -107,8 +107,8 @@ export default async function PostPage({ params }: PostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <VStack gap={8} align="stretch">
-        <Box textAlign="center" mb={4}>
+      <VStack gap={6} align="stretch">
+        <Box textAlign="center">
           <Heading
             as="h1"
             size={{ base: '2xl', md: '3xl' }}
@@ -155,7 +155,7 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
         </Box>
 
-        <Box>
+        <Box css={{ '& > :first-child': { marginTop: 0 } }}>
           <PostContent content={post.content} />
         </Box>
       </VStack>
