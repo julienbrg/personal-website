@@ -11,6 +11,10 @@ const quotes = [
     author: 'Bruce Lee',
   },
   {
+    text: "AI is a great tool, but it's a tool.",
+    author: 'Linus Torvalds',
+  },
+  {
     text: '知彼知己百戰不殆不知彼而知己一勝一負不知彼不知己每戰必殆',
     author: 'Sunzi III-18',
   },
