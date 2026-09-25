@@ -24,6 +24,7 @@ type ProjectKey =
   | 'nftRegistry'
   | 'gameOfGo'
   | 'zhankai'
+  | 'xszc'
   | 'eip7702'
   | 'erc5560'
   | 'genji'
@@ -106,6 +107,13 @@ const projects: Project[] = [
     title: 'Zhankai',
     githubUrl: 'https://github.com/w3hc/zhankai',
     labels: ['AI', 'Web3'],
+  },
+  {
+    key: 'xszc',
+    title: '像素众创',
+    webUrl: 'https://pixel.w3hc.org',
+    githubUrl: 'https://github.com/w3hc/xszc',
+    labels: ['Web3'],
   },
   {
     key: 'eip7702',
