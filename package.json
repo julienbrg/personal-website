@@ -14,7 +14,7 @@
     "lint:a11y": "eslint . --no-ignore",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "posts": "tsx scripts/posts.ts",
+    "posts": "tsx --env-file=.env scripts/posts.ts",
     "test:a11y": "echo '⚠️  Run Lighthouse in Chrome DevTools or install pa11y: npx pa11y http://localhost:3000'"
   },
   "dependencies": {
