@@ -13,6 +13,7 @@ export interface PostFrontmatter {
   model?: string
   conversation?: string
   unlisted?: boolean
+  sourceUrl?: string
 }
 
 export interface Post extends PostFrontmatter {
@@ -32,6 +33,7 @@ interface PostRow {
   model: string | null
   conversation: string | null
   unlisted: boolean
+  source_url: string | null
   content: string
 }
 
@@ -48,6 +50,7 @@ function rowToPost(row: PostRow): Post {
     model: row.model ?? undefined,
     conversation: row.conversation ?? undefined,
     unlisted: row.unlisted,
+    sourceUrl: row.source_url ?? undefined,
     content: row.content,
   }
 }

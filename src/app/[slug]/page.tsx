@@ -153,6 +153,18 @@ export default async function PostPage({ params }: PostPageProps) {
               )}
             </Text>
           )}
+          {post.sourceUrl && (
+            <Text fontSize="xs" color="fg.muted" mt={2}>
+              <ChakraLink
+                href={post.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="fg.muted"
+              >
+                Source
+              </ChakraLink>
+            </Text>
+          )}
         </Box>
 
         <Box css={{ '& > :first-child': { marginTop: 0 } }}>
