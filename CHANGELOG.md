@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fix the `Source:` line of a pulled post linking to the repo's commit history: it now shows and links the stored `source_url` as is.
 - Fix `pnpm posts` ignoring `.env` on Node older than 20.12: the script now loads it with `tsx --env-file=.env` instead of `process.loadEnvFile`.
 - Add `--author` and `--date` flags to `pnpm posts pull` for metadata the source file's frontmatter lacks; `pnpm posts sync` keeps them. The source of a pulled post now shows at the bottom of the page as `Source: <repo commit history>` instead of a header link.
 - Add GitHub-sourced posts: `pnpm posts pull <github-url> [slug]` fetches a markdown file from a public GitHub repo, parses it like `pnpm posts add` (dating it by its last commit when the frontmatter has no `date`) and stores its `source_url`; `pnpm posts sync` re-pulls every such post. The post page links back to the source. Run `pnpm posts init` once to add the column.
