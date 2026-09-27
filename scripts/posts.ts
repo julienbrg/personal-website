@@ -2,6 +2,7 @@
 //   pnpm posts init                 create the posts table
 //   pnpm posts add <file.md>        insert or update a post from a markdown file
 //   pnpm posts pull <url> [slug]    insert or update a post from a markdown file on GitHub
+//     [--author <name>] [--date YYYY-MM-DD]   used when the file's frontmatter has none
 //   pnpm posts sync                 re-pull every post that came from GitHub
 //   pnpm posts delete <slug>        remove a post
 //   pnpm posts list                 list all posts
@@ -10,6 +11,7 @@
 
 import fs from 'fs'
 import path from 'path'
+import { parseArgs } from 'util'
 import { parseFrontmatter, extractLeadingHeading, isValidSlug } from '../src/lib/markdown'
 
 let sql: typeof import('../src/lib/db').sql
@@ -47,7 +49,11 @@ async function add(filePath: string) {
 async function save(
   slug: string,
   raw: string,
-  { sourceUrl = null, fallbackDate }: { sourceUrl?: string | null; fallbackDate?: string } = {}
+  {
+    sourceUrl = null,
+    fallbackDate,
+    fallbackAuthor,
+  }: { sourceUrl?: string | null; fallbackDate?: string; fallbackAuthor?: string } = {}
 ) {
   if (!isValidSlug(slug)) {
     throw new Error(`Invalid slug "${slug}": use lowercase letters, numbers and hyphens only`)
@@ -58,11 +64,12 @@ async function save(
 
   const title = data.title || heading || slug
   const date = data.date ?? fallbackDate ?? null
+  const author = data.author ?? fallbackAuthor ?? null
   const unlisted = data.unlisted === 'true'
 
   await sql`
     INSERT INTO posts (slug, title, description, date, locale, image, image_alt, author, model, conversation, unlisted, source_url, content)
-    VALUES (${slug}, ${title}, ${data.description ?? null}, ${date}, ${data.locale ?? null}, ${data.image ?? null}, ${data.imageAlt ?? null}, ${data.author ?? null}, ${data.model ?? null}, ${data.conversation ?? null}, ${unlisted}, ${sourceUrl}, ${content})
+    VALUES (${slug}, ${title}, ${data.description ?? null}, ${date}, ${data.locale ?? null}, ${data.image ?? null}, ${data.imageAlt ?? null}, ${author}, ${data.model ?? null}, ${data.conversation ?? null}, ${unlisted}, ${sourceUrl}, ${content})
     ON CONFLICT (slug) DO UPDATE SET
       title = EXCLUDED.title,
       description = EXCLUDED.description,
@@ -95,22 +102,39 @@ async function fetchOk(url: string): Promise<Response> {
   return res
 }
 
-async function pull(url: string, slug?: string) {
+async function pull(
+  url: string,
+  slug?: string,
+  { author, date }: { author?: string; date?: string } = {}
+) {
   const { owner, repo, ref, filePath } = parseGitHubUrl(url)
+  slug ??= path.basename(filePath, '.md')
+
+  if (date && !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    throw new Error(`Invalid date "${date}": use YYYY-MM-DD`)
+  }
 
   const raw = await (
     await fetchOk(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${filePath}`)
   ).text()
 
-  // Posts without a `date` in their frontmatter are dated by their last commit.
+  // Metadata missing from the frontmatter comes from the flags, then from what
+  // is already stored (so `sync` keeps it), and the date last from the commit.
+  const [existing] = (await sql`
+    SELECT author, date FROM posts WHERE slug = ${slug}
+  `) as { author: string | null; date: string | null }[]
   const commits = (await (
     await fetchOk(
       `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(filePath)}&sha=${ref}&per_page=1`
     )
   ).json()) as { commit: { committer: { date: string } } }[]
-  const fallbackDate = commits[0]?.commit.committer.date.slice(0, 10)
+  const commitDate = commits[0]?.commit.committer.date.slice(0, 10)
 
-  await save(slug ?? path.basename(filePath, '.md'), raw, { sourceUrl: url, fallbackDate })
+  await save(slug, raw, {
+    sourceUrl: url,
+    fallbackDate: date ?? existing?.date ?? commitDate,
+    fallbackAuthor: author ?? existing?.author ?? undefined,
+  })
 }
 
 async function sync() {
@@ -176,7 +200,11 @@ async function main() {
   }
   ;({ sql } = await import('../src/lib/db'))
 
-  const [command, arg, arg2] = process.argv.slice(2)
+  const { positionals, values } = parseArgs({
+    allowPositionals: true,
+    options: { author: { type: 'string' }, date: { type: 'string' } },
+  })
+  const [command, arg, arg2] = positionals
 
   switch (command) {
     case 'init':
@@ -185,8 +213,12 @@ async function main() {
       if (!arg) throw new Error('usage: pnpm posts add <file.md>')
       return add(arg)
     case 'pull':
-      if (!arg) throw new Error('usage: pnpm posts pull <github-url> [slug]')
-      return pull(arg, arg2)
+      if (!arg) {
+        throw new Error(
+          'usage: pnpm posts pull <github-url> [slug] [--author <name>] [--date YYYY-MM-DD]'
+        )
+      }
+      return pull(arg, arg2, values)
     case 'sync':
       return sync()
     case 'delete':

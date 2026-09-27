@@ -19,6 +19,15 @@ function toAbsoluteUrl(path: string): string {
   return path.startsWith('http') ? path : `${siteUrl}${path}`
 }
 
+/**
+ * A GitHub file URL (…/blob/<ref>/<path>) becomes its repo's commit history
+ * (…/commits/<ref>/), so readers see how the text evolved. Other URLs pass through.
+ */
+function toCommitHistoryUrl(sourceUrl: string): string {
+  const match = /^(https:\/\/github\.com\/[^/]+\/[^/]+)\/blob\/([^/]+)\//.exec(sourceUrl)
+  return match ? `${match[1]}/commits/${match[2]}/` : sourceUrl
+}
+
 interface PostPageProps {
   params: Promise<{ slug: string }>
 }
@@ -78,6 +87,7 @@ export default async function PostPage({ params }: PostPageProps) {
   // and that is hardcoded to "en" for the app chrome. Most posts are French,
   // so the article carries its own language tag.
   const lang = post.locale?.replace('_', '-')
+  const sourceHistoryUrl = post.sourceUrl && toCommitHistoryUrl(post.sourceUrl)
 
   // BlogPosting markup: what turns a result into a dated, attributed article
   // in search rather than an anonymous page.
@@ -153,23 +163,26 @@ export default async function PostPage({ params }: PostPageProps) {
               )}
             </Text>
           )}
-          {post.sourceUrl && (
-            <Text fontSize="xs" color="fg.muted" mt={2}>
-              <ChakraLink
-                href={post.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                color="fg.muted"
-              >
-                Source
-              </ChakraLink>
-            </Text>
-          )}
         </Box>
 
         <Box css={{ '& > :first-child': { marginTop: 0 } }}>
           <PostContent content={post.content} />
         </Box>
+
+        {sourceHistoryUrl && (
+          <Text fontSize="sm" color="fg.muted">
+            Source:{' '}
+            <ChakraLink
+              href={sourceHistoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              color="fg.muted"
+              wordBreak="break-all"
+            >
+              {sourceHistoryUrl}
+            </ChakraLink>
+          </Text>
+        )}
       </VStack>
     </Box>
   )
