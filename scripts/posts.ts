@@ -193,11 +193,7 @@ async function list() {
 }
 
 async function main() {
-  try {
-    process.loadEnvFile('.env')
-  } catch {
-    // fine if DATABASE_URL is already set in the environment
-  }
+  // `.env` is loaded by the `--env-file` flag in the `posts` script.
   ;({ sql } = await import('../src/lib/db'))
 
   const { positionals, values } = parseArgs({
