@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add the HuG and Wulong projects after 像素众创, with their descriptions in all 10 languages.
 - Fix footnote links in posts not scrolling to their target: the markdown list item and link overrides now keep their `id`, so footnote references and back-references scroll smoothly.
 - Fix the `Source:` line of a pulled post linking to the repo's commit history: it now shows and links the stored `source_url` as is.
 - Fix `pnpm posts` ignoring `.env` on Node older than 20.12: the script now loads it with `tsx --env-file=.env` instead of `process.loadEnvFile`.
