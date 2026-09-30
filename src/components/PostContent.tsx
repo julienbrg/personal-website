@@ -86,20 +86,27 @@ const components: Components = {
       {children}
     </Text>
   ),
-  a: ({ href, children }) => {
+  a: ({ id, href, children }) => {
     const url = href ?? '#'
     const isInternal = url.startsWith('/') || url.startsWith('#')
 
     if (isInternal) {
       return (
-        <ChakraLink as={NextLink} href={url} color={brandColors.accent}>
+        <ChakraLink as={NextLink} id={id} href={url} color={brandColors.accent} scrollMarginTop={6}>
           {children}
         </ChakraLink>
       )
     }
 
     return (
-      <ChakraLink href={url} target="_blank" rel="noopener noreferrer" color={brandColors.accent}>
+      <ChakraLink
+        id={id}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        color={brandColors.accent}
+        scrollMarginTop={6}
+      >
         {children}
       </ChakraLink>
     )
@@ -114,8 +121,10 @@ const components: Components = {
       {children}
     </ListRoot>
   ),
-  li: ({ children }) => (
+  li: ({ id, children }) => (
     <ListItem
+      id={id}
+      scrollMarginTop={6}
       lineHeight={PROSE_LINE_HEIGHT}
       ps={1}
       css={{ '&::marker': { color: brandColors.white } }}
