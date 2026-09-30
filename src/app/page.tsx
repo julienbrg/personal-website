@@ -25,6 +25,8 @@ type ProjectKey =
   | 'gameOfGo'
   | 'zhankai'
   | 'xszc'
+  | 'hug'
+  | 'wulong'
   | 'eip7702'
   | 'erc5560'
   | 'genji'
@@ -113,6 +115,18 @@ const projects: Project[] = [
     title: '像素众创',
     webUrl: 'https://pixel.w3hc.org',
     githubUrl: 'https://github.com/w3hc/xszc',
+    labels: ['Web3'],
+  },
+  {
+    key: 'hug',
+    title: 'HuG',
+    githubUrl: 'https://github.com/julienbrg/hug',
+    labels: ['AI'],
+  },
+  {
+    key: 'wulong',
+    title: 'Wulong',
+    githubUrl: 'https://github.com/w3hc/wulong',
     labels: ['Web3'],
   },
   {
