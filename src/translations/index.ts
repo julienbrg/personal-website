@@ -439,6 +439,8 @@ type TranslationKeys = {
       gameOfGo: string
       zhankai: string
       xszc: string
+      hug: string
+      wulong: string
       eip7702: string
       erc5560: string
       genji: string
@@ -975,6 +977,8 @@ export const translations: Translations = {
         gameOfGo: 'Solidity implementation of the game of Go.',
         zhankai: 'CLI tool for exporting repository content for LLM processing.',
         xszc: 'Collective pixel artwork.',
+        hug: 'An issue-driven development lifecycle for building software with a coding agent.',
+        wulong: 'Privacy-preserving API template.',
         eip7702: 'Demonstrates the EIP-7702 - Set EOA account code.',
         erc5560: 'ERC-5560: Redeemable NFTs.',
         genji: 'A Next.js Web3 app template.',
@@ -1507,6 +1511,8 @@ export const translations: Translations = {
         gameOfGo: '围棋游戏的 Solidity 实现。',
         zhankai: '用于导出代码仓库内容以供 LLM 处理的命令行工具。',
         xszc: '集体像素艺术作品。',
+        hug: '一种以议题驱动、借助编程智能体构建软件的开发生命周期。',
+        wulong: '注重隐私保护的 API 模板。',
         eip7702: '演示 EIP-7702 —— 设置 EOA 账户代码。',
         erc5560: 'ERC-5560：可赎回 NFT。',
         genji: '一个 Next.js Web3 应用模板。',
@@ -2068,6 +2074,8 @@ export const translations: Translations = {
         gameOfGo: 'गो के खेल का Solidity कार्यान्वयन।',
         zhankai: 'LLM प्रोसेसिंग के लिए रिपॉज़िटरी कंटेंट एक्सपोर्ट करने का CLI टूल।',
         xszc: 'सामूहिक पिक्सेल कलाकृति।',
+        hug: 'कोडिंग एजेंट के साथ सॉफ़्टवेयर बनाने के लिए इश्यू-आधारित डेवलपमेंट लाइफ़साइकल।',
+        wulong: 'गोपनीयता-संरक्षक API टेम्पलेट।',
         eip7702: 'EIP-7702 का प्रदर्शन - EOA अकाउंट कोड सेट करना।',
         erc5560: 'ERC-5560: रिडीमेबल NFTs।',
         genji: 'एक Next.js Web3 ऐप टेम्पलेट।',
@@ -2651,6 +2659,8 @@ export const translations: Translations = {
         zhankai:
           'Herramienta CLI para exportar el contenido de un repositorio para su procesamiento con LLMs.',
         xszc: 'Obra de arte colectiva en píxeles.',
+        hug: 'Un ciclo de desarrollo guiado por issues para construir software con un agente de programación.',
+        wulong: 'Plantilla de API que preserva la privacidad.',
         eip7702: 'Demuestra el EIP-7702: establecer código de cuenta EOA.',
         erc5560: 'ERC-5560: NFTs redimibles.',
         genji: 'Una plantilla de app Web3 con Next.js.',
@@ -3239,6 +3249,8 @@ export const translations: Translations = {
         zhankai:
           "Outil en ligne de commande pour exporter le contenu d'un dépôt afin de le traiter avec un LLM.",
         xszc: 'Œuvre collective en pixel art.',
+        hug: 'Un cycle de développement piloté par les issues pour construire du logiciel avec un agent de code.',
+        wulong: "Modèle d'API respectueux de la vie privée.",
         eip7702: "Démontre l'EIP-7702 - définir le code d'un compte EOA.",
         erc5560: 'ERC-5560 : NFT rachetables.',
         genji: "Un modèle d'application Web3 en Next.js.",
@@ -3790,6 +3802,8 @@ export const translations: Translations = {
         gameOfGo: 'تطبيق بلغة Solidity للعبة جو.',
         zhankai: 'أداة سطر أوامر لتصدير محتوى المستودع لمعالجته بواسطة نماذج اللغة الكبيرة.',
         xszc: 'عمل فني جماعي بالبكسل.',
+        hug: 'دورة تطوير قائمة على المسائل لبناء البرمجيات مع وكيل برمجة.',
+        wulong: 'قالب واجهة برمجة تطبيقات يحافظ على الخصوصية.',
         eip7702: 'يوضّح EIP-7702 - تعيين كود حساب EOA.',
         erc5560: 'ERC-5560: رموز NFT قابلة للاسترداد.',
         genji: 'قالب تطبيق Web3 مبني على Next.js.',
@@ -4363,6 +4377,8 @@ export const translations: Translations = {
         gameOfGo: 'গো খেলার Solidity বাস্তবায়ন।',
         zhankai: 'LLM প্রসেসিংয়ের জন্য রিপোজিটরি কনটেন্ট এক্সপোর্ট করার CLI টুল।',
         xszc: 'সম্মিলিত পিক্সেল শিল্পকর্ম।',
+        hug: 'কোডিং এজেন্টের সাথে সফটওয়্যার তৈরির জন্য ইস্যু-চালিত ডেভেলপমেন্ট লাইফসাইকেল।',
+        wulong: 'গোপনীয়তা-রক্ষাকারী API টেমপ্লেট।',
         eip7702: 'EIP-7702-এর প্রদর্শন - EOA অ্যাকাউন্ট কোড সেট করা।',
         erc5560: 'ERC-5560: রিডিমেবল NFT।',
         genji: 'একটি Next.js Web3 অ্যাপ টেমপ্লেট।',
@@ -4941,6 +4957,8 @@ export const translations: Translations = {
         zhankai:
           'Инструмент командной строки для экспорта содержимого репозитория для обработки LLM.',
         xszc: 'Коллективное пиксельное произведение.',
+        hug: 'Цикл разработки на основе задач (issues) для создания ПО с агентом-программистом.',
+        wulong: 'Шаблон API с сохранением конфиденциальности.',
         eip7702: 'Демонстрация EIP-7702 — установка кода аккаунта EOA.',
         erc5560: 'ERC-5560: NFT с возможностью погашения.',
         genji: 'Шаблон Web3-приложения на Next.js.',
@@ -5524,6 +5542,8 @@ export const translations: Translations = {
         zhankai:
           'Ferramenta de linha de comando para exportar o conteúdo de um repositório para processamento por LLM.',
         xszc: 'Obra de arte coletiva em pixels.',
+        hug: 'Um ciclo de desenvolvimento orientado por issues para construir software com um agente de programação.',
+        wulong: 'Modelo de API que preserva a privacidade.',
         eip7702: 'Demonstra o EIP-7702 - definição de código de conta EOA.',
         erc5560: 'ERC-5560: NFTs resgatáveis.',
         genji: 'Um modelo de aplicativo Web3 em Next.js.',
@@ -6091,6 +6111,8 @@ export const translations: Translations = {
         gameOfGo: 'گیم آف گو کا Solidity میں نفاذ۔',
         zhankai: 'LLM پروسیسنگ کے لیے ریپوزٹری کا مواد ایکسپورٹ کرنے کا CLI ٹول۔',
         xszc: 'اجتماعی پکسل فن پارہ۔',
+        hug: 'کوڈنگ ایجنٹ کے ساتھ سافٹ ویئر بنانے کے لیے ایشو پر مبنی ڈیولپمنٹ لائف سائیکل۔',
+        wulong: 'رازداری کا تحفظ کرنے والا API ٹیمپلیٹ۔',
         eip7702: 'EIP-7702 کا مظاہرہ - EOA اکاؤنٹ کوڈ سیٹ کرنا۔',
         erc5560: 'ERC-5560: قابلِ استرداد NFTs۔',
         genji: 'ایک Next.js Web3 ایپ ٹیمپلیٹ۔',
