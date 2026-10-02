@@ -39,10 +39,22 @@ export const metadata: Metadata = {
   // Spelled out rather than inherited: this page's only job is to be indexed,
   // so a future change to the root defaults should not silently unpublish it.
   robots: { index: true, follow: true },
+  // Metadata merges shallowly: this openGraph replaces the root one whole, so
+  // the image and site name must be restated or the link preview loses them.
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
+    siteName: 'Julien Beranger',
+    images: [{ url: '/huangshan.png', width: 1200, height: 630, alt: DESCRIPTION }],
+    locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ['/huangshan.png'],
+    creator: '@julienbrg',
   },
 }
 
