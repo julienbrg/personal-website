@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Méditation souriante',
     description:
       "La méditation permet de réduire le stress, qui lui-même cause toutes sortes de maladies et de problèmes. Comment s'y prendre ?",
-    siteName: 'personal-website',
+    siteName: 'Julien Beranger',
     images: [
       {
         url: '/huiyan-dashi.png',

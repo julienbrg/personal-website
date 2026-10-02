@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     },
   },
 
-  keywords: ['w3pk', 'WebAuthn', 'Next.js', 'Web3', 'Ethereum'],
-  authors: [{ name: 'W3HC', url: 'https://github.com/w3hc' }],
+  keywords: ['Web3', 'Ethereum', 'Next.js'],
+  authors: [{ name: 'Julien Béranger', url: 'https://github.com/julienbrg' }],
 
   openGraph: {
     title: 'Julien Beranger',
@@ -63,9 +63,5 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-
-  verification: {
-    google: 'your-google-site-verification',
   },
 }
