@@ -12,6 +12,12 @@
   margin: 0;
 }
 
+/* Chakra's preflight resets `font: inherit` on every element, dropping italics */
+em,
+i {
+  font-style: italic;
+}
+
 /* Prevent Chrome auto-translate popup globally */
 html {
   translate: no;
