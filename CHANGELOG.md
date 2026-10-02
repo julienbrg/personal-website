@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fix link previews still showing template leftovers: `/contact` now reads "Get in touch with Julien", `/strat` and `/settings` drop the "| personal-website" suffix, every page uses "Julien Beranger" as its site name, and `/posts` gets its preview image back. The root metadata drops the w3pk/W3HC keywords and author and the placeholder Google verification.
 - Add the HuG and Wulong projects after 像素众创, with their descriptions in all 10 languages.
 - Fix footnote links in posts not scrolling to their target: the markdown list item and link overrides now keep their `id`, so footnote references and back-references scroll smoothly.
 - Fix the `Source:` line of a pulled post linking to the repo's commit history: it now shows and links the stored `source_url` as is.
