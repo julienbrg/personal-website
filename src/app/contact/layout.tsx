@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact | personal-website',
+  title: { absolute: 'Get in touch with Julien' },
   description: 'Get in touch with Julien for any questions or inquiries',
 
   openGraph: {
-    title: 'Contact | personal-website',
+    title: 'Get in touch with Julien',
     description: 'Get in touch with Julien for any questions or inquiries',
-    siteName: 'personal-website',
+    siteName: 'Julien Beranger',
     images: [
       {
         url: '/huangshan.png',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact | personal-website',
+    title: 'Get in touch with Julien',
     description: 'Get in touch with Julien for any questions or inquiries',
     images: ['/huangshan.png'],
     creator: '@julienbrg',
