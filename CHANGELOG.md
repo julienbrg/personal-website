@@ -3,7 +3,6 @@
 ## Unreleased
 
 - Add a `Link` header (RFC 8288) to `/` so agents can discover `/llms.txt` (`describedby`), `/sitemap.xml` (`sitemap`) and `/feed.xml` (`alternate`, `application/rss+xml`) from the response headers alone.
-- Fix HTML responses for `/` and `/<slug>` missing `Vary: Accept`: Next's page runtime replaced the value the proxy set, so `next.config.ts` now also sets it at the platform level, keeping shared caches from serving HTML to agents or markdown to browsers. Self-hosted `next start` still drops it.
 - Add markdown content negotiation for agents: a request whose `Accept` includes `text/markdown` gets `/llms.txt` for `/` and the post's markdown for `/<slug>`, served as `text/markdown` with `Vary: Accept`; browsers still get HTML. An unknown slug requested as markdown keeps its 404 with a markdown body linking to `/llms.txt`.
 - Fix emphasized text (`*…*`, `_…_`) rendering upright in posts and other markdown views: Chakra's preflight `font: inherit` reset dropped the default italic on `em` and `i`, which `globals.css` now restores.
 - Fix link previews still showing template leftovers: `/contact` now reads "Get in touch with Julien", `/strat` and `/settings` drop the "| personal-website" suffix, every page uses "Julien Beranger" as its site name, and `/posts` gets its preview image back. The root metadata drops the w3pk/W3HC keywords and author and the placeholder Google verification.
