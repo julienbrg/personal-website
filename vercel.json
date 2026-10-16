@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/",
+      "headers": [{ "key": "Vary", "value": "Accept" }]
+    },
+    {
+      "source": "/:slug((?!contact$|meditation-souriante$|posts$|settings$|strat$)[a-z0-9][a-z0-9\\-]*)",
+      "headers": [{ "key": "Vary", "value": "Accept" }]
+    }
+  ]
+}
