@@ -68,12 +68,6 @@ const nextConfig: NextConfig = {
         source: '/(.*)',
         headers: securityHeaders,
       },
-      // The page runtime replaces the `Vary` that src/proxy.ts sets, so HTML
-      // responses for the negotiated routes get `Accept` from the platform.
-      ...['/', `/:slug(${slugPattern})`].map(source => ({
-        source,
-        headers: [{ key: 'Vary', value: 'Accept' }],
-      })),
       // RFC 8288 links so agents find the machine-readable copies from the
       // homepage headers alone.
       {

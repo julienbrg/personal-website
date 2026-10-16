@@ -22,7 +22,7 @@ export function proxy(request: NextRequest) {
     : NextResponse.next()
 
   // Markdown route handlers append Next's router values to this one. HTML
-  // pages replace it, so next.config.ts sets `Vary: Accept` for them too.
+  // pages replace it; Vercel's CDN keys on `Accept` anyway (#97).
   response.headers.set('Vary', 'Accept')
   return response
 }
