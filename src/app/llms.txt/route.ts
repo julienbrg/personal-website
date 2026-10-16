@@ -8,18 +8,16 @@ import { siteUrl } from '@/lib/site'
 // and the header below lets a CDN hold the response for just as long.
 export const dynamic = 'force-dynamic'
 
-const TEXT_HEADERS = {
-  'Content-Type': 'text/plain; charset=utf-8',
-  'Cache-Control': 'public, max-age=0, s-maxage=60, stale-while-revalidate=300',
-}
-
 /**
  * /llms.txt — the llmstxt.org convention: a single markdown file describing
  * the site and linking every page, in the form a model can read directly.
  * Assistants that support it look here first; everything else can still fetch
  * it as a plain text index of the blog.
+ *
+ * It is also the markdown answer for `/` (see src/proxy.ts), so a client that
+ * asks for markdown gets it labelled as such.
  */
-export async function GET() {
+export async function GET(request: Request) {
   const posts = await getPostSummaries()
 
   const body = [
@@ -52,5 +50,13 @@ export async function GET() {
     '',
   ].join('\n')
 
-  return new Response(body, { headers: TEXT_HEADERS })
+  const wantsMarkdown = (request.headers.get('accept') ?? '').includes('text/markdown')
+
+  return new Response(body, {
+    headers: {
+      'Content-Type': wantsMarkdown ? 'text/markdown; charset=utf-8' : 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=0, s-maxage=60, stale-while-revalidate=300',
+      Vary: 'Accept',
+    },
+  })
 }

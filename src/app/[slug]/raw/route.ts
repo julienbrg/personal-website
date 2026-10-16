@@ -1,5 +1,6 @@
 import { getPost } from '@/lib/posts'
 import { postToMarkdown } from '@/lib/postMarkdown'
+import { siteUrl } from '@/lib/site'
 
 // Reached both as /<slug>/raw and, through the rewrite in next.config.ts, as
 // /<slug>.md. The database read is cached (see getPost), but the response
@@ -33,11 +34,16 @@ export async function GET(request: Request, { params }: RawPostProps) {
     Vary: 'Accept',
   }
 
+  // Agents asking for markdown at an unknown URL (see src/proxy.ts) get a
+  // markdown 404 that points them at the site index.
   if (!post) {
-    return new Response(`No post at /${slug}\n`, {
-      status: 404,
-      headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' },
-    })
+    if (prefersHtml) {
+      return new Response(`No post at /${slug}\n`, { status: 404, headers })
+    }
+    return new Response(
+      `# Not found\n\nNo page at /${slug}. Every page and post is listed in [llms.txt](${siteUrl}/llms.txt).\n`,
+      { status: 404, headers }
+    )
   }
 
   // Unlisted posts are reachable here too, so the noindex signal that the
