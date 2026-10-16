@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add a `Content-Signal: search=yes, ai-input=yes, ai-train=yes` directive ([contentsignals.org](https://contentsignals.org)) to `/robots.txt`, declaring that the content may be used for search, AI answers and AI training.
 - Add a `Link` header (RFC 8288) to `/` so agents can discover `/llms.txt` (`describedby`), `/sitemap.xml` (`sitemap`) and `/feed.xml` (`alternate`, `application/rss+xml`) from the response headers alone.
 - Add markdown content negotiation for agents: a request whose `Accept` includes `text/markdown` gets `/llms.txt` for `/` and the post's markdown for `/<slug>`, served as `text/markdown` with `Vary: Accept`; browsers still get HTML. An unknown slug requested as markdown keeps its 404 with a markdown body linking to `/llms.txt`.
 - Fix emphasized text (`*…*`, `_…_`) rendering upright in posts and other markdown views: Chakra's preflight `font: inherit` reset dropped the default italic on `em` and `i`, which `globals.css` now restores.
