@@ -10,6 +10,10 @@ import { siteUrl } from '@/lib/site'
 // operators read a named rule as the only unambiguous permission. The list is
 // not exhaustive by design — anything not named falls under `*` and is
 // welcome too.
+//
+// The Content-Signal line (contentsignals.org) says what the content may be
+// used for once fetched: search, answering in context, and training, matching
+// the "free to read, quote and index" line in llms.txt.
 const aiAgents = [
   // Anthropic
   'ClaudeBot',
@@ -45,7 +49,11 @@ const aiAgents = [
 ]
 
 export default function robots(): MetadataRoute.Robots {
-  const allowAll = { allow: '/', disallow: '/settings' }
+  const allowAll = {
+    allow: '/',
+    disallow: '/settings',
+    other: { 'Content-Signal': 'search=yes, ai-input=yes, ai-train=yes' },
+  }
 
   return {
     rules: [
