@@ -21,7 +21,8 @@ export function proxy(request: NextRequest) {
     ? NextResponse.rewrite(new URL(slug ? `/${slug}/raw` : '/llms.txt', request.url))
     : NextResponse.next()
 
-  // Next appends its own router values after this one, so caches key on both.
+  // Markdown route handlers append Next's router values to this one. HTML
+  // pages replace it, so next.config.ts sets `Vary: Accept` for them too.
   response.headers.set('Vary', 'Accept')
   return response
 }
