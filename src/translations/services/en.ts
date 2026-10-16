@@ -96,6 +96,35 @@ export const servicesEn: ServicesCopy = {
       },
     ],
   },
+  caseStudies: {
+    heading: 'Case studies',
+    items: [
+      {
+        client: 'Systemlog',
+        title: 'A custom RAG system for Batappli',
+        description:
+          'An AI assistant built into the software of Systemlog, the publisher of Batappli for construction professionals, that answers from their own documentation.',
+        metric: '5,000',
+        metricLabel: 'monthly active users',
+      },
+      {
+        client: 'AFNIC',
+        title: 'An NFT registry for .fr domain names',
+        description:
+          'Designed and delivered a registry for AFNIC, which manages the 4 million .fr domain names on behalf of the French State.',
+        metric: 'MVP',
+        metricLabel: 'released',
+      },
+      {
+        client: 'Training',
+        title: 'Teams trained in AI',
+        description:
+          'Training in companies and schools, including EM Lyon: practical uses of AI, without exposing your data.',
+        metric: '200+',
+        metricLabel: 'people trained',
+      },
+    ],
+  },
   about: {
     heading: 'About me',
     body: "I'm Julien Béranger, developer and trainer. I build AI applications and train teams to use them, in companies and in schools. I work with you directly, with no middleman: the person on the call is the person who delivers.",

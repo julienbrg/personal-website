@@ -95,6 +95,35 @@ export const servicesFr = {
       },
     ],
   },
+  caseStudies: {
+    heading: 'Réalisations',
+    items: [
+      {
+        client: 'Systemlog',
+        title: 'Un système RAG sur mesure pour Batappli',
+        description:
+          "Un assistant IA intégré au logiciel de Systemlog, l'éditeur de Batappli pour les professionnels du BTP, qui répond à partir de leur propre documentation.",
+        metric: '5 000',
+        metricLabel: 'utilisateurs actifs par mois',
+      },
+      {
+        client: 'AFNIC',
+        title: 'Un registre NFT pour les noms de domaine en .fr',
+        description:
+          "Conception et livraison d'un registre pour l'AFNIC, qui gère les 4 millions de noms de domaine en .fr pour le compte de l'État.",
+        metric: 'MVP',
+        metricLabel: 'livré',
+      },
+      {
+        client: 'Formations',
+        title: "Des équipes formées à l'IA",
+        description:
+          "Formations en entreprise et en école, dont EM Lyon : des usages concrets de l'IA, sans exposer ses données.",
+        metric: '200+',
+        metricLabel: 'personnes formées',
+      },
+    ],
+  },
   about: {
     heading: 'Qui suis-je',
     body: "Je suis Julien Béranger, développeur et formateur. Je conçois des applications IA et je forme des équipes à les utiliser, en entreprise comme en école. Je travaille directement avec vous, sans intermédiaire : la personne qui fait l'appel est celle qui livre.",
