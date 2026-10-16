@@ -74,6 +74,21 @@ const nextConfig: NextConfig = {
         source,
         headers: [{ key: 'Vary', value: 'Accept' }],
       })),
+      // RFC 8288 links so agents find the machine-readable copies from the
+      // homepage headers alone.
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Link',
+            value: [
+              '</llms.txt>; rel="describedby"',
+              '</sitemap.xml>; rel="sitemap"; type="application/xml"',
+              '</feed.xml>; rel="alternate"; type="application/rss+xml"',
+            ].join(', '),
+          },
+        ],
+      },
     ]
   },
 }
