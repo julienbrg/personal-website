@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Add the final fr and en copy for the `/strat` services page in `src/translations/services/`: hero, why now, three offers (diagnostic, training, pilot) on quote, process, case studies (Systemlog, AFNIC, 200+ people trained), about, FAQ and final call to action, under the "Julien Béranger — Strat" brand. The page wires it in with #82.
 - Fix emphasized text (`*…*`, `_…_`) rendering upright in posts and other markdown views: Chakra's preflight `font: inherit` reset dropped the default italic on `em` and `i`, which `globals.css` now restores.
 - Fix link previews still showing template leftovers: `/contact` now reads "Get in touch with Julien", `/strat` and `/settings` drop the "| personal-website" suffix, every page uses "Julien Beranger" as its site name, and `/posts` gets its preview image back. The root metadata drops the w3pk/W3HC keywords and author and the placeholder Google verification.
 - Add the HuG and Wulong projects after 像素众创, with their descriptions in all 10 languages.
