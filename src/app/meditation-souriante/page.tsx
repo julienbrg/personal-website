@@ -36,14 +36,14 @@ export default function MeditationSouriantePage() {
               <ListItem>
                 <Text>
                   Choisissez un endroit calme, ça peut être à l&apos;intérieur ou à
-                  l&apos;extérieur. Pas besoin d&apos;un silence absolu. Si il y a des bruits trop
-                  forts qui pourraient vous gêner, optez pour les boules Quies.
+                  l&apos;extérieur. Pas besoin d&apos;un silence absolu. S&apos;il y a des bruits
+                  trop forts qui pourraient vous gêner, optez pour les boules Quies.
                 </Text>
               </ListItem>
               <ListItem>
                 <Text>
                   C&apos;est important d&apos;être assis confortablement, donc ça peut être dans un
-                  fauteuil ou un canapé par exemple. Vous n&apos;hésitez pas ajouter un ou deux
+                  fauteuil ou un canapé par exemple. N&apos;hésitez pas à ajouter un ou deux
                   coussins.
                 </Text>
               </ListItem>
@@ -71,7 +71,7 @@ export default function MeditationSouriantePage() {
               <ListItem>
                 <Text>
                   Placez vos mains l&apos;une sur l&apos;autre, les paumes vers le haut, au niveau
-                  du bas-ventre. Vous pouvez aussi les placez sur vos genoux tout simplement.
+                  du bas-ventre. Vous pouvez aussi les placer sur vos genoux tout simplement.
                 </Text>
               </ListItem>
               <ListItem>
@@ -84,7 +84,7 @@ export default function MeditationSouriantePage() {
                 <Text>
                   Vous pouvez sourire très légèrement, un petit peu à la manière de la Joconde. On
                   n&apos;est pas là pour faire la gueule ! À l&apos;écoute de vous-même et de ce qui
-                  vous entoure, essayez de placer votre sourire juste un tout petit cran au dessus
+                  vous entoure, essayez de placer votre sourire juste un tout petit cran au-dessus
                   du &quot;non-sourire&quot;, juste histoire d&apos;amorcer un peu d&apos;optimisme.
                 </Text>
               </ListItem>
@@ -115,12 +115,12 @@ export default function MeditationSouriantePage() {
               </ListItem>
               <ListItem>
                 <Text>
-                  Ne contractez pas les abdos, notamment en fin d&apos;expiration pour pour
-                  faciliter la transition vers l&apos;inspiration.
+                  Ne contractez pas les abdos, notamment en fin d&apos;expiration pour faciliter la
+                  transition vers l&apos;inspiration.
                 </Text>
               </ListItem>
               <ListItem>
-                <Text>N&apos;hésitez pas à déglutir ou bailler quand c&apos;est nécessaire.</Text>
+                <Text>N&apos;hésitez pas à déglutir ou bâiller quand c&apos;est nécessaire.</Text>
               </ListItem>
             </ListRoot>
 
@@ -153,7 +153,7 @@ export default function MeditationSouriantePage() {
                     <Text fontSize="sm">Tout le corps détendu</Text>
                   </ListItem>
                   <ListItem>
-                    <Text fontSize="sm">Ce très léger sourire au lèvre</Text>
+                    <Text fontSize="sm">Ce très léger sourire aux lèvres</Text>
                   </ListItem>
                 </ListRoot>
               </ListItem>
@@ -211,7 +211,7 @@ export default function MeditationSouriantePage() {
             </Center>
 
             <Text mb={4} lineHeight="tall">
-              Master Hui Yan est un des personnage du film{' '}
+              Master Hui Yan est un des personnages du film{' '}
               <ChakraLink
                 href="https://fr.wikipedia.org/wiki/A_Touch_of_Zen"
                 target="_blank"
@@ -229,15 +229,15 @@ export default function MeditationSouriantePage() {
               >
                 cet extrait
               </ChakraLink>
-              , on peut voir Master Hui Yan et ses disciples courrir sur la cime des bambous.
+              , on peut voir Master Hui Yan et ses disciples courir sur la cime des bambous.
             </Text>
 
             <Text mb={4} lineHeight="tall">
               Dans la culture chinoise, les Immortels sont traditionnellement habillés en blanc et
               peuvent voler. Beaucoup de personnages de films chinois s&apos;entraînent tellement
               qu&apos;ils s&apos;approchent des Immortels taoïstes : c&apos;est pour ça qu&apos;on
-              peut les voir sautiller de façon si légères dans les arbres ou sur les toits. Mais
-              tous ne sont pas aussi forts que Master Hui Yan... 😉
+              peut les voir sautiller de façon si légère dans les arbres ou sur les toits. Mais tous
+              ne sont pas aussi forts que Master Hui Yan... 😉
             </Text>
 
             <Text mb={4} lineHeight="tall">
