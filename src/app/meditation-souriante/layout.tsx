@@ -5,6 +5,23 @@ export const metadata: Metadata = {
   description:
     "La méditation permet de réduire le stress, qui lui-même cause toutes sortes de maladies et de problèmes. Comment s'y prendre ?",
 
+  keywords: [
+    'méditation',
+    'méditation pour débutants',
+    'méditation souriante',
+    'respiration',
+    'respiration lente',
+    'pleine conscience',
+    'gestion du stress',
+    'relaxation',
+    'posture de méditation',
+    'zazen',
+    'sourire intérieur',
+    'bien-être',
+    'A Touch of Zen',
+    'King Hu',
+  ],
+
   openGraph: {
     title: 'Méditation souriante',
     description:

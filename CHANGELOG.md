@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fix the `/meditation-souriante` page: it sets its own French keywords instead of inheriting the site-wide `Web3`, `Ethereum` and `Next.js`, and ten typos in its text are corrected.
 - Add a `Content-Signal: search=yes, ai-input=yes, ai-train=yes` directive ([contentsignals.org](https://contentsignals.org)) to `/robots.txt`, declaring that the content may be used for search, AI answers and AI training.
 - Add a `Link` header (RFC 8288) to `/` so agents can discover `/llms.txt` (`describedby`), `/sitemap.xml` (`sitemap`) and `/feed.xml` (`alternate`, `application/rss+xml`) from the response headers alone.
 - Add markdown content negotiation for agents: a request whose `Accept` includes `text/markdown` gets `/llms.txt` for `/` and the post's markdown for `/<slug>`, served as `text/markdown` with `Vary: Accept`; browsers still get HTML. An unknown slug requested as markdown keeps its 404 with a markdown body linking to `/llms.txt`.
